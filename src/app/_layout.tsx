@@ -2,23 +2,31 @@ import { useFonts } from '@expo-google-fonts/dm-sans';
 import { Stack } from 'expo-router';
 import * as SplashScreen from 'expo-splash-screen';
 import { StatusBar } from 'expo-status-bar';
-import { useEffect } from 'react';
+import { useEffect, useState } from 'react';
 
 import { fontAssets } from '@/platform/fonts';
+import { storage } from '@/platform/storage';
 import { colors } from '@/platform/theme';
 
 SplashScreen.preventAutoHideAsync();
 
 export default function RootLayout() {
   const [loaded, error] = useFonts(fontAssets);
+  const [storageReady, setStorageReady] = useState(false);
+  const ready = (loaded || error !== null) && storageReady;
+
+  // Les parties, la série de jours et les réglages sont chargés en mémoire avant le premier écran.
+  useEffect(() => {
+    storage.load().finally(() => setStorageReady(true));
+  }, []);
 
   useEffect(() => {
-    if (loaded || error) {
+    if (ready) {
       SplashScreen.hideAsync();
     }
-  }, [loaded, error]);
+  }, [ready]);
 
-  if (!loaded && !error) {
+  if (!ready) {
     return null;
   }
 

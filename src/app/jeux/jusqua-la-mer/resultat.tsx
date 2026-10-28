@@ -1,4 +1,5 @@
 import { Redirect, router } from 'expo-router';
+import { useState } from 'react';
 import { ScrollView, Share, StyleSheet, useWindowDimensions, View } from 'react-native';
 import { SafeAreaView } from 'react-native-safe-area-context';
 
@@ -13,7 +14,10 @@ import {
   victoryTitles,
   type GameSetup,
 } from '@/games/jusqua-la-mer/presentation';
+import { finishedDailyGame, GAME_ID, useDailySave } from '@/games/jusqua-la-mer/progress';
 import { useGameSession } from '@/games/jusqua-la-mer/session';
+import { localDateKey } from '@/platform/daily';
+import { dailyStreaks, useRecords } from '@/platform/records';
 import { formatDuration, shareGrid, timeUntilMidnight } from '@/platform/share';
 import { colors, radius, spacing } from '@/platform/theme';
 import { AppText } from '@/platform/ui/AppText';
@@ -24,10 +28,16 @@ import { IconButton } from '@/platform/ui/IconButton';
 export default function ResultScreen() {
   const { lastGame } = useGameSession();
   const { width } = useWindowDimensions();
-  if (!lastGame) {
+  const [today] = useState(() => localDateKey(new Date()));
+  const dailySave = useDailySave(today);
+  const records = useRecords(GAME_ID);
+  // La partie qui vient de se finir, ou le défi du jour déjà joué (rouvert depuis l'accueil).
+  const game = lastGame ?? (dailySave ? finishedDailyGame(dailySave) : null);
+  if (!game) {
     return <Redirect href="/" />;
   }
-  const { setup, state, durationMs } = lastGame;
+  const { setup, state, durationMs } = game;
+  const streaks = dailyStreaks(records, today);
   const won = state.status === 'won';
   const grid = gameGrid(state);
   const required = setup.river.steps.filter((step) => !step.optional).length;
@@ -75,18 +85,32 @@ export default function ResultScreen() {
         <View style={styles.scoreCard}>
           <View style={styles.scoreGrid}>
             <AppText variant="caption" color={colors.inkMuted}>
-              Ta partie
+              Ta partie · {score(state)}/100
             </AppText>
             <ResultGrid cells={grid} />
           </View>
-          <View style={styles.scoreValue}>
-            <AppText variant="caption" color={colors.inkMuted}>
-              Score
-            </AppText>
-            <AppText variant="heading" color={colors.night}>
-              {score(state)}/100
-            </AppText>
-          </View>
+          {setup.mode === 'daily' ? (
+            <View style={styles.scoreValue}>
+              <AppText variant="caption" color={colors.inkMuted}>
+                Série
+              </AppText>
+              <AppText variant="heading" color={colors.night}>
+                {plural(streaks.current, 'jour')}
+              </AppText>
+              <AppText variant="caption" color={colors.inkMuted}>
+                record : {plural(streaks.best, 'jour')}
+              </AppText>
+            </View>
+          ) : (
+            <View style={styles.scoreValue}>
+              <AppText variant="caption" color={colors.inkMuted}>
+                Score
+              </AppText>
+              <AppText variant="heading" color={colors.night}>
+                {score(state)}/100
+              </AppText>
+            </View>
+          )}
         </View>
 
         {fact ? (

@@ -1,11 +1,14 @@
 import { router } from 'expo-router';
+import { useState } from 'react';
 import { Pressable, ScrollView, StyleSheet, View } from 'react-native';
 
 import { dataset, type Difficulty } from '@/games/jusqua-la-mer/data/rivers';
 import { dailyChallenge } from '@/games/jusqua-la-mer/engine/challenges';
-import { difficultyLabels } from '@/games/jusqua-la-mer/presentation';
+import { difficultyLabels, plural, type GameMode } from '@/games/jusqua-la-mer/presentation';
+import { GAME_ID, useDailySave, useRulesSeen } from '@/games/jusqua-la-mer/progress';
 import { localDateKey } from '@/platform/daily';
 import { availableGames, upcomingGames, type AvailableGame } from '@/platform/games';
+import { dailyStreaks, useRecords } from '@/platform/records';
 import { colors, radius, spacing } from '@/platform/theme';
 import { AppText } from '@/platform/ui/AppText';
 import { Button } from '@/platform/ui/Button';
@@ -19,17 +22,33 @@ const levels: { difficulty: Difficulty; description: string; drops: number }[] =
   { difficulty: 'hard', description: 'Petits affluents', drops: 3 },
 ];
 
+/** Ouvre une partie, en passant par les règles tant qu'elles n'ont jamais été lues. */
+function play(mode: GameMode, rulesSeen: boolean) {
+  router.push({ pathname: rulesSeen ? '/jeux/jusqua-la-mer/partie' : '/jeux/jusqua-la-mer/regles', params: { mode } });
+}
+
 export default function HomeScreen() {
   const [dailyGame] = availableGames;
+  const [today] = useState(() => localDateKey(new Date()));
+  const streak = dailyStreaks(useRecords(GAME_ID), today).current;
+  const rulesSeen = useRulesSeen();
 
   return (
     <Screen edges={['top']}>
       <ScrollView contentContainerStyle={styles.scroll} showsVerticalScrollIndicator={false}>
         <View style={styles.header}>
           <Logo />
+          {streak > 0 ? (
+            <View style={styles.streak} accessible accessibilityLabel={`Série de ${plural(streak, 'jour')}`}>
+              <Icon name="droplet" size={18} color={colors.water} filled />
+              <AppText variant="bodyStrong" color={colors.night}>
+                {plural(streak, 'jour')}
+              </AppText>
+            </View>
+          ) : null}
         </View>
 
-        {dailyGame ? <DailyCard game={dailyGame} /> : null}
+        {dailyGame ? <DailyCard game={dailyGame} today={today} rulesSeen={rulesSeen} /> : null}
 
         <View style={styles.section}>
           <View style={styles.sectionTitle}>
@@ -46,7 +65,7 @@ export default function HomeScreen() {
                 key={difficulty}
                 accessibilityRole="button"
                 accessibilityLabel={`Partie libre, niveau ${difficultyLabels[difficulty]} : ${description}`}
-                onPress={() => router.push({ pathname: '/jeux/jusqua-la-mer/partie', params: { mode: difficulty } })}
+                onPress={() => play(difficulty, rulesSeen)}
                 style={({ pressed }) => [styles.level, pressed && styles.levelPressed]}>
                 <View style={styles.drops}>
                   {[1, 2, 3].map((n) =>
@@ -95,10 +114,12 @@ export default function HomeScreen() {
   );
 }
 
-function DailyCard({ game }: { game: AvailableGame }) {
-  const today = new Date();
-  const { number } = dailyChallenge(dataset, localDateKey(today));
-  const date = today.toLocaleDateString('fr-FR', { day: 'numeric', month: 'short' });
+function DailyCard({ game, today, rulesSeen }: { game: AvailableGame; today: string; rulesSeen: boolean }) {
+  const { number } = dailyChallenge(dataset, today);
+  const date = new Date(`${today}T12:00:00`).toLocaleDateString('fr-FR', { day: 'numeric', month: 'short' });
+  const save = useDailySave(today);
+  const finished = save?.finishedAt !== undefined;
+  const won = save?.state.status === 'won';
 
   return (
     <View style={styles.dailyCard}>
@@ -121,11 +142,19 @@ function DailyCard({ game }: { game: AvailableGame }) {
       <AppText variant="small" color={colors.nightText}>
         ≈ {game.estimatedMinutes} min · {game.lives} vies
       </AppText>
+      {finished ? (
+        <View style={styles.dailyDone}>
+          <Icon name={won ? 'check' : 'close'} size={18} color={colors.white} strokeWidth={2.6} />
+          <AppText variant="bodyStrong" color={colors.white}>
+            {won ? 'Défi réussi' : 'Défi raté'} : reviens demain pour le suivant
+          </AppText>
+        </View>
+      ) : null}
       <Button
-        label="Jouer le défi"
-        icon="play"
+        label={finished ? 'Voir mon résultat' : save ? 'Reprendre le défi' : 'Jouer le défi'}
+        icon={finished ? undefined : 'play'}
         variant="light"
-        onPress={() => router.push({ pathname: '/jeux/jusqua-la-mer/regles', params: { mode: 'daily' } })}
+        onPress={() => (finished ? router.push('/jeux/jusqua-la-mer/resultat') : play('daily', rulesSeen))}
       />
     </View>
   );
@@ -138,7 +167,24 @@ const styles = StyleSheet.create({
   },
   header: {
     minHeight: 44,
-    justifyContent: 'center',
+    flexDirection: 'row',
+    alignItems: 'center',
+    justifyContent: 'space-between',
+  },
+  streak: {
+    flexDirection: 'row',
+    alignItems: 'center',
+    gap: 6,
+    height: 36,
+    paddingLeft: spacing.sm + 2,
+    paddingRight: spacing.md + 2,
+    borderRadius: radius.pill,
+    backgroundColor: colors.waterSoft,
+  },
+  dailyDone: {
+    flexDirection: 'row',
+    alignItems: 'center',
+    gap: spacing.sm,
   },
   dailyCard: {
     backgroundColor: colors.night,

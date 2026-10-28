@@ -12,6 +12,7 @@ export type Box = { minX: number; minY: number; maxX: number; maxY: number };
 type GeoDataset = {
   version: number;
   source: string;
+  snapshot: string;
   france: number[][];
   watercourses: Record<string, number[][]>;
 };
@@ -19,6 +20,7 @@ type GeoDataset = {
 const geo = rawGeo as GeoDataset;
 
 export const geoSource = geo.source;
+export const geoSnapshot = geo.snapshot;
 
 export function decodeLine(flat: readonly number[]): Line {
   const points: Point[] = [];

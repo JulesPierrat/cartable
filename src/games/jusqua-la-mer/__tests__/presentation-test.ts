@@ -48,6 +48,14 @@ describe('présentation de « Jusqu’à la mer »', () => {
     );
   });
 
+  it('ne montre sur la carte que les rivières découvertes et la rivière en cours', () => {
+    let state = startGame(riverNamed('Loir'));
+    state = answerWatercourse(state, 'Sarthe', gameContext).state;
+    const hint = requestHint(state, gameContext).hint!;
+    const [sarthe, maine] = state.river.steps.map((step) => step.id);
+    expect(hintMap(hint, state)).toEqual({ known: [state.river.id, sarthe], highlight: [maine] });
+  });
+
   it('pour la mer, met en avant le chemin jusqu’à la côte', () => {
     const seine = startGame(riverNamed('Seine'));
     const seaHint = requestHint(seine, gameContext).hint!;

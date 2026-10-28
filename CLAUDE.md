@@ -29,6 +29,7 @@ Les règles Expo du template s'appliquent, en particulier « ne te fie pas à ta
 - `src/app/jeux/<jeu>/` : les écrans d'un jeu, empilés par-dessus les onglets ; chaque écran est déclaré dans `src/app/_layout.tsx`.
 - Outils partagés par tous les jeux dans `src/platform/` : `text.ts` (normalisation des noms pour comparer une réponse), `autocomplete.ts`, `daily.ts` (date locale et tirage déterministe du défi du jour).
 - Moteur de « Jusqu'à la mer » dans `src/games/jusqua-la-mer/engine/` : `game.ts` (état et actions, des fonctions pures qui renvoient un nouvel état), `challenges.ts` (défi du jour, partie libre).
+- Stockage dans `src/platform/storage.ts` : tout est chargé en mémoire au démarrage puis lu sans attendre. Dans un composant, lire une valeur avec `useStored` (jamais `storage.get` directement : le React Compiler mémoriserait la valeur). Historique des parties et série de jours dans `src/platform/records.ts` ; sauvegarde du défi du jour dans `src/games/jusqua-la-mer/progress.ts`.
 - Composants d'interface partagés dans `src/platform/ui/` : `Screen`, `AppText` (variantes typographiques du thème), `Button`, `IconButton`, `Icon` (icônes SVG au trait des maquettes), `Logo`.
 
 ## Conventions
@@ -46,6 +47,12 @@ Les règles Expo du template s'appliquent, en particulier « ne te fie pas à ta
 - `assets/data/*.json` sont générés par `uv run scripts/data/build_rivers.py` puis `uv run scripts/data/build_geometries.py` (tracés IGN dans `geo.json`) : ne jamais les modifier à la main. Une chaîne fausse se corrige par une règle dans `scripts/data/rules.yaml`, puis on relance le pipeline et les tests.
 - Les rivières et les étapes sont identifiées par leur QID Wikidata. La vérification d'une réponse, elle, compare des noms normalisés.
 - Les règles de jeu sur les données (Gironde facultative, lacs transparents, Corse incluse) sont dans `docs/donnees.md`.
+
+## Règles de jeu décidées
+
+- **Indice** : une carte vierge de la France (contour seul, sans limite administrative) qui montre uniquement les rivières découvertes (la rivière de départ et les étapes trouvées) et la rivière en cours à trouver. Pour la mer, uniquement les rivières découvertes, jusqu'à la côte. Rien d'autre sur la carte. Un indice coûte une vie, un par étape, refusé à la dernière vie.
+- **Épaisseur des rivières** sur les cartes : selon leur rang (longueur), un fleuve plus épais qu'un affluent.
+- **Données** : Gironde et Gaves réunis facultatifs, lacs traversés transparents, Corse incluse (voir `docs/donnees.md`).
 
 ## Pièges du domaine
 
