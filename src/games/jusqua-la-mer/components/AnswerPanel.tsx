@@ -98,6 +98,7 @@ export function AnswerPanel({ onAnswer, onSea, message, shakeKey }: AnswerPanelP
             autoCapitalize="words"
             returnKeyType="send"
             submitBehavior="submit"
+            maxFontSizeMultiplier={1.5}
             style={styles.input}
           />
           <Pressable

@@ -50,7 +50,7 @@ Les règles Expo du template s'appliquent, en particulier « ne te fie pas à ta
 
 ## Règles de jeu décidées
 
-- **Indice** : une carte vierge de la France (contour seul, sans limite administrative) qui montre uniquement les rivières découvertes (la rivière de départ et les étapes trouvées) et la rivière en cours à trouver. Pour la mer, uniquement les rivières découvertes, jusqu'à la côte. Rien d'autre sur la carte. Un indice coûte une vie, un par étape, refusé à la dernière vie.
+- **Indices** (deux par étape, chacun coûte une vie, refusés à la dernière vie) sur une carte vierge de la France (contour seul, sans limite administrative) : le 1er montre uniquement les rivières découvertes (la rivière de départ et les étapes trouvées) ; le 2e les rivières découvertes plus la rivière à trouver. Pour la mer, un seul indice : les rivières découvertes jusqu'à la côte. Rien d'autre sur la carte.
 - **Épaisseur des rivières** sur les cartes : selon leur rang (longueur), un fleuve plus épais qu'un affluent.
 - **Données** : Gironde et Gaves réunis facultatifs, lacs traversés transparents, Corse incluse (voir `docs/donnees.md`).
 

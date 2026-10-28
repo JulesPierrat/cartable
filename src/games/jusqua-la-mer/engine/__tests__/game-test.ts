@@ -5,6 +5,7 @@ import {
   createGameContext,
   currentStepIndex,
   gameGrid,
+  hintFor,
   nextRequiredStepIndex,
   requestHint,
   score,
@@ -134,19 +135,29 @@ describe('une partie de « Jusqu’à la mer »', () => {
   });
 
   describe('indices', () => {
-    it("donne l'initiale de la prochaine étape obligatoire, une seule fois", () => {
+    it('en donne deux par étape, chacun contre une vie : la carte, puis le cours d’eau à trouver', () => {
       let state = startGame(loir);
       const first = requestHint(state, context);
-      expect(first.hint).toEqual({ target: { kind: 'step', stepIndex: 0 }, initial: 'S' });
+      expect(first.hint).toEqual({ target: { kind: 'step', stepIndex: 0 }, level: 1, initial: 'S' });
       state = first.state;
-      expect(requestHint(state, context).hint).toBeNull();
-      expect(state.livesLeft).toBe(2);
-      state = answerWatercourse(state, 'Sarthe', context).state;
-      expect(requestHint(state, context).hint).toMatchObject({ initial: 'M' });
+      const second = requestHint(state, context);
+      expect(second.hint).toEqual({ target: { kind: 'step', stepIndex: 0 }, level: 2, initial: 'S' });
+      state = second.state;
+      expect(state.livesLeft).toBe(1);
+      expect(requestHint(state, context)).toMatchObject({ hint: null, refusal: 'all-given' });
+      expect(hintFor(state, { kind: 'step', stepIndex: 0 })?.level).toBe(2);
     });
 
-    it("porte sur la mer quand il n'y a plus de cours d'eau à citer", () => {
-      expect(requestHint(startGame(garonne), context).hint).toEqual({ target: { kind: 'sea' } });
+    it('recommence au 1er indice à l’étape suivante', () => {
+      let state = requestHint(startGame(loir), context).state;
+      state = answerWatercourse(state, 'Sarthe', context).state;
+      expect(requestHint(state, context).hint).toMatchObject({ level: 1, initial: 'M' });
+    });
+
+    it("n'en donne qu'un sur la mer, quand il n'y a plus de cours d'eau à citer", () => {
+      const { state, hint } = requestHint(startGame(garonne), context);
+      expect(hint).toEqual({ target: { kind: 'sea' }, level: 1 });
+      expect(requestHint(state, context).refusal).toBe('all-given');
     });
 
     it('coûtent une vie, comptent dans le score et apparaissent dans la grille', () => {
@@ -157,11 +168,9 @@ describe('une partie de « Jusqu’à la mer »', () => {
       expect(score(state)).toBe(75);
     });
 
-    it('sont refusés à la dernière vie, ou quand ils ont déjà été donnés', () => {
-      let state = requestHint(startGame(loir), context).state;
-      expect(requestHint(state, context).refusal).toBe('already-given');
-      state = answerWatercourse(state, 'Marne', context).state;
-      state = answerWatercourse(state, 'Sarthe', context).state;
+    it('sont refusés à la dernière vie', () => {
+      let state = answerWatercourse(startGame(loir), 'Marne', context).state;
+      state = answerWatercourse(state, 'Seine', context).state;
       expect(state.livesLeft).toBe(1);
       expect(requestHint(state, context)).toMatchObject({ hint: null, refusal: 'last-life' });
     });

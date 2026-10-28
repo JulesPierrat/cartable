@@ -21,9 +21,11 @@ import {
   answerSea,
   answerWatercourse,
   DEFAULT_LIVES,
+  currentHintTarget,
   hintFor,
+  hintsFor,
   isMistake,
-  nextRequiredStepIndex,
+  MAX_HINTS,
   requestHint,
   type Feedback,
   type GameState,
@@ -110,11 +112,9 @@ export default function GameScreen() {
   };
 
   // L'indice de l'étape en cours, s'il a déjà été donné : il se revoit sans être payé une seconde fois.
-  const required = nextRequiredStepIndex(state);
-  const currentHint: Hint | undefined = hintFor(
-    state,
-    required === null ? { kind: 'sea' } : { kind: 'step', stepIndex: required },
-  );
+  const hintTarget = currentHintTarget(state);
+  const currentHint: Hint | undefined = hintFor(state, hintTarget);
+  const moreHints = hintsFor(state, hintTarget).length < MAX_HINTS[hintTarget.kind];
 
   const showHint = () => {
     Keyboard.dismiss();
@@ -122,19 +122,23 @@ export default function GameScreen() {
     scrollRef.current?.scrollTo({ y: 0, animated: true });
   };
 
-  const onHint = () => {
+  /** Indice suivant de l'étape en cours (le 1er, puis le 2e), contre une vie. */
+  const takeHint = () => {
     const { state: next, hint, refusal } = requestHint(state, gameContext);
     if (hint) {
       commit(next);
-      setMessage({ text: 'Indice utilisé : une vie en moins.', tone: 'info' });
+      setMessage({ text: `${hint.level === 1 ? '1er' : '2e'} indice : une vie en moins.`, tone: 'info' });
       Haptics.selectionAsync();
       showHint();
-    } else if (refusal === 'already-given') {
+    } else if (refusal === 'all-given') {
       showHint();
     } else if (refusal === 'last-life') {
       setMessage({ text: 'Il te faut au moins deux vies pour demander un indice.', tone: 'info' });
     }
   };
+
+  // L'ampoule rouvre l'indice déjà pris (gratuit) ; le 2e indice se demande depuis la carte.
+  const onHint = () => (currentHint ? showHint() : takeHint());
 
   if (start.finished) {
     return <Redirect href="/jeux/jusqua-la-mer/resultat" />;
@@ -175,7 +179,12 @@ export default function GameScreen() {
           </View>
 
           {hintOpen && currentHint ? (
-            <HintCard hint={currentHint} state={state} onHide={() => setHintOpen(false)} />
+            <HintCard
+              hint={currentHint}
+              state={state}
+              onHide={() => setHintOpen(false)}
+              onNextHint={moreHints ? (state.livesLeft > 1 ? takeHint : null) : undefined}
+            />
           ) : null}
           <ChainProgress state={state} onShowHint={showHint} />
         </ScrollView>

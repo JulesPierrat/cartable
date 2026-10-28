@@ -89,7 +89,7 @@ Objectif : toute la logique du jeu, sans interface.
 - [x] État d'une partie : rivière de départ, chaîne attendue, réponses données, vies (3), indices utilisés, fin (gagnée ou perdue). Code dans `src/games/jusqua-la-mer/engine/game.ts`.
 - [x] Vérification d'une réponse : majuscules, accents, tirets et articles ignorés ; étapes facultatives (plusieurs chemins valides). Une faute de frappe ou un cours d'eau déjà cité ne coûte pas de vie ; un cours d'eau plus loin sur le chemin est signalé « pas directement ».
 - [x] Fin de chaîne : c'est le joueur qui choisit la mer. Donner une mer trop tôt compte comme une erreur.
-- [x] Indice (décidé le 28/10) : la prochaine étape montrée sur une carte vierge de la France, ou, pour la mer, le chemin jusqu'à la côte. Il coûte une vie, un par étape, refusé à la dernière vie. Sans tracé (rivière étrangère) : son initiale.
+- [x] Indices (décidés le 28/10), sur une carte vierge de la France : le 1er montre les rivières découvertes, le 2e y ajoute le cours d'eau à trouver (son initiale s'il n'a pas de tracé). Pour la mer, un seul : le chemin jusqu'à la côte. Chacun coûte une vie, refusé à la dernière vie.
 - [x] Autocomplétion sur **tous** les cours d'eau connus (4 648 noms, du plus au moins connu), pour ne jamais trahir la réponse.
 - [x] Score sur 100 (−25 par vie perdue, sur une erreur ou un indice) et grille de la partie (une case par bonne réponse, erreur ou indice).
 - [x] Défi du jour : rivière tirée de façon déterministe à partir de la date locale, la même pour tout le monde. Il puise dans 125 rivières faciles et moyennes, sans répétition avant de les avoir toutes vues. Le n°1 est le 28/10/2026.
@@ -134,9 +134,10 @@ Objectif : reproduire les maquettes avec le moteur branché.
 ## Phase 6 — Finitions et distribution de l'alpha
 
 - [ ] Icône et écran de démarrage définitifs.
-- [ ] Accessibilité : libellés des boutons-icônes, contrastes, taille de texte système.
+- [x] Accessibilité : libellés des boutons-icônes, contrastes vérifiés par un test, taille de texte système suivie jusqu'à 1,5 fois.
+- [ ] Vérifier VoiceOver / TalkBack sur un vrai téléphone.
 - [x] Mention des sources de données (Wikidata, IGN, avec leurs dates) dans Profil.
-- [ ] EAS : profils `development` et `preview` dans `eas.json`.
+- [x] EAS : profils `preview` (testeurs) et `production` (stores) dans `eas.json`, identifiant `com.julespierrat.cartable`. Marche à suivre dans [`docs/alpha.md`](alpha.md).
 - [ ] Android : APK de test via EAS (lien d'installation direct).
 - [ ] iOS : TestFlight (nécessite un compte Apple Developer, 99 $/an), ou Expo Go pour les premiers testeurs.
 - [ ] Formulaire ou canal de retours pour les testeurs.
