@@ -38,6 +38,12 @@ Les règles Expo du template s'appliquent, en particulier « ne te fie pas à ta
 - Avant de dire qu'une tâche est finie : `npx expo lint`, `npx tsc --noEmit` et les tests passent.
 - Ne push pas et ne merge pas sur `main` sans qu'on te le demande.
 
+## Données
+
+- `assets/data/*.json` sont générés par `uv run scripts/data/build_rivers.py` : ne jamais les modifier à la main. Une chaîne fausse se corrige par une règle dans `scripts/data/rules.yaml`, puis on relance le pipeline et les tests.
+- Les rivières et les étapes sont identifiées par leur QID Wikidata. La vérification d'une réponse, elle, compare des noms normalisés.
+- Les règles de jeu sur les données (Gironde facultative, lacs transparents, Corse incluse) sont dans `docs/donnees.md`.
+
 ## Pièges du domaine
 
 - Une rivière se jette dans un cours d'eau, pas forcément dans un fleuve : le Loir rejoint la Sarthe, pas la Loire.

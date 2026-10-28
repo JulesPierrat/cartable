@@ -55,4 +55,10 @@ Les écrans du jeu sont pour l'instant des coquilles qui annoncent la phase du p
 
 ## Données
 
-Les données hydrographiques viendront de sources ouvertes françaises (BD TOPAGE de l'IGN et de l'OFB, référentiel SANDRE). La licence et la mention d'attribution sont à confirmer pendant la phase 1 du plan.
+Les chaînes de cours d'eau viennent de Wikidata (CC0). La BD TOPO de l'IGN (Licence Ouverte 2.0) servira au contrôle et aux tracés de la carte. Les sources, les règles du jeu et les licences sont détaillées dans [`docs/donnees.md`](docs/donnees.md).
+
+```bash
+uv run scripts/data/build_rivers.py   # régénère assets/data/ à partir de Wikidata
+```
+
+Les cas particuliers se corrigent dans `scripts/data/rules.yaml`, jamais dans les JSON.

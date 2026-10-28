@@ -1,0 +1,4834 @@
+{
+ "version": 1,
+ "snapshot": "2026-10-28",
+ "source": "Wikidata (CC0)",
+ "seas": {
+  "channel": {
+   "name": "Manche",
+   "article": "la",
+   "shortName": "Manche"
+  },
+  "north-sea": {
+   "name": "mer du Nord",
+   "article": "la",
+   "shortName": "Mer du Nord"
+  },
+  "atlantic": {
+   "name": "océan Atlantique",
+   "article": "l'",
+   "shortName": "Atlantique"
+  },
+  "mediterranean": {
+   "name": "mer Méditerranée",
+   "article": "la",
+   "shortName": "Méditerranée"
+  }
+ },
+ "watercourses": {
+  "Q1010532": {
+   "name": "Gimone",
+   "article": "la",
+   "sitelinks": 20,
+   "sandreCode": "O2--0330",
+   "lengthKm": 135.7
+  },
+  "Q1032916": {
+   "name": "Canche",
+   "article": "la",
+   "sitelinks": 23,
+   "sandreCode": "E54-003-",
+   "lengthKm": 100.2
+  },
+  "Q1063124": {
+   "name": "Charentonne",
+   "article": "la",
+   "sitelinks": 12,
+   "sandreCode": "H61-0400",
+   "lengthKm": 63.0
+  },
+  "Q1068099": {
+   "name": "Chassezac",
+   "article": "le",
+   "sitelinks": 14,
+   "sandreCode": "V5040500",
+   "lengthKm": 84.6
+  },
+  "Q1074385": {
+   "name": "Risle",
+   "article": "la",
+   "sitelinks": 18,
+   "sandreCode": "H6--0200",
+   "lengthKm": 145.0
+  },
+  "Q1075373": {
+   "name": "Save",
+   "article": "la",
+   "sitelinks": 18,
+   "sandreCode": "O2--0290",
+   "lengthKm": 148.4
+  },
+  "Q1090933": {
+   "name": "Chée",
+   "article": "la",
+   "sitelinks": 13,
+   "sandreCode": "F58-0400",
+   "lengthKm": 64.7
+  },
+  "Q1093242": {
+   "name": "Cisse",
+   "article": "la",
+   "sitelinks": 12,
+   "sandreCode": "K4--0150",
+   "lengthKm": 87.7
+  },
+  "Q1094808": {
+   "name": "Salat",
+   "article": "le",
+   "sitelinks": 22,
+   "sandreCode": "O0--0250",
+   "lengthKm": 74.5
+  },
+  "Q10965": {
+   "name": "Èbre",
+   "article": "l'",
+   "sitelinks": 91
+  },
+  "Q1127096": {
+   "name": "Drac",
+   "article": "le",
+   "sitelinks": 26,
+   "sandreCode": "W2--0200",
+   "lengthKm": 130.2
+  },
+  "Q1127173": {
+   "name": "Rance",
+   "article": "la",
+   "sitelinks": 29,
+   "sandreCode": "J0--0160",
+   "lengthKm": 102.0
+  },
+  "Q1128383": {
+   "name": "Petite Creuse",
+   "article": "la",
+   "sitelinks": 12,
+   "sandreCode": "L4--0170",
+   "lengthKm": 95.1
+  },
+  "Q1129465": {
+   "name": "Tardes",
+   "article": "la",
+   "sitelinks": 12,
+   "sandreCode": "K51-0300",
+   "lengthKm": 77.3
+  },
+  "Q1130785": {
+   "name": "Bévéra",
+   "article": "la",
+   "sitelinks": 12,
+   "sandreCode": "Y6630500",
+   "lengthKm": 38.0
+  },
+  "Q1136988": {
+   "name": "Calavon",
+   "article": "le",
+   "sitelinks": 14,
+   "sandreCode": "X34-0400",
+   "lengthKm": 86.9
+  },
+  "Q1157014": {
+   "name": "Dadou",
+   "article": "le",
+   "sitelinks": 12,
+   "sandreCode": "O47-0400",
+   "lengthKm": 115.8
+  },
+  "Q1160441": {
+   "name": "Meurthe",
+   "article": "la",
+   "sitelinks": 28,
+   "sandreCode": "A6--0100",
+   "lengthKm": 160.6
+  },
+  "Q118167": {
+   "name": "Vézère",
+   "article": "la",
+   "sitelinks": 43,
+   "sandreCode": "P---0100",
+   "lengthKm": 211.2
+  },
+  "Q118784": {
+   "name": "Dives",
+   "article": "la",
+   "sitelinks": 20,
+   "sandreCode": "I1--0200",
+   "lengthKm": 104.6
+  },
+  "Q1192859": {
+   "name": "Vologne",
+   "article": "la",
+   "sitelinks": 18,
+   "sandreCode": "A43-0200",
+   "lengthKm": 49.6
+  },
+  "Q1194777": {
+   "name": "Gave d'Oloron",
+   "article": "le",
+   "sitelinks": 20,
+   "sandreCode": "Q---0150",
+   "lengthKm": 148.8
+  },
+  "Q119610": {
+   "name": "Tille",
+   "article": "la",
+   "sitelinks": 17,
+   "sandreCode": "U12-0400",
+   "lengthKm": 82.7
+  },
+  "Q1207449": {
+   "name": "Deûle",
+   "article": "la",
+   "sitelinks": 17,
+   "sandreCode": "E3--021-",
+   "lengthKm": 73.0
+  },
+  "Q1220946": {
+   "name": "Ternoise",
+   "article": "la",
+   "sitelinks": 13,
+   "sandreCode": "E5400650",
+   "lengthKm": 41.4
+  },
+  "Q1225878": {
+   "name": "Grosne",
+   "article": "la",
+   "sitelinks": 12,
+   "sandreCode": "U32-0400",
+   "lengthKm": 95.6
+  },
+  "Q1225928": {
+   "name": "Sèvre niortaise",
+   "article": "la",
+   "sitelinks": 26,
+   "sandreCode": "N---0060",
+   "lengthKm": 158.4
+  },
+  "Q1227888": {
+   "name": "Penfeld",
+   "article": "la",
+   "sitelinks": 14,
+   "sandreCode": "J3344000",
+   "lengthKm": 15.9
+  },
+  "Q1232651": {
+   "name": "Trieux",
+   "article": "le",
+   "sitelinks": 13,
+   "sandreCode": "J1--0170",
+   "lengthKm": 72.1
+  },
+  "Q123362": {
+   "name": "Charente",
+   "article": "la",
+   "sitelinks": 49,
+   "sandreCode": "R---0000",
+   "lengthKm": 381.4
+  },
+  "Q1235724": {
+   "name": "Doller",
+   "article": "la",
+   "sitelinks": 14,
+   "sandreCode": "A12-0200",
+   "lengthKm": 46.5
+  },
+  "Q1238868": {
+   "name": "Don",
+   "article": "le",
+   "sitelinks": 13,
+   "sandreCode": "J79-0300",
+   "lengthKm": 92.1
+  },
+  "Q1242878": {
+   "name": "Iton",
+   "article": "l'",
+   "sitelinks": 18,
+   "sandreCode": "H43-0400",
+   "lengthKm": 131.8
+  },
+  "Q1243828": {
+   "name": "Dore",
+   "article": "la",
+   "sitelinks": 19,
+   "sandreCode": "K2--0190",
+   "lengthKm": 140.4
+  },
+  "Q1244595": {
+   "name": "Ille",
+   "article": "l'",
+   "sitelinks": 19,
+   "sandreCode": "J71-0300",
+   "lengthKm": 47.1
+  },
+  "Q1244766": {
+   "name": "Scorff",
+   "article": "le",
+   "sitelinks": 14,
+   "sandreCode": "J5--0220",
+   "lengthKm": 78.6
+  },
+  "Q1244790": {
+   "name": "Odet",
+   "article": "l'",
+   "sitelinks": 21,
+   "sandreCode": "J4--0190",
+   "lengthKm": 62.7
+  },
+  "Q1245601": {
+   "name": "Loiret",
+   "article": "le",
+   "sitelinks": 22,
+   "sandreCode": "K43-0300",
+   "lengthKm": 11.6
+  },
+  "Q1247758": {
+   "name": "Sée",
+   "article": "la",
+   "sitelinks": 18,
+   "sandreCode": "I8--0200",
+   "lengthKm": 78.1
+  },
+  "Q1252782": {
+   "name": "Douve",
+   "article": "la",
+   "sitelinks": 14,
+   "sandreCode": "I5--0200",
+   "lengthKm": 78.6
+  },
+  "Q127629": {
+   "name": "Thur",
+   "article": "la",
+   "sitelinks": 14,
+   "sandreCode": "A14-0200",
+   "lengthKm": 53.3
+  },
+  "Q1301259": {
+   "name": "Vis",
+   "article": "la",
+   "sitelinks": 13,
+   "sandreCode": "Y2030500",
+   "lengthKm": 57.8
+  },
+  "Q1346326": {
+   "name": "Vire",
+   "article": "la",
+   "sitelinks": 23,
+   "sandreCode": "I4--0200",
+   "lengthKm": 128.0
+  },
+  "Q1349493": {
+   "name": "Erdre",
+   "article": "l'",
+   "sitelinks": 25,
+   "sandreCode": "M63-0300",
+   "lengthKm": 97.4
+  },
+  "Q1370821": {
+   "name": "Estéron",
+   "article": "l'",
+   "sitelinks": 14,
+   "sandreCode": "Y64-0400",
+   "lengthKm": 66.6
+  },
+  "Q1385804": {
+   "name": "Eygues",
+   "article": "l'",
+   "sitelinks": 17,
+   "sandreCode": "V53-0400",
+   "lengthKm": 114.2
+  },
+  "Q1385881": {
+   "name": "Eyre",
+   "article": "l'",
+   "sitelinks": 14,
+   "sandreCode": "S2--0250",
+   "lengthKm": 115.9
+  },
+  "Q1406197": {
+   "name": "Nivelle",
+   "article": "la",
+   "sitelinks": 15,
+   "sandreCode": "S52-0400",
+   "lengthKm": 45.0
+  },
+  "Q1411649": {
+   "name": "Fier",
+   "article": "le",
+   "sitelinks": 13,
+   "sandreCode": "V12-0400",
+   "lengthKm": 71.9
+  },
+  "Q14269": {
+   "name": "Buëch",
+   "article": "le",
+   "sitelinks": 19,
+   "sandreCode": "X10-0400",
+   "lengthKm": 85.2
+  },
+  "Q14352": {
+   "name": "Bidassoa",
+   "article": "la",
+   "sitelinks": 35,
+   "sandreCode": "S6--0250",
+   "lengthKm": 68.4
+  },
+  "Q14372": {
+   "name": "Doubs",
+   "article": "le",
+   "sitelinks": 51,
+   "sandreCode": "U2--0200",
+   "lengthKm": 453.0
+  },
+  "Q1456175": {
+   "name": "Nièvre",
+   "article": "la",
+   "sitelinks": 17,
+   "sandreCode": "K19-0300",
+   "lengthKm": 49.6
+  },
+  "Q1462580": {
+   "name": "Moder",
+   "article": "la",
+   "sitelinks": 14,
+   "sandreCode": "A3--0100",
+   "lengthKm": 82.1
+  },
+  "Q1469": {
+   "name": "Loire",
+   "article": "la",
+   "sitelinks": 108,
+   "sandreCode": "----0000",
+   "lengthKm": 1006.0
+  },
+  "Q1471": {
+   "name": "Seine",
+   "article": "la",
+   "sitelinks": 131,
+   "sandreCode": "----0010",
+   "lengthKm": 776.7
+  },
+  "Q1474817": {
+   "name": "Furan",
+   "article": "le",
+   "sitelinks": 12,
+   "sandreCode": "K0614000",
+   "lengthKm": 34.2
+  },
+  "Q1475200": {
+   "name": "Rupt de Mad",
+   "article": "le",
+   "sitelinks": 14,
+   "sandreCode": "A73-0200",
+   "lengthKm": 54.6
+  },
+  "Q1486825": {
+   "name": "Tardoire",
+   "article": "la",
+   "sitelinks": 11,
+   "sandreCode": "R1--0400",
+   "lengthKm": 114.0
+  },
+  "Q1494587": {
+   "name": "Gartempe",
+   "article": "la",
+   "sitelinks": 19,
+   "sandreCode": "L5--0180",
+   "lengthKm": 204.6
+  },
+  "Q1496403": {
+   "name": "Gave d'Ossau",
+   "article": "le",
+   "sitelinks": 12,
+   "sandreCode": "Q---0150",
+   "lengthKm": 48.5
+  },
+  "Q1496406": {
+   "name": "Gave d'Aspe",
+   "article": "le",
+   "sitelinks": 12,
+   "sandreCode": "Q6--0250",
+   "lengthKm": 58.1
+  },
+  "Q1524318": {
+   "name": "Tinée",
+   "article": "la",
+   "sitelinks": 16,
+   "sandreCode": "Y62-0400",
+   "lengthKm": 69.9
+  },
+  "Q1529011": {
+   "name": "Têt",
+   "article": "la",
+   "sitelinks": 24,
+   "sandreCode": "Y04-0400",
+   "lengthKm": 115.8
+  },
+  "Q1535195": {
+   "name": "Ouvèze",
+   "article": "l'",
+   "sitelinks": 19,
+   "sandreCode": "V6--0200",
+   "lengthKm": 93.3
+  },
+  "Q153789": {
+   "name": "Aff",
+   "article": "l'",
+   "sitelinks": 16,
+   "sandreCode": "J8--0240",
+   "lengthKm": 66.0
+  },
+  "Q153972": {
+   "name": "Sarre",
+   "article": "la",
+   "sitelinks": 52,
+   "sandreCode": "A9--0100",
+   "lengthKm": 246.0
+  },
+  "Q1539741": {
+   "name": "Marque",
+   "article": "la",
+   "sitelinks": 12,
+   "sandreCode": "E3340600",
+   "lengthKm": 31.6
+  },
+  "Q1548241": {
+   "name": "Layon",
+   "article": "le",
+   "sitelinks": 12,
+   "sandreCode": "M5--0200",
+   "lengthKm": 89.9
+  },
+  "Q1548403": {
+   "name": "Yvette",
+   "article": "l'",
+   "sitelinks": 13,
+   "sandreCode": "F46-0420",
+   "lengthKm": 39.3
+  },
+  "Q1548875": {
+   "name": "Thouet",
+   "article": "le",
+   "sitelinks": 16,
+   "sandreCode": "L8--0210",
+   "lengthKm": 142.2
+  },
+  "Q1549260": {
+   "name": "Petite Baïse",
+   "article": "la",
+   "sitelinks": 13,
+   "sandreCode": "O65-0430",
+   "lengthKm": 74.8
+  },
+  "Q1553030": {
+   "name": "Thérain",
+   "article": "le",
+   "sitelinks": 13,
+   "sandreCode": "H21-0400",
+   "lengthKm": 94.3
+  },
+  "Q1553526": {
+   "name": "Ornain",
+   "article": "l'",
+   "sitelinks": 16,
+   "sandreCode": "F56-0400",
+   "lengthKm": 116.2
+  },
+  "Q158847": {
+   "name": "Sûre",
+   "article": "la",
+   "sitelinks": 37
+  },
+  "Q1667": {
+   "name": "Moselle",
+   "article": "la",
+   "sitelinks": 88,
+   "sandreCode": "A---0060",
+   "lengthKm": 544.0
+  },
+  "Q1675": {
+   "name": "Aar",
+   "article": "l'",
+   "sitelinks": 75
+  },
+  "Q1684604": {
+   "name": "Taurion",
+   "article": "le",
+   "sitelinks": 12,
+   "sandreCode": "L0--0150",
+   "lengthKm": 107.5
+  },
+  "Q1709766": {
+   "name": "Jouanne",
+   "article": "la",
+   "sitelinks": 13,
+   "sandreCode": "M34-0300",
+   "lengthKm": 58.5
+  },
+  "Q1755384": {
+   "name": "Romanche",
+   "article": "la",
+   "sitelinks": 15,
+   "sandreCode": "W27-0400",
+   "lengthKm": 78.0
+  },
+  "Q179264": {
+   "name": "Orbieu",
+   "article": "l'",
+   "sitelinks": 12,
+   "sandreCode": "Y15-0400",
+   "lengthKm": 84.0
+  },
+  "Q1808825": {
+   "name": "Ource",
+   "article": "l'",
+   "sitelinks": 13,
+   "sandreCode": "F04-0400",
+   "lengthKm": 100.4
+  },
+  "Q1817620": {
+   "name": "Bar",
+   "article": "la",
+   "sitelinks": 16,
+   "sandreCode": "B51-0200",
+   "lengthKm": 61.6
+  },
+  "Q1818615": {
+   "name": "Scarpe",
+   "article": "la",
+   "sitelinks": 19,
+   "sandreCode": "E2--0110",
+   "lengthKm": 102.0
+  },
+  "Q1818933": {
+   "name": "Viroin",
+   "article": "le",
+   "sitelinks": 13,
+   "sandreCode": "B71-0200",
+   "lengthKm": 22.0
+  },
+  "Q182969": {
+   "name": "Tavignano",
+   "article": "le",
+   "sitelinks": 20,
+   "sandreCode": "Y9--0200",
+   "lengthKm": 88.7
+  },
+  "Q18451": {
+   "name": "Ariège",
+   "article": "l'",
+   "sitelinks": 43,
+   "sandreCode": "O1--0250",
+   "lengthKm": 163.2
+  },
+  "Q187834": {
+   "name": "Saône",
+   "article": "la",
+   "sitelinks": 68,
+   "sandreCode": "U---0000",
+   "lengthKm": 480.0
+  },
+  "Q1908951": {
+   "name": "Saulx",
+   "article": "la",
+   "sitelinks": 16,
+   "sandreCode": "F5--0200",
+   "lengthKm": 115.4
+  },
+  "Q2000636": {
+   "name": "Seudre",
+   "article": "la",
+   "sitelinks": 16,
+   "sandreCode": "S01-0400",
+   "lengthKm": 68.2
+  },
+  "Q200231": {
+   "name": "Oise",
+   "article": "l'",
+   "sitelinks": 57,
+   "sandreCode": "H---0100",
+   "lengthKm": 341.1
+  },
+  "Q2003831": {
+   "name": "Noye",
+   "article": "la",
+   "sitelinks": 12,
+   "sandreCode": "E6400750",
+   "lengthKm": 33.4
+  },
+  "Q2006062": {
+   "name": "Taravo",
+   "article": "le",
+   "sitelinks": 16,
+   "sandreCode": "Y86-0400",
+   "lengthKm": 65.4
+  },
+  "Q200695": {
+   "name": "Besbre",
+   "article": "la",
+   "sitelinks": 19,
+   "sandreCode": "K15-0300",
+   "lengthKm": 106.4
+  },
+  "Q201341": {
+   "name": "Isère",
+   "article": "l'",
+   "sitelinks": 54,
+   "sandreCode": "W---0000",
+   "lengthKm": 286.1
+  },
+  "Q2028483": {
+   "name": "Orb",
+   "article": "l'",
+   "sitelinks": 28,
+   "sandreCode": "Y25-0400",
+   "lengthKm": 135.4
+  },
+  "Q2063591": {
+   "name": "Tech",
+   "article": "le",
+   "sitelinks": 21,
+   "sandreCode": "Y02-0400",
+   "lengthKm": 84.1
+  },
+  "Q207366": {
+   "name": "Adour",
+   "article": "l'",
+   "sitelinks": 55,
+   "sandreCode": "Q---0000",
+   "lengthKm": 308.0
+  },
+  "Q208174": {
+   "name": "Dordogne",
+   "article": "la",
+   "sitelinks": 62,
+   "sandreCode": "P---0000",
+   "lengthKm": 483.0
+  },
+  "Q208267": {
+   "name": "Sambre",
+   "article": "la",
+   "sitelinks": 49,
+   "sandreCode": "D0000600",
+   "lengthKm": 190.0
+  },
+  "Q208493": {
+   "name": "Lys",
+   "article": "la",
+   "sitelinks": 51,
+   "sandreCode": "E3--0120",
+   "lengthKm": 202.0
+  },
+  "Q2092408": {
+   "name": "Sauldre",
+   "article": "la",
+   "sitelinks": 15,
+   "sandreCode": "K6--0250",
+   "lengthKm": 183.1
+  },
+  "Q2094628": {
+   "name": "Roya",
+   "article": "la",
+   "sitelinks": 21,
+   "sandreCode": "Y66-0400",
+   "lengthKm": 60.0
+  },
+  "Q2096448": {
+   "name": "Vidourle",
+   "article": "le",
+   "sitelinks": 17,
+   "sandreCode": "Y34-0400",
+   "lengthKm": 95.2
+  },
+  "Q210312": {
+   "name": "Nied",
+   "article": "la",
+   "sitelinks": 17,
+   "sandreCode": "A9--0120",
+   "lengthKm": 114.0
+  },
+  "Q211766": {
+   "name": "Lot",
+   "article": "le",
+   "sitelinks": 40,
+   "sandreCode": "O---0150",
+   "lengthKm": 485.0
+  },
+  "Q213503": {
+   "name": "Cher",
+   "article": "le",
+   "sitelinks": 44,
+   "sandreCode": "K---0090",
+   "lengthKm": 365.1
+  },
+  "Q213517": {
+   "name": "Gironde",
+   "article": "la",
+   "sitelinks": 43
+  },
+  "Q213967": {
+   "name": "Yonne",
+   "article": "l'",
+   "sitelinks": 46,
+   "sandreCode": "F3--0200",
+   "lengthKm": 292.3
+  },
+  "Q214240": {
+   "name": "Aude",
+   "article": "l'",
+   "sitelinks": 38,
+   "sandreCode": "Y1--0200",
+   "lengthKm": 224.1
+  },
+  "Q215653": {
+   "name": "Tarn",
+   "article": "le",
+   "sitelinks": 45,
+   "sandreCode": "O---0100",
+   "lengthKm": 380.2
+  },
+  "Q217061": {
+   "name": "Yser",
+   "article": "l'",
+   "sitelinks": 45,
+   "sandreCode": "E4900570",
+   "lengthKm": 78.0
+  },
+  "Q217347": {
+   "name": "Indre",
+   "article": "l'",
+   "sitelinks": 38,
+   "sandreCode": "K7--0260",
+   "lengthKm": 279.6
+  },
+  "Q218262": {
+   "name": "Ouche",
+   "article": "l'",
+   "sitelinks": 15,
+   "sandreCode": "U13-0400",
+   "lengthKm": 95.4
+  },
+  "Q222884": {
+   "name": "Arnon",
+   "article": "l'",
+   "sitelinks": 19,
+   "sandreCode": "K6--0240",
+   "lengthKm": 150.7
+  },
+  "Q226757": {
+   "name": "Zorn",
+   "article": "la",
+   "sitelinks": 13,
+   "sandreCode": "A34-0200",
+   "lengthKm": 96.8
+  },
+  "Q23145": {
+   "name": "Sègre",
+   "article": "le",
+   "sitelinks": 41,
+   "sandreCode": "Y00-0400",
+   "lengthKm": 265.0
+  },
+  "Q23798": {
+   "name": "Eure",
+   "article": "l'",
+   "sitelinks": 40,
+   "sandreCode": "H4--0200",
+   "lengthKm": 228.7
+  },
+  "Q2464": {
+   "name": "Allier",
+   "article": "l'",
+   "sitelinks": 44,
+   "sandreCode": "K---0080",
+   "lengthKm": 420.7
+  },
+  "Q24792": {
+   "name": "Thièle",
+   "article": "la",
+   "sitelinks": 13
+  },
+  "Q249062": {
+   "name": "Loing",
+   "article": "le",
+   "sitelinks": 26,
+   "sandreCode": "F4--0200",
+   "lengthKm": 142.7
+  },
+  "Q255784": {
+   "name": "Verdon",
+   "article": "le",
+   "sitelinks": 28,
+   "sandreCode": "X2--0200",
+   "lengthKm": 165.7
+  },
+  "Q269759": {
+   "name": "Albarine",
+   "article": "l'",
+   "sitelinks": 12,
+   "sandreCode": "V29-0400",
+   "lengthKm": 59.4
+  },
+  "Q273387": {
+   "name": "Échez",
+   "article": "l'",
+   "sitelinks": 13,
+   "sandreCode": "Q02-0400",
+   "lengthKm": 64.1
+  },
+  "Q274784": {
+   "name": "Élorn",
+   "article": "l'",
+   "sitelinks": 13,
+   "sandreCode": "J34-0300",
+   "lengthKm": 56.4
+  },
+  "Q279370": {
+   "name": "Loue",
+   "article": "la",
+   "sitelinks": 17,
+   "sandreCode": "U26-0400",
+   "lengthKm": 122.2
+  },
+  "Q280650": {
+   "name": "Mayenne",
+   "article": "la",
+   "sitelinks": 32,
+   "sandreCode": "M---0090",
+   "lengthKm": 202.3
+  },
+  "Q286477": {
+   "name": "Ognon",
+   "article": "l'",
+   "sitelinks": 21,
+   "sandreCode": "U10-0400",
+   "lengthKm": 213.6
+  },
+  "Q288629": {
+   "name": "Volp",
+   "article": "le",
+   "sitelinks": 12,
+   "sandreCode": "O06-0400",
+   "lengthKm": 40.3
+  },
+  "Q300661": {
+   "name": "Aa",
+   "article": "l'",
+   "sitelinks": 28,
+   "sandreCode": "E4--001-",
+   "lengthKm": 89.0
+  },
+  "Q303621": {
+   "name": "Semois",
+   "article": "la",
+   "sitelinks": 41,
+   "sandreCode": "B6--0100",
+   "lengthKm": 210.0
+  },
+  "Q3088027": {
+   "name": "Paillon",
+   "article": "le",
+   "sitelinks": 12,
+   "sandreCode": "Y65-0400",
+   "lengthKm": 36.3
+  },
+  "Q342040": {
+   "name": "Acolin",
+   "article": "l'",
+   "sitelinks": 14,
+   "sandreCode": "K1--0150",
+   "lengthKm": 63.1
+  },
+  "Q369237": {
+   "name": "Gaves réunis",
+   "article": "les",
+   "sitelinks": 10,
+   "sandreCode": "Q---0100",
+   "lengthKm": 10.0
+  },
+  "Q372616": {
+   "name": "Viaur",
+   "article": "le",
+   "sitelinks": 19,
+   "sandreCode": "O5--0290",
+   "lengthKm": 168.0
+  },
+  "Q376133": {
+   "name": "Loir",
+   "article": "le",
+   "sitelinks": 35,
+   "sandreCode": "M1--0160",
+   "lengthKm": 317.4
+  },
+  "Q37620": {
+   "name": "Escaut",
+   "article": "l'",
+   "sitelinks": 79,
+   "sandreCode": "E---004-",
+   "lengthKm": 355.0
+  },
+  "Q37646": {
+   "name": "Somme",
+   "article": "la",
+   "sitelinks": 58,
+   "sandreCode": "E6---140",
+   "lengthKm": 245.0
+  },
+  "Q383268": {
+   "name": "Arros",
+   "article": "l'",
+   "sitelinks": 20,
+   "sandreCode": "Q0--0250",
+   "lengthKm": 131.0
+  },
+  "Q385547": {
+   "name": "Huisne",
+   "article": "l'",
+   "sitelinks": 13,
+   "sandreCode": "M0--0150",
+   "lengthKm": 164.3
+  },
+  "Q387565": {
+   "name": "Bourbince",
+   "article": "la",
+   "sitelinks": 13,
+   "sandreCode": "K13-0300",
+   "lengthKm": 82.4
+  },
+  "Q388802": {
+   "name": "Cère",
+   "article": "la",
+   "sitelinks": 21,
+   "sandreCode": "P1--0290",
+   "lengthKm": 120.4
+  },
+  "Q394311": {
+   "name": "Agly",
+   "article": "l'",
+   "sitelinks": 18,
+   "sandreCode": "Y06-0400",
+   "lengthKm": 81.7
+  },
+  "Q395784": {
+   "name": "Agout",
+   "article": "l'",
+   "sitelinks": 25,
+   "sandreCode": "O4--0250",
+   "lengthKm": 194.0
+  },
+  "Q405073": {
+   "name": "Ailette",
+   "article": "l'",
+   "sitelinks": 12,
+   "sandreCode": "H02-0400",
+   "lengthKm": 59.5
+  },
+  "Q405836": {
+   "name": "Ain",
+   "article": "l'",
+   "sitelinks": 36,
+   "sandreCode": "V2--0200",
+   "lengthKm": 190.0
+  },
+  "Q408614": {
+   "name": "Aire",
+   "article": "l'",
+   "sitelinks": 17,
+   "sandreCode": "H11-0400",
+   "lengthKm": 125.6
+  },
+  "Q41962": {
+   "name": "Aisne",
+   "article": "l'",
+   "sitelinks": 54,
+   "sandreCode": "H1--0200",
+   "lengthKm": 355.9
+  },
+  "Q41983": {
+   "name": "Marne",
+   "article": "la",
+   "sitelinks": 64,
+   "sandreCode": "F---0100",
+   "lengthKm": 514.0
+  },
+  "Q41986": {
+   "name": "Meuse",
+   "article": "la",
+   "sitelinks": 94,
+   "sandreCode": "B---0000",
+   "lengthKm": 950.0
+  },
+  "Q429566": {
+   "name": "Hers-Vif",
+   "article": "l'",
+   "sitelinks": 16,
+   "sandreCode": "O1--0290",
+   "lengthKm": 134.9
+  },
+  "Q450722": {
+   "name": "Alzette",
+   "article": "l'",
+   "sitelinks": 41,
+   "sandreCode": "A89-0200",
+   "lengthKm": 73.0
+  },
+  "Q476475": {
+   "name": "Avre",
+   "article": "l'",
+   "sitelinks": 16,
+   "sandreCode": "E6400600",
+   "lengthKm": 66.2
+  },
+  "Q489438": {
+   "name": "Ancre",
+   "article": "l'",
+   "sitelinks": 15,
+   "sandreCode": "E6380600",
+   "lengthKm": 38.0
+  },
+  "Q490151": {
+   "name": "Andelle",
+   "article": "l'",
+   "sitelinks": 17,
+   "sandreCode": "H32-0400",
+   "lengthKm": 56.8
+  },
+  "Q497327": {
+   "name": "Gardon",
+   "article": "le",
+   "sitelinks": 37,
+   "sandreCode": "V71-0400",
+   "lengthKm": 127.3
+  },
+  "Q498302": {
+   "name": "Clain",
+   "article": "le",
+   "sitelinks": 21,
+   "sandreCode": "L2--0160",
+   "lengthKm": 144.3
+  },
+  "Q5077": {
+   "name": "Garonne",
+   "article": "la",
+   "sitelinks": 83,
+   "sandreCode": "O---0000",
+   "lengthKm": 647.0
+  },
+  "Q5079": {
+   "name": "Aulne",
+   "article": "l'",
+   "sitelinks": 21,
+   "sandreCode": "J3--0180",
+   "lengthKm": 144.0
+  },
+  "Q518952": {
+   "name": "Cérou",
+   "article": "le",
+   "sitelinks": 14,
+   "sandreCode": "O56-0400",
+   "lengthKm": 87.4
+  },
+  "Q522089": {
+   "name": "Madon",
+   "article": "le",
+   "sitelinks": 17,
+   "sandreCode": "A5--0100",
+   "lengthKm": 96.9
+  },
+  "Q524483": {
+   "name": "Célé",
+   "article": "le",
+   "sitelinks": 17,
+   "sandreCode": "O8--0250",
+   "lengthKm": 104.4
+  },
+  "Q534813": {
+   "name": "Essonne",
+   "article": "l'",
+   "sitelinks": 24,
+   "sandreCode": "F45-0400",
+   "lengthKm": 97.1
+  },
+  "Q53746": {
+   "name": "Orbe",
+   "article": "l'",
+   "sitelinks": 18,
+   "sandreCode": "V2400900",
+   "lengthKm": 61.8
+  },
+  "Q540889": {
+   "name": "Anglin",
+   "article": "l'",
+   "sitelinks": 13,
+   "sandreCode": "L5--0190",
+   "lengthKm": 91.1
+  },
+  "Q542024": {
+   "name": "Baïse",
+   "article": "la",
+   "sitelinks": 23,
+   "sandreCode": "O6--0290",
+   "lengthKm": 187.7
+  },
+  "Q548466": {
+   "name": "Aube",
+   "article": "l'",
+   "sitelinks": 45,
+   "sandreCode": "F1--0200",
+   "lengthKm": 248.3
+  },
+  "Q563698": {
+   "name": "Lauter",
+   "article": "la",
+   "sitelinks": 18,
+   "sandreCode": "A38-0200",
+   "lengthKm": 39.0
+  },
+  "Q568686": {
+   "name": "Corrèze",
+   "article": "la",
+   "sitelinks": 24,
+   "sandreCode": "P3--0250",
+   "lengthKm": 94.6
+  },
+  "Q572072": {
+   "name": "Birsig",
+   "article": "le",
+   "sitelinks": 14,
+   "sandreCode": "A01-0200",
+   "lengthKm": 21.0
+  },
+  "Q575046": {
+   "name": "Alagnon",
+   "article": "l'",
+   "sitelinks": 19,
+   "sandreCode": "K25-0300",
+   "lengthKm": 85.0
+  },
+  "Q584": {
+   "name": "Rhin",
+   "article": "le",
+   "sitelinks": 190,
+   "sandreCode": "A---0000",
+   "lengthKm": 1232.7
+  },
+  "Q585833": {
+   "name": "Blies",
+   "article": "la",
+   "sitelinks": 24,
+   "sandreCode": "A93-0200",
+   "lengthKm": 99.5
+  },
+  "Q594824": {
+   "name": "Serein",
+   "article": "le",
+   "sitelinks": 12,
+   "sandreCode": "F32-0400",
+   "lengthKm": 188.0
+  },
+  "Q598322": {
+   "name": "Sèvre nantaise",
+   "article": "la",
+   "sitelinks": 23,
+   "sandreCode": "M7--0240",
+   "lengthKm": 141.8
+  },
+  "Q599492": {
+   "name": "Seille",
+   "article": "la",
+   "sitelinks": 24,
+   "sandreCode": "A7--0100",
+   "lengthKm": 137.7
+  },
+  "Q600675": {
+   "name": "Cure",
+   "article": "la",
+   "sitelinks": 12,
+   "sandreCode": "F31-0400",
+   "lengthKm": 112.0
+  },
+  "Q602": {
+   "name": "Rhône",
+   "article": "le",
+   "sitelinks": 107,
+   "sandreCode": "V---0000",
+   "lengthKm": 812.0
+  },
+  "Q604405": {
+   "name": "Ubaye",
+   "article": "l'",
+   "sitelinks": 13,
+   "sandreCode": "X04-0400",
+   "lengthKm": 82.7
+  },
+  "Q631049": {
+   "name": "Arc",
+   "article": "l'",
+   "sitelinks": 22,
+   "sandreCode": "W10-0400",
+   "lengthKm": 138.8
+  },
+  "Q632961": {
+   "name": "Couesnon",
+   "article": "le",
+   "sitelinks": 22,
+   "sandreCode": "J0--0150",
+   "lengthKm": 97.8
+  },
+  "Q633819": {
+   "name": "Arve",
+   "article": "l'",
+   "sitelinks": 33,
+   "sandreCode": "V0--0200",
+   "lengthKm": 107.8
+  },
+  "Q635969": {
+   "name": "Chiers",
+   "article": "la",
+   "sitelinks": 30,
+   "sandreCode": "B4--0100",
+   "lengthKm": 112.0
+  },
+  "Q640019": {
+   "name": "Ardre",
+   "article": "l'",
+   "sitelinks": 13,
+   "sandreCode": "H15-0420",
+   "lengthKm": 39.3
+  },
+  "Q640263": {
+   "name": "Ardèche",
+   "article": "l'",
+   "sitelinks": 37,
+   "sandreCode": "V50-0400",
+   "lengthKm": 122.5
+  },
+  "Q6403": {
+   "name": "Léman",
+   "article": "le",
+   "sitelinks": 101
+  },
+  "Q642484": {
+   "name": "Dourbie",
+   "article": "la",
+   "sitelinks": 13,
+   "sandreCode": "O33-0400",
+   "lengthKm": 71.9
+  },
+  "Q644839": {
+   "name": "Argens",
+   "article": "l'",
+   "sitelinks": 23,
+   "sandreCode": "Y5--0200",
+   "lengthKm": 115.6
+  },
+  "Q648478": {
+   "name": "Gabas",
+   "article": "le",
+   "sitelinks": 12,
+   "sandreCode": "Q13-0400",
+   "lengthKm": 117.0
+  },
+  "Q649519": {
+   "name": "Golo",
+   "article": "le",
+   "sitelinks": 25,
+   "sandreCode": "Y7--0200",
+   "lengthKm": 89.4
+  },
+  "Q649696": {
+   "name": "Vendée",
+   "article": "la",
+   "sitelinks": 17,
+   "sandreCode": "N---0120",
+   "lengthKm": 82.5
+  },
+  "Q659526": {
+   "name": "Orne",
+   "article": "l'",
+   "sitelinks": 36,
+   "sandreCode": "I2--0200",
+   "lengthKm": 169.6
+  },
+  "Q659546": {
+   "name": "Vienne",
+   "article": "la",
+   "sitelinks": 44,
+   "sandreCode": "L---0060",
+   "lengthKm": 372.0
+  },
+  "Q661525": {
+   "name": "Bresle",
+   "article": "la",
+   "sitelinks": 15,
+   "sandreCode": "G01-0400",
+   "lengthKm": 72.0
+  },
+  "Q668472": {
+   "name": "Ill",
+   "article": "l'",
+   "sitelinks": 43,
+   "sandreCode": "A---0030",
+   "lengthKm": 216.7
+  },
+  "Q669907": {
+   "name": "Arize",
+   "article": "l'",
+   "sitelinks": 14,
+   "sandreCode": "O07-0400",
+   "lengthKm": 83.8
+  },
+  "Q675995": {
+   "name": "Arly",
+   "article": "l'",
+   "sitelinks": 17,
+   "sandreCode": "W04-0400",
+   "lengthKm": 34.5
+  },
+  "Q677867": {
+   "name": "Allondon",
+   "article": "l'",
+   "sitelinks": 12,
+   "sandreCode": "V0410500",
+   "lengthKm": 22.0
+  },
+  "Q678634": {
+   "name": "Allaine",
+   "article": "l'",
+   "sitelinks": 22,
+   "sandreCode": "U23-0400",
+   "lengthKm": 41.0
+  },
+  "Q679050": {
+   "name": "Armançon",
+   "article": "l'",
+   "sitelinks": 20,
+   "sandreCode": "F3--0210",
+   "lengthKm": 202.0
+  },
+  "Q688533": {
+   "name": "Versoix",
+   "article": "la",
+   "sitelinks": 14,
+   "sandreCode": "V0360500",
+   "lengthKm": 21.9
+  },
+  "Q693066": {
+   "name": "Grand Morin",
+   "article": "le",
+   "sitelinks": 16,
+   "sandreCode": "F65-0400",
+   "lengthKm": 118.2
+  },
+  "Q698116": {
+   "name": "Aron",
+   "article": "l'",
+   "sitelinks": 13,
+   "sandreCode": "K17-0300",
+   "lengthKm": 103.8
+  },
+  "Q699300": {
+   "name": "Arrats",
+   "article": "l'",
+   "sitelinks": 15,
+   "sandreCode": "O---0240",
+   "lengthKm": 131.0
+  },
+  "Q702925": {
+   "name": "Arroux",
+   "article": "l'",
+   "sitelinks": 27,
+   "sandreCode": "K1--0180",
+   "lengthKm": 132.4
+  },
+  "Q705057": {
+   "name": "Sauer",
+   "article": "la",
+   "sitelinks": 17,
+   "sandreCode": "A3--0110",
+   "lengthKm": 70.0
+  },
+  "Q729029": {
+   "name": "Odon",
+   "article": "l'",
+   "sitelinks": 20,
+   "sandreCode": "I26-0400",
+   "lengthKm": 47.2
+  },
+  "Q729593": {
+   "name": "Dropt",
+   "article": "le",
+   "sitelinks": 12,
+   "sandreCode": "O9--0250",
+   "lengthKm": 132.4
+  },
+  "Q729611": {
+   "name": "Vesle",
+   "article": "la",
+   "sitelinks": 18,
+   "sandreCode": "H15-0400",
+   "lengthKm": 139.5
+  },
+  "Q736600": {
+   "name": "Sarthe",
+   "article": "la",
+   "sitelinks": 36,
+   "sandreCode": "M---0060",
+   "lengthKm": 313.9
+  },
+  "Q739893": {
+   "name": "Avre",
+   "article": "l'",
+   "sitelinks": 17,
+   "sandreCode": "H42-0400",
+   "lengthKm": 80.4
+  },
+  "Q740179": {
+   "name": "Dronne",
+   "article": "la",
+   "sitelinks": 19,
+   "sandreCode": "P7--0250",
+   "lengthKm": 200.6
+  },
+  "Q743296": {
+   "name": "Drôme",
+   "article": "la",
+   "sitelinks": 34,
+   "sandreCode": "V42-0400",
+   "lengthKm": 110.7
+  },
+  "Q745809": {
+   "name": "Blavet",
+   "article": "le",
+   "sitelinks": 25,
+   "sandreCode": "J5--0210",
+   "lengthKm": 148.9
+  },
+  "Q746324": {
+   "name": "Bruche",
+   "article": "la",
+   "sitelinks": 14,
+   "sandreCode": "A2--0110",
+   "lengthKm": 76.7
+  },
+  "Q751887": {
+   "name": "Aveyron",
+   "article": "l'",
+   "sitelinks": 34,
+   "sandreCode": "O5--0250",
+   "lengthKm": 290.9
+  },
+  "Q752108": {
+   "name": "Chère",
+   "article": "la",
+   "sitelinks": 13,
+   "sandreCode": "J78-0300",
+   "lengthKm": 65.1
+  },
+  "Q754718": {
+   "name": "Durance",
+   "article": "la",
+   "sitelinks": 46,
+   "sandreCode": "X---0000",
+   "lengthKm": 323.8
+  },
+  "Q756886": {
+   "name": "Maine",
+   "article": "la",
+   "sitelinks": 33,
+   "sandreCode": "M4--0190",
+   "lengthKm": 11.5
+  },
+  "Q767149": {
+   "name": "Suippe",
+   "article": "la",
+   "sitelinks": 13,
+   "sandreCode": "H13-0410",
+   "lengthKm": 81.7
+  },
+  "Q771100": {
+   "name": "Aujon",
+   "article": "l'",
+   "sitelinks": 12,
+   "sandreCode": "F11-0400",
+   "lengthKm": 68.0
+  },
+  "Q773906": {
+   "name": "Oust",
+   "article": "l'",
+   "sitelinks": 15,
+   "sandreCode": "J8--0230",
+   "lengthKm": 145.0
+  },
+  "Q774760": {
+   "name": "Aure",
+   "article": "l'",
+   "sitelinks": 17,
+   "sandreCode": "I4--0210",
+   "lengthKm": 82.1
+  },
+  "Q776590": {
+   "name": "Sélune",
+   "article": "la",
+   "sitelinks": 16,
+   "sandreCode": "I9--0200",
+   "lengthKm": 84.7
+  },
+  "Q784623": {
+   "name": "Authie",
+   "article": "l'",
+   "sitelinks": 18,
+   "sandreCode": "E5500570",
+   "lengthKm": 108.2
+  },
+  "Q788000": {
+   "name": "Benaize",
+   "article": "la",
+   "sitelinks": 12,
+   "sandreCode": "L56-0300",
+   "lengthKm": 79.2
+  },
+  "Q794653": {
+   "name": "Bidouze",
+   "article": "la",
+   "sitelinks": 12,
+   "sandreCode": "Q8--0250",
+   "lengthKm": 82.4
+  },
+  "Q806316": {
+   "name": "Bandiat",
+   "article": "le",
+   "sitelinks": 13,
+   "sandreCode": "R11-0400",
+   "lengthKm": 91.2
+  },
+  "Q81773": {
+   "name": "Hérault",
+   "article": "l'",
+   "sitelinks": 36,
+   "sandreCode": "Y2--0200",
+   "lengthKm": 147.6
+  },
+  "Q830986": {
+   "name": "Lèze",
+   "article": "la",
+   "sitelinks": 13,
+   "sandreCode": "O18-0400",
+   "lengthKm": 70.3
+  },
+  "Q836299": {
+   "name": "Gers",
+   "article": "le",
+   "sitelinks": 34,
+   "sandreCode": "O6--0250",
+   "lengthKm": 175.4
+  },
+  "Q841451": {
+   "name": "Creuse",
+   "article": "la",
+   "sitelinks": 33,
+   "sandreCode": "L---0070",
+   "lengthKm": 263.4
+  },
+  "Q842462": {
+   "name": "Vilaine",
+   "article": "la",
+   "sitelinks": 45,
+   "sandreCode": "J---0060",
+   "lengthKm": 218.0
+  },
+  "Q851506": {
+   "name": "Beuvron",
+   "article": "le",
+   "sitelinks": 16,
+   "sandreCode": "K4--0220",
+   "lengthKm": 115.2
+  },
+  "Q855193": {
+   "name": "Gave de Pau",
+   "article": "le",
+   "sitelinks": 28,
+   "sandreCode": "Q---0100",
+   "lengthKm": 193.1
+  },
+  "Q867604": {
+   "name": "Ciron",
+   "article": "le",
+   "sitelinks": 13,
+   "sandreCode": "O95-0400",
+   "lengthKm": 96.9
+  },
+  "Q879306": {
+   "name": "Bièvre",
+   "article": "la",
+   "sitelinks": 20,
+   "sandreCode": "F70-0400",
+   "lengthKm": 34.6
+  },
+  "Q887061": {
+   "name": "Bléone",
+   "article": "la",
+   "sitelinks": 14,
+   "sandreCode": "X12-0400",
+   "lengthKm": 67.5
+  },
+  "Q892826": {
+   "name": "Bonnieure",
+   "article": "la",
+   "sitelinks": 9,
+   "sandreCode": "R1--0250",
+   "lengthKm": 46.9
+  },
+  "Q895296": {
+   "name": "Boutonne",
+   "article": "la",
+   "sitelinks": 13,
+   "sandreCode": "R6--0250",
+   "lengthKm": 98.8
+  },
+  "Q896942": {
+   "name": "Maronne",
+   "article": "la",
+   "sitelinks": 14,
+   "sandreCode": "P1--0250",
+   "lengthKm": 92.6
+  },
+  "Q896979": {
+   "name": "Moselotte",
+   "article": "la",
+   "sitelinks": 12,
+   "sandreCode": "A41-0200",
+   "lengthKm": 47.5
+  },
+  "Q897006": {
+   "name": "Lède",
+   "article": "la",
+   "sitelinks": 12,
+   "sandreCode": "O87-0400",
+   "lengthKm": 54.1
+  },
+  "Q897019": {
+   "name": "Gélise",
+   "article": "la",
+   "sitelinks": 12,
+   "sandreCode": "O6--0330",
+   "lengthKm": 92.0
+  },
+  "Q897153": {
+   "name": "Midouze",
+   "article": "la",
+   "sitelinks": 12,
+   "sandreCode": "Q2--0250",
+   "lengthKm": 43.0
+  },
+  "Q897217": {
+   "name": "Neste",
+   "article": "la",
+   "sitelinks": 13,
+   "sandreCode": "O01-0400",
+   "lengthKm": 73.0
+  },
+  "Q897436": {
+   "name": "Dourdou de Camarès",
+   "article": "le",
+   "sitelinks": 12,
+   "sandreCode": "O35-0400",
+   "lengthKm": 86.8
+  },
+  "Q897439": {
+   "name": "Touch",
+   "article": "le",
+   "sitelinks": 14,
+   "sandreCode": "O20-0400",
+   "lengthKm": 74.5
+  },
+  "Q897443": {
+   "name": "Hers-Mort",
+   "article": "l'",
+   "sitelinks": 15,
+   "sandreCode": "O2--0250",
+   "lengthKm": 89.3
+  },
+  "Q897476": {
+   "name": "Tarnon",
+   "article": "le",
+   "sitelinks": 12,
+   "sandreCode": "O30-0400",
+   "lengthKm": 38.9
+  },
+  "Q900247": {
+   "name": "Cèze",
+   "article": "la",
+   "sitelinks": 16,
+   "sandreCode": "V54-0400",
+   "lengthKm": 128.4
+  },
+  "Q905718": {
+   "name": "Yèvre",
+   "article": "l'",
+   "sitelinks": 14,
+   "sandreCode": "K5--0230",
+   "lengthKm": 80.0
+  },
+  "Q909082": {
+   "name": "Brenne",
+   "article": "la",
+   "sitelinks": 12,
+   "sandreCode": "F33-0400",
+   "lengthKm": 72.0
+  },
+  "Q927323": {
+   "name": "Ouette",
+   "article": "l'",
+   "sitelinks": 14,
+   "sandreCode": "M3514000",
+   "lengthKm": 35.0
+  },
+  "Q932382": {
+   "name": "Orge",
+   "article": "l'",
+   "sitelinks": 16,
+   "sandreCode": "F46-0400",
+   "lengthKm": 50.1
+  },
+  "Q932993": {
+   "name": "Louge",
+   "article": "la",
+   "sitelinks": 17,
+   "sandreCode": "O09-0400",
+   "lengthKm": 100.1
+  },
+  "Q933979": {
+   "name": "Var",
+   "article": "le",
+   "sitelinks": 36,
+   "sandreCode": "Y6--0200",
+   "lengthKm": 114.0
+  },
+  "Q935535": {
+   "name": "Isle",
+   "article": "l'",
+   "sitelinks": 24,
+   "sandreCode": "P---0150",
+   "lengthKm": 255.3
+  },
+  "Q938197": {
+   "name": "Vésubie",
+   "article": "la",
+   "sitelinks": 14,
+   "sandreCode": "Y63-0400",
+   "lengthKm": 45.1
+  },
+  "Q945377": {
+   "name": "Ourcq",
+   "article": "l'",
+   "sitelinks": 24,
+   "sandreCode": "F63-0400",
+   "lengthKm": 87.0
+  },
+  "Q946604": {
+   "name": "Sioule",
+   "article": "la",
+   "sitelinks": 20,
+   "sandreCode": "K3--0200",
+   "lengthKm": 163.4
+  },
+  "Q952791": {
+   "name": "Petit Morin",
+   "article": "le",
+   "sitelinks": 15,
+   "sandreCode": "F62-0400",
+   "lengthKm": 86.3
+  },
+  "Q968936": {
+   "name": "Savoureuse",
+   "article": "la",
+   "sitelinks": 12,
+   "sandreCode": "U2340500",
+   "lengthKm": 41.2
+  },
+  "Q969618": {
+   "name": "Touques",
+   "article": "la",
+   "sitelinks": 15,
+   "sandreCode": "I0--0200",
+   "lengthKm": 108.4
+  },
+  "Q974519": {
+   "name": "Nive",
+   "article": "la",
+   "sitelinks": 22,
+   "sandreCode": "Q9--0250",
+   "lengthKm": 79.3
+  },
+  "Q979109": {
+   "name": "Truyère",
+   "article": "la",
+   "sitelinks": 23,
+   "sandreCode": "O7--0250",
+   "lengthKm": 167.2
+  },
+  "Q990106": {
+   "name": "Epte",
+   "article": "l'",
+   "sitelinks": 24,
+   "sandreCode": "H31-0400",
+   "lengthKm": 113.0
+  }
+ },
+ "rivers": [
+  {
+   "id": "Q300661",
+   "steps": [],
+   "sea": "north-sea",
+   "difficulty": "easy"
+  },
+  {
+   "id": "Q342040",
+   "steps": [
+    {
+     "id": "Q1469"
+    }
+   ],
+   "sea": "atlantic",
+   "difficulty": "medium"
+  },
+  {
+   "id": "Q207366",
+   "steps": [],
+   "sea": "atlantic",
+   "difficulty": "easy"
+  },
+  {
+   "id": "Q153789",
+   "steps": [
+    {
+     "id": "Q773906"
+    },
+    {
+     "id": "Q842462"
+    }
+   ],
+   "sea": "atlantic",
+   "difficulty": "hard"
+  },
+  {
+   "id": "Q394311",
+   "steps": [],
+   "sea": "mediterranean",
+   "difficulty": "medium"
+  },
+  {
+   "id": "Q395784",
+   "steps": [
+    {
+     "id": "Q215653"
+    },
+    {
+     "id": "Q5077"
+    },
+    {
+     "id": "Q213517",
+     "optional": true
+    }
+   ],
+   "sea": "atlantic",
+   "difficulty": "medium"
+  },
+  {
+   "id": "Q405073",
+   "steps": [
+    {
+     "id": "Q200231"
+    },
+    {
+     "id": "Q1471"
+    }
+   ],
+   "sea": "channel",
+   "difficulty": "hard"
+  },
+  {
+   "id": "Q405836",
+   "steps": [
+    {
+     "id": "Q602"
+    }
+   ],
+   "sea": "mediterranean",
+   "difficulty": "medium"
+  },
+  {
+   "id": "Q408614",
+   "steps": [
+    {
+     "id": "Q41962"
+    },
+    {
+     "id": "Q200231"
+    },
+    {
+     "id": "Q1471"
+    }
+   ],
+   "sea": "channel",
+   "difficulty": "hard"
+  },
+  {
+   "id": "Q41962",
+   "steps": [
+    {
+     "id": "Q200231"
+    },
+    {
+     "id": "Q1471"
+    }
+   ],
+   "sea": "channel",
+   "difficulty": "medium"
+  },
+  {
+   "id": "Q575046",
+   "steps": [
+    {
+     "id": "Q2464"
+    },
+    {
+     "id": "Q1469"
+    }
+   ],
+   "sea": "atlantic",
+   "difficulty": "hard"
+  },
+  {
+   "id": "Q269759",
+   "steps": [
+    {
+     "id": "Q405836"
+    },
+    {
+     "id": "Q602"
+    }
+   ],
+   "sea": "mediterranean",
+   "difficulty": "hard"
+  },
+  {
+   "id": "Q678634",
+   "steps": [
+    {
+     "id": "Q14372"
+    },
+    {
+     "id": "Q187834"
+    },
+    {
+     "id": "Q602"
+    }
+   ],
+   "sea": "mediterranean",
+   "difficulty": "hard"
+  },
+  {
+   "id": "Q2464",
+   "steps": [
+    {
+     "id": "Q1469"
+    }
+   ],
+   "sea": "atlantic",
+   "difficulty": "easy"
+  },
+  {
+   "id": "Q677867",
+   "steps": [
+    {
+     "id": "Q602"
+    }
+   ],
+   "sea": "mediterranean",
+   "difficulty": "medium"
+  },
+  {
+   "id": "Q450722",
+   "steps": [
+    {
+     "id": "Q158847"
+    },
+    {
+     "id": "Q1667"
+    },
+    {
+     "id": "Q584"
+    }
+   ],
+   "sea": "north-sea",
+   "difficulty": "hard"
+  },
+  {
+   "id": "Q489438",
+   "steps": [
+    {
+     "id": "Q37646"
+    }
+   ],
+   "sea": "channel",
+   "difficulty": "medium"
+  },
+  {
+   "id": "Q490151",
+   "steps": [
+    {
+     "id": "Q1471"
+    }
+   ],
+   "sea": "channel",
+   "difficulty": "medium"
+  },
+  {
+   "id": "Q540889",
+   "steps": [
+    {
+     "id": "Q1494587"
+    },
+    {
+     "id": "Q841451"
+    },
+    {
+     "id": "Q659546"
+    },
+    {
+     "id": "Q1469"
+    }
+   ],
+   "sea": "atlantic",
+   "difficulty": "hard"
+  },
+  {
+   "id": "Q631049",
+   "steps": [
+    {
+     "id": "Q201341"
+    },
+    {
+     "id": "Q602"
+    }
+   ],
+   "sea": "mediterranean",
+   "difficulty": "medium"
+  },
+  {
+   "id": "Q640263",
+   "steps": [
+    {
+     "id": "Q602"
+    }
+   ],
+   "sea": "mediterranean",
+   "difficulty": "medium"
+  },
+  {
+   "id": "Q640019",
+   "steps": [
+    {
+     "id": "Q729611"
+    },
+    {
+     "id": "Q41962"
+    },
+    {
+     "id": "Q200231"
+    },
+    {
+     "id": "Q1471"
+    }
+   ],
+   "sea": "channel",
+   "difficulty": "hard"
+  },
+  {
+   "id": "Q644839",
+   "steps": [],
+   "sea": "mediterranean",
+   "difficulty": "easy"
+  },
+  {
+   "id": "Q18451",
+   "steps": [
+    {
+     "id": "Q5077"
+    },
+    {
+     "id": "Q213517",
+     "optional": true
+    }
+   ],
+   "sea": "atlantic",
+   "difficulty": "easy"
+  },
+  {
+   "id": "Q669907",
+   "steps": [
+    {
+     "id": "Q5077"
+    },
+    {
+     "id": "Q213517",
+     "optional": true
+    }
+   ],
+   "sea": "atlantic",
+   "difficulty": "medium"
+  },
+  {
+   "id": "Q675995",
+   "steps": [
+    {
+     "id": "Q201341"
+    },
+    {
+     "id": "Q602"
+    }
+   ],
+   "sea": "mediterranean",
+   "difficulty": "hard"
+  },
+  {
+   "id": "Q679050",
+   "steps": [
+    {
+     "id": "Q213967"
+    },
+    {
+     "id": "Q1471"
+    }
+   ],
+   "sea": "channel",
+   "difficulty": "medium"
+  },
+  {
+   "id": "Q222884",
+   "steps": [
+    {
+     "id": "Q213503"
+    },
+    {
+     "id": "Q1469"
+    }
+   ],
+   "sea": "atlantic",
+   "difficulty": "hard"
+  },
+  {
+   "id": "Q698116",
+   "steps": [
+    {
+     "id": "Q1469"
+    }
+   ],
+   "sea": "atlantic",
+   "difficulty": "medium"
+  },
+  {
+   "id": "Q699300",
+   "steps": [
+    {
+     "id": "Q5077"
+    },
+    {
+     "id": "Q213517",
+     "optional": true
+    }
+   ],
+   "sea": "atlantic",
+   "difficulty": "medium"
+  },
+  {
+   "id": "Q383268",
+   "steps": [
+    {
+     "id": "Q207366"
+    }
+   ],
+   "sea": "atlantic",
+   "difficulty": "medium"
+  },
+  {
+   "id": "Q702925",
+   "steps": [
+    {
+     "id": "Q1469"
+    }
+   ],
+   "sea": "atlantic",
+   "difficulty": "medium"
+  },
+  {
+   "id": "Q633819",
+   "steps": [
+    {
+     "id": "Q602"
+    }
+   ],
+   "sea": "mediterranean",
+   "difficulty": "medium"
+  },
+  {
+   "id": "Q548466",
+   "steps": [
+    {
+     "id": "Q1471"
+    }
+   ],
+   "sea": "channel",
+   "difficulty": "easy"
+  },
+  {
+   "id": "Q214240",
+   "steps": [],
+   "sea": "mediterranean",
+   "difficulty": "easy"
+  },
+  {
+   "id": "Q771100",
+   "steps": [
+    {
+     "id": "Q548466"
+    },
+    {
+     "id": "Q1471"
+    }
+   ],
+   "sea": "channel",
+   "difficulty": "hard"
+  },
+  {
+   "id": "Q5079",
+   "steps": [],
+   "sea": "atlantic",
+   "difficulty": "easy"
+  },
+  {
+   "id": "Q774760",
+   "steps": [
+    {
+     "id": "Q1346326"
+    }
+   ],
+   "sea": "channel",
+   "difficulty": "medium"
+  },
+  {
+   "id": "Q784623",
+   "steps": [],
+   "sea": "channel",
+   "difficulty": "medium"
+  },
+  {
+   "id": "Q751887",
+   "steps": [
+    {
+     "id": "Q215653"
+    },
+    {
+     "id": "Q5077"
+    },
+    {
+     "id": "Q213517",
+     "optional": true
+    }
+   ],
+   "sea": "atlantic",
+   "difficulty": "medium"
+  },
+  {
+   "id": "Q739893",
+   "steps": [
+    {
+     "id": "Q23798"
+    },
+    {
+     "id": "Q1471"
+    }
+   ],
+   "sea": "channel",
+   "difficulty": "hard"
+  },
+  {
+   "id": "Q542024",
+   "steps": [
+    {
+     "id": "Q5077"
+    },
+    {
+     "id": "Q213517",
+     "optional": true
+    }
+   ],
+   "sea": "atlantic",
+   "difficulty": "medium"
+  },
+  {
+   "id": "Q806316",
+   "steps": [
+    {
+     "id": "Q1486825"
+    },
+    {
+     "id": "Q892826"
+    },
+    {
+     "id": "Q123362"
+    }
+   ],
+   "sea": "atlantic",
+   "difficulty": "hard"
+  },
+  {
+   "id": "Q1817620",
+   "steps": [
+    {
+     "id": "Q41986"
+    }
+   ],
+   "sea": "north-sea",
+   "difficulty": "medium"
+  },
+  {
+   "id": "Q788000",
+   "steps": [
+    {
+     "id": "Q540889"
+    },
+    {
+     "id": "Q1494587"
+    },
+    {
+     "id": "Q841451"
+    },
+    {
+     "id": "Q659546"
+    },
+    {
+     "id": "Q1469"
+    }
+   ],
+   "sea": "atlantic",
+   "difficulty": "hard"
+  },
+  {
+   "id": "Q200695",
+   "steps": [
+    {
+     "id": "Q1469"
+    }
+   ],
+   "sea": "atlantic",
+   "difficulty": "medium"
+  },
+  {
+   "id": "Q851506",
+   "steps": [
+    {
+     "id": "Q1469"
+    }
+   ],
+   "sea": "atlantic",
+   "difficulty": "medium"
+  },
+  {
+   "id": "Q1130785",
+   "steps": [
+    {
+     "id": "Q2094628"
+    }
+   ],
+   "sea": "mediterranean",
+   "difficulty": "medium"
+  },
+  {
+   "id": "Q14352",
+   "steps": [],
+   "sea": "atlantic",
+   "difficulty": "easy"
+  },
+  {
+   "id": "Q794653",
+   "steps": [
+    {
+     "id": "Q207366"
+    }
+   ],
+   "sea": "atlantic",
+   "difficulty": "medium"
+  },
+  {
+   "id": "Q879306",
+   "steps": [
+    {
+     "id": "Q1471"
+    }
+   ],
+   "sea": "channel",
+   "difficulty": "medium"
+  },
+  {
+   "id": "Q572072",
+   "steps": [
+    {
+     "id": "Q584"
+    }
+   ],
+   "sea": "north-sea",
+   "difficulty": "medium"
+  },
+  {
+   "id": "Q745809",
+   "steps": [],
+   "sea": "atlantic",
+   "difficulty": "easy"
+  },
+  {
+   "id": "Q887061",
+   "steps": [
+    {
+     "id": "Q754718"
+    },
+    {
+     "id": "Q602"
+    }
+   ],
+   "sea": "mediterranean",
+   "difficulty": "hard"
+  },
+  {
+   "id": "Q585833",
+   "steps": [
+    {
+     "id": "Q153972"
+    },
+    {
+     "id": "Q1667"
+    },
+    {
+     "id": "Q584"
+    }
+   ],
+   "sea": "north-sea",
+   "difficulty": "hard"
+  },
+  {
+   "id": "Q387565",
+   "steps": [
+    {
+     "id": "Q702925"
+    },
+    {
+     "id": "Q1469"
+    }
+   ],
+   "sea": "atlantic",
+   "difficulty": "hard"
+  },
+  {
+   "id": "Q895296",
+   "steps": [
+    {
+     "id": "Q123362"
+    }
+   ],
+   "sea": "atlantic",
+   "difficulty": "medium"
+  },
+  {
+   "id": "Q909082",
+   "steps": [
+    {
+     "id": "Q679050"
+    },
+    {
+     "id": "Q213967"
+    },
+    {
+     "id": "Q1471"
+    }
+   ],
+   "sea": "channel",
+   "difficulty": "hard"
+  },
+  {
+   "id": "Q661525",
+   "steps": [],
+   "sea": "channel",
+   "difficulty": "medium"
+  },
+  {
+   "id": "Q746324",
+   "steps": [
+    {
+     "id": "Q668472"
+    },
+    {
+     "id": "Q584"
+    }
+   ],
+   "sea": "north-sea",
+   "difficulty": "hard"
+  },
+  {
+   "id": "Q14269",
+   "steps": [
+    {
+     "id": "Q754718"
+    },
+    {
+     "id": "Q602"
+    }
+   ],
+   "sea": "mediterranean",
+   "difficulty": "hard"
+  },
+  {
+   "id": "Q1136988",
+   "steps": [
+    {
+     "id": "Q754718"
+    },
+    {
+     "id": "Q602"
+    }
+   ],
+   "sea": "mediterranean",
+   "difficulty": "hard"
+  },
+  {
+   "id": "Q1032916",
+   "steps": [],
+   "sea": "channel",
+   "difficulty": "easy"
+  },
+  {
+   "id": "Q524483",
+   "steps": [
+    {
+     "id": "Q211766"
+    },
+    {
+     "id": "Q5077"
+    },
+    {
+     "id": "Q213517",
+     "optional": true
+    }
+   ],
+   "sea": "atlantic",
+   "difficulty": "hard"
+  },
+  {
+   "id": "Q388802",
+   "steps": [
+    {
+     "id": "Q208174"
+    },
+    {
+     "id": "Q213517",
+     "optional": true
+    }
+   ],
+   "sea": "atlantic",
+   "difficulty": "medium"
+  },
+  {
+   "id": "Q518952",
+   "steps": [
+    {
+     "id": "Q751887"
+    },
+    {
+     "id": "Q215653"
+    },
+    {
+     "id": "Q5077"
+    },
+    {
+     "id": "Q213517",
+     "optional": true
+    }
+   ],
+   "sea": "atlantic",
+   "difficulty": "hard"
+  },
+  {
+   "id": "Q900247",
+   "steps": [
+    {
+     "id": "Q602"
+    }
+   ],
+   "sea": "mediterranean",
+   "difficulty": "medium"
+  },
+  {
+   "id": "Q123362",
+   "steps": [],
+   "sea": "atlantic",
+   "difficulty": "easy"
+  },
+  {
+   "id": "Q1063124",
+   "steps": [
+    {
+     "id": "Q1074385"
+    },
+    {
+     "id": "Q1471"
+    }
+   ],
+   "sea": "channel",
+   "difficulty": "hard"
+  },
+  {
+   "id": "Q1068099",
+   "steps": [
+    {
+     "id": "Q640263"
+    },
+    {
+     "id": "Q602"
+    }
+   ],
+   "sea": "mediterranean",
+   "difficulty": "hard"
+  },
+  {
+   "id": "Q1090933",
+   "steps": [
+    {
+     "id": "Q1908951"
+    },
+    {
+     "id": "Q41983"
+    },
+    {
+     "id": "Q1471"
+    }
+   ],
+   "sea": "channel",
+   "difficulty": "hard"
+  },
+  {
+   "id": "Q213503",
+   "steps": [
+    {
+     "id": "Q1469"
+    }
+   ],
+   "sea": "atlantic",
+   "difficulty": "easy"
+  },
+  {
+   "id": "Q752108",
+   "steps": [
+    {
+     "id": "Q842462"
+    }
+   ],
+   "sea": "atlantic",
+   "difficulty": "medium"
+  },
+  {
+   "id": "Q635969",
+   "steps": [
+    {
+     "id": "Q41986"
+    }
+   ],
+   "sea": "north-sea",
+   "difficulty": "medium"
+  },
+  {
+   "id": "Q867604",
+   "steps": [
+    {
+     "id": "Q5077"
+    },
+    {
+     "id": "Q213517",
+     "optional": true
+    }
+   ],
+   "sea": "atlantic",
+   "difficulty": "medium"
+  },
+  {
+   "id": "Q1093242",
+   "steps": [
+    {
+     "id": "Q1469"
+    }
+   ],
+   "sea": "atlantic",
+   "difficulty": "medium"
+  },
+  {
+   "id": "Q498302",
+   "steps": [
+    {
+     "id": "Q659546"
+    },
+    {
+     "id": "Q1469"
+    }
+   ],
+   "sea": "atlantic",
+   "difficulty": "medium"
+  },
+  {
+   "id": "Q568686",
+   "steps": [
+    {
+     "id": "Q118167"
+    },
+    {
+     "id": "Q208174"
+    },
+    {
+     "id": "Q213517",
+     "optional": true
+    }
+   ],
+   "sea": "atlantic",
+   "difficulty": "medium"
+  },
+  {
+   "id": "Q632961",
+   "steps": [],
+   "sea": "channel",
+   "difficulty": "easy"
+  },
+  {
+   "id": "Q841451",
+   "steps": [
+    {
+     "id": "Q659546"
+    },
+    {
+     "id": "Q1469"
+    }
+   ],
+   "sea": "atlantic",
+   "difficulty": "medium"
+  },
+  {
+   "id": "Q600675",
+   "steps": [
+    {
+     "id": "Q213967"
+    },
+    {
+     "id": "Q1471"
+    }
+   ],
+   "sea": "channel",
+   "difficulty": "hard"
+  },
+  {
+   "id": "Q1157014",
+   "steps": [
+    {
+     "id": "Q395784"
+    },
+    {
+     "id": "Q215653"
+    },
+    {
+     "id": "Q5077"
+    },
+    {
+     "id": "Q213517",
+     "optional": true
+    }
+   ],
+   "sea": "atlantic",
+   "difficulty": "hard"
+  },
+  {
+   "id": "Q1207449",
+   "steps": [
+    {
+     "id": "Q208493"
+    },
+    {
+     "id": "Q37620"
+    }
+   ],
+   "sea": "north-sea",
+   "difficulty": "hard"
+  },
+  {
+   "id": "Q118784",
+   "steps": [],
+   "sea": "channel",
+   "difficulty": "easy"
+  },
+  {
+   "id": "Q1235724",
+   "steps": [
+    {
+     "id": "Q668472"
+    },
+    {
+     "id": "Q584"
+    }
+   ],
+   "sea": "north-sea",
+   "difficulty": "hard"
+  },
+  {
+   "id": "Q1238868",
+   "steps": [
+    {
+     "id": "Q842462"
+    }
+   ],
+   "sea": "atlantic",
+   "difficulty": "medium"
+  },
+  {
+   "id": "Q208174",
+   "steps": [
+    {
+     "id": "Q213517",
+     "optional": true
+    }
+   ],
+   "sea": "atlantic",
+   "difficulty": "easy"
+  },
+  {
+   "id": "Q1243828",
+   "steps": [
+    {
+     "id": "Q2464"
+    },
+    {
+     "id": "Q1469"
+    }
+   ],
+   "sea": "atlantic",
+   "difficulty": "hard"
+  },
+  {
+   "id": "Q14372",
+   "steps": [
+    {
+     "id": "Q187834"
+    },
+    {
+     "id": "Q602"
+    }
+   ],
+   "sea": "mediterranean",
+   "difficulty": "medium"
+  },
+  {
+   "id": "Q642484",
+   "steps": [
+    {
+     "id": "Q215653"
+    },
+    {
+     "id": "Q5077"
+    },
+    {
+     "id": "Q213517",
+     "optional": true
+    }
+   ],
+   "sea": "atlantic",
+   "difficulty": "hard"
+  },
+  {
+   "id": "Q897436",
+   "steps": [
+    {
+     "id": "Q215653"
+    },
+    {
+     "id": "Q5077"
+    },
+    {
+     "id": "Q213517",
+     "optional": true
+    }
+   ],
+   "sea": "atlantic",
+   "difficulty": "hard"
+  },
+  {
+   "id": "Q1252782",
+   "steps": [],
+   "sea": "channel",
+   "difficulty": "medium"
+  },
+  {
+   "id": "Q1127096",
+   "steps": [
+    {
+     "id": "Q201341"
+    },
+    {
+     "id": "Q602"
+    }
+   ],
+   "sea": "mediterranean",
+   "difficulty": "medium"
+  },
+  {
+   "id": "Q743296",
+   "steps": [
+    {
+     "id": "Q602"
+    }
+   ],
+   "sea": "mediterranean",
+   "difficulty": "medium"
+  },
+  {
+   "id": "Q740179",
+   "steps": [
+    {
+     "id": "Q935535"
+    },
+    {
+     "id": "Q208174"
+    },
+    {
+     "id": "Q213517",
+     "optional": true
+    }
+   ],
+   "sea": "atlantic",
+   "difficulty": "hard"
+  },
+  {
+   "id": "Q729593",
+   "steps": [
+    {
+     "id": "Q5077"
+    },
+    {
+     "id": "Q213517",
+     "optional": true
+    }
+   ],
+   "sea": "atlantic",
+   "difficulty": "medium"
+  },
+  {
+   "id": "Q754718",
+   "steps": [
+    {
+     "id": "Q602"
+    }
+   ],
+   "sea": "mediterranean",
+   "difficulty": "easy"
+  },
+  {
+   "id": "Q273387",
+   "steps": [
+    {
+     "id": "Q207366"
+    }
+   ],
+   "sea": "atlantic",
+   "difficulty": "medium"
+  },
+  {
+   "id": "Q274784",
+   "steps": [],
+   "sea": "atlantic",
+   "difficulty": "medium"
+  },
+  {
+   "id": "Q990106",
+   "steps": [
+    {
+     "id": "Q1471"
+    }
+   ],
+   "sea": "channel",
+   "difficulty": "medium"
+  },
+  {
+   "id": "Q1349493",
+   "steps": [
+    {
+     "id": "Q1469"
+    }
+   ],
+   "sea": "atlantic",
+   "difficulty": "medium"
+  },
+  {
+   "id": "Q37620",
+   "steps": [],
+   "sea": "north-sea",
+   "difficulty": "easy"
+  },
+  {
+   "id": "Q534813",
+   "steps": [
+    {
+     "id": "Q1471"
+    }
+   ],
+   "sea": "channel",
+   "difficulty": "medium"
+  },
+  {
+   "id": "Q1370821",
+   "steps": [
+    {
+     "id": "Q933979"
+    }
+   ],
+   "sea": "mediterranean",
+   "difficulty": "medium"
+  },
+  {
+   "id": "Q23798",
+   "steps": [
+    {
+     "id": "Q1471"
+    }
+   ],
+   "sea": "channel",
+   "difficulty": "easy"
+  },
+  {
+   "id": "Q1385804",
+   "steps": [
+    {
+     "id": "Q602"
+    }
+   ],
+   "sea": "mediterranean",
+   "difficulty": "medium"
+  },
+  {
+   "id": "Q1385881",
+   "steps": [],
+   "sea": "atlantic",
+   "difficulty": "medium"
+  },
+  {
+   "id": "Q1411649",
+   "steps": [
+    {
+     "id": "Q602"
+    }
+   ],
+   "sea": "mediterranean",
+   "difficulty": "medium"
+  },
+  {
+   "id": "Q1474817",
+   "steps": [
+    {
+     "id": "Q1469"
+    }
+   ],
+   "sea": "atlantic",
+   "difficulty": "medium"
+  },
+  {
+   "id": "Q648478",
+   "steps": [
+    {
+     "id": "Q207366"
+    }
+   ],
+   "sea": "atlantic",
+   "difficulty": "medium"
+  },
+  {
+   "id": "Q497327",
+   "steps": [
+    {
+     "id": "Q602"
+    }
+   ],
+   "sea": "mediterranean",
+   "difficulty": "medium"
+  },
+  {
+   "id": "Q5077",
+   "steps": [
+    {
+     "id": "Q213517",
+     "optional": true
+    }
+   ],
+   "sea": "atlantic",
+   "difficulty": "easy"
+  },
+  {
+   "id": "Q1494587",
+   "steps": [
+    {
+     "id": "Q841451"
+    },
+    {
+     "id": "Q659546"
+    },
+    {
+     "id": "Q1469"
+    }
+   ],
+   "sea": "atlantic",
+   "difficulty": "hard"
+  },
+  {
+   "id": "Q1496406",
+   "steps": [
+    {
+     "id": "Q1194777"
+    },
+    {
+     "id": "Q369237",
+     "optional": true
+    },
+    {
+     "id": "Q207366"
+    }
+   ],
+   "sea": "atlantic",
+   "difficulty": "hard"
+  },
+  {
+   "id": "Q1194777",
+   "steps": [
+    {
+     "id": "Q369237",
+     "optional": true
+    },
+    {
+     "id": "Q207366"
+    }
+   ],
+   "sea": "atlantic",
+   "difficulty": "medium"
+  },
+  {
+   "id": "Q1496403",
+   "steps": [
+    {
+     "id": "Q1194777"
+    },
+    {
+     "id": "Q369237",
+     "optional": true
+    },
+    {
+     "id": "Q207366"
+    }
+   ],
+   "sea": "atlantic",
+   "difficulty": "hard"
+  },
+  {
+   "id": "Q855193",
+   "steps": [
+    {
+     "id": "Q207366"
+    }
+   ],
+   "sea": "atlantic",
+   "difficulty": "medium"
+  },
+  {
+   "id": "Q897019",
+   "steps": [
+    {
+     "id": "Q542024"
+    },
+    {
+     "id": "Q5077"
+    },
+    {
+     "id": "Q213517",
+     "optional": true
+    }
+   ],
+   "sea": "atlantic",
+   "difficulty": "hard"
+  },
+  {
+   "id": "Q836299",
+   "steps": [
+    {
+     "id": "Q5077"
+    },
+    {
+     "id": "Q213517",
+     "optional": true
+    }
+   ],
+   "sea": "atlantic",
+   "difficulty": "medium"
+  },
+  {
+   "id": "Q1010532",
+   "steps": [
+    {
+     "id": "Q5077"
+    },
+    {
+     "id": "Q213517",
+     "optional": true
+    }
+   ],
+   "sea": "atlantic",
+   "difficulty": "medium"
+  },
+  {
+   "id": "Q649519",
+   "steps": [],
+   "sea": "mediterranean",
+   "difficulty": "easy"
+  },
+  {
+   "id": "Q693066",
+   "steps": [
+    {
+     "id": "Q41983"
+    },
+    {
+     "id": "Q1471"
+    }
+   ],
+   "sea": "channel",
+   "difficulty": "hard"
+  },
+  {
+   "id": "Q1225878",
+   "steps": [
+    {
+     "id": "Q187834"
+    },
+    {
+     "id": "Q602"
+    }
+   ],
+   "sea": "mediterranean",
+   "difficulty": "hard"
+  },
+  {
+   "id": "Q81773",
+   "steps": [],
+   "sea": "mediterranean",
+   "difficulty": "easy"
+  },
+  {
+   "id": "Q897443",
+   "steps": [
+    {
+     "id": "Q5077"
+    },
+    {
+     "id": "Q213517",
+     "optional": true
+    }
+   ],
+   "sea": "atlantic",
+   "difficulty": "medium"
+  },
+  {
+   "id": "Q429566",
+   "steps": [
+    {
+     "id": "Q18451"
+    },
+    {
+     "id": "Q5077"
+    },
+    {
+     "id": "Q213517",
+     "optional": true
+    }
+   ],
+   "sea": "atlantic",
+   "difficulty": "hard"
+  },
+  {
+   "id": "Q385547",
+   "steps": [
+    {
+     "id": "Q736600"
+    },
+    {
+     "id": "Q756886"
+    },
+    {
+     "id": "Q1469"
+    }
+   ],
+   "sea": "atlantic",
+   "difficulty": "hard"
+  },
+  {
+   "id": "Q668472",
+   "steps": [
+    {
+     "id": "Q584"
+    }
+   ],
+   "sea": "north-sea",
+   "difficulty": "easy"
+  },
+  {
+   "id": "Q1244595",
+   "steps": [
+    {
+     "id": "Q842462"
+    }
+   ],
+   "sea": "atlantic",
+   "difficulty": "medium"
+  },
+  {
+   "id": "Q217347",
+   "steps": [
+    {
+     "id": "Q1469"
+    }
+   ],
+   "sea": "atlantic",
+   "difficulty": "medium"
+  },
+  {
+   "id": "Q201341",
+   "steps": [
+    {
+     "id": "Q602"
+    }
+   ],
+   "sea": "mediterranean",
+   "difficulty": "easy"
+  },
+  {
+   "id": "Q935535",
+   "steps": [
+    {
+     "id": "Q208174"
+    },
+    {
+     "id": "Q213517",
+     "optional": true
+    }
+   ],
+   "sea": "atlantic",
+   "difficulty": "medium"
+  },
+  {
+   "id": "Q1242878",
+   "steps": [
+    {
+     "id": "Q23798"
+    },
+    {
+     "id": "Q1471"
+    }
+   ],
+   "sea": "channel",
+   "difficulty": "hard"
+  },
+  {
+   "id": "Q1709766",
+   "steps": [
+    {
+     "id": "Q280650"
+    },
+    {
+     "id": "Q756886"
+    },
+    {
+     "id": "Q1469"
+    }
+   ],
+   "sea": "atlantic",
+   "difficulty": "hard"
+  },
+  {
+   "id": "Q563698",
+   "steps": [
+    {
+     "id": "Q584"
+    }
+   ],
+   "sea": "north-sea",
+   "difficulty": "medium"
+  },
+  {
+   "id": "Q1548241",
+   "steps": [
+    {
+     "id": "Q1469"
+    }
+   ],
+   "sea": "atlantic",
+   "difficulty": "medium"
+  },
+  {
+   "id": "Q897006",
+   "steps": [
+    {
+     "id": "Q211766"
+    },
+    {
+     "id": "Q5077"
+    },
+    {
+     "id": "Q213517",
+     "optional": true
+    }
+   ],
+   "sea": "atlantic",
+   "difficulty": "hard"
+  },
+  {
+   "id": "Q830986",
+   "steps": [
+    {
+     "id": "Q18451"
+    },
+    {
+     "id": "Q5077"
+    },
+    {
+     "id": "Q213517",
+     "optional": true
+    }
+   ],
+   "sea": "atlantic",
+   "difficulty": "hard"
+  },
+  {
+   "id": "Q249062",
+   "steps": [
+    {
+     "id": "Q1471"
+    }
+   ],
+   "sea": "channel",
+   "difficulty": "medium"
+  },
+  {
+   "id": "Q376133",
+   "steps": [
+    {
+     "id": "Q736600"
+    },
+    {
+     "id": "Q756886"
+    },
+    {
+     "id": "Q1469"
+    }
+   ],
+   "sea": "atlantic",
+   "difficulty": "hard"
+  },
+  {
+   "id": "Q1469",
+   "steps": [],
+   "sea": "atlantic",
+   "difficulty": "easy"
+  },
+  {
+   "id": "Q1245601",
+   "steps": [
+    {
+     "id": "Q1469"
+    }
+   ],
+   "sea": "atlantic",
+   "difficulty": "medium"
+  },
+  {
+   "id": "Q211766",
+   "steps": [
+    {
+     "id": "Q5077"
+    },
+    {
+     "id": "Q213517",
+     "optional": true
+    }
+   ],
+   "sea": "atlantic",
+   "difficulty": "easy"
+  },
+  {
+   "id": "Q279370",
+   "steps": [
+    {
+     "id": "Q14372"
+    },
+    {
+     "id": "Q187834"
+    },
+    {
+     "id": "Q602"
+    }
+   ],
+   "sea": "mediterranean",
+   "difficulty": "hard"
+  },
+  {
+   "id": "Q932993",
+   "steps": [
+    {
+     "id": "Q5077"
+    },
+    {
+     "id": "Q213517",
+     "optional": true
+    }
+   ],
+   "sea": "atlantic",
+   "difficulty": "medium"
+  },
+  {
+   "id": "Q208493",
+   "steps": [
+    {
+     "id": "Q37620"
+    }
+   ],
+   "sea": "north-sea",
+   "difficulty": "easy"
+  },
+  {
+   "id": "Q522089",
+   "steps": [
+    {
+     "id": "Q1667"
+    },
+    {
+     "id": "Q584"
+    }
+   ],
+   "sea": "north-sea",
+   "difficulty": "hard"
+  },
+  {
+   "id": "Q756886",
+   "steps": [
+    {
+     "id": "Q1469"
+    }
+   ],
+   "sea": "atlantic",
+   "difficulty": "medium"
+  },
+  {
+   "id": "Q41983",
+   "steps": [
+    {
+     "id": "Q1471"
+    }
+   ],
+   "sea": "channel",
+   "difficulty": "easy"
+  },
+  {
+   "id": "Q896942",
+   "steps": [
+    {
+     "id": "Q208174"
+    },
+    {
+     "id": "Q213517",
+     "optional": true
+    }
+   ],
+   "sea": "atlantic",
+   "difficulty": "medium"
+  },
+  {
+   "id": "Q1539741",
+   "steps": [
+    {
+     "id": "Q1207449"
+    },
+    {
+     "id": "Q208493"
+    },
+    {
+     "id": "Q37620"
+    }
+   ],
+   "sea": "north-sea",
+   "difficulty": "hard"
+  },
+  {
+   "id": "Q280650",
+   "steps": [
+    {
+     "id": "Q756886"
+    },
+    {
+     "id": "Q1469"
+    }
+   ],
+   "sea": "atlantic",
+   "difficulty": "medium"
+  },
+  {
+   "id": "Q1160441",
+   "steps": [
+    {
+     "id": "Q1667"
+    },
+    {
+     "id": "Q584"
+    }
+   ],
+   "sea": "north-sea",
+   "difficulty": "medium"
+  },
+  {
+   "id": "Q41986",
+   "steps": [],
+   "sea": "north-sea",
+   "difficulty": "easy"
+  },
+  {
+   "id": "Q897153",
+   "steps": [
+    {
+     "id": "Q207366"
+    }
+   ],
+   "sea": "atlantic",
+   "difficulty": "medium"
+  },
+  {
+   "id": "Q1462580",
+   "steps": [
+    {
+     "id": "Q584"
+    }
+   ],
+   "sea": "north-sea",
+   "difficulty": "medium"
+  },
+  {
+   "id": "Q1667",
+   "steps": [
+    {
+     "id": "Q584"
+    }
+   ],
+   "sea": "north-sea",
+   "difficulty": "easy"
+  },
+  {
+   "id": "Q896979",
+   "steps": [
+    {
+     "id": "Q1667"
+    },
+    {
+     "id": "Q584"
+    }
+   ],
+   "sea": "north-sea",
+   "difficulty": "hard"
+  },
+  {
+   "id": "Q897217",
+   "steps": [
+    {
+     "id": "Q5077"
+    },
+    {
+     "id": "Q213517",
+     "optional": true
+    }
+   ],
+   "sea": "atlantic",
+   "difficulty": "medium"
+  },
+  {
+   "id": "Q210312",
+   "steps": [
+    {
+     "id": "Q153972"
+    },
+    {
+     "id": "Q1667"
+    },
+    {
+     "id": "Q584"
+    }
+   ],
+   "sea": "north-sea",
+   "difficulty": "hard"
+  },
+  {
+   "id": "Q1456175",
+   "steps": [
+    {
+     "id": "Q1469"
+    }
+   ],
+   "sea": "atlantic",
+   "difficulty": "medium"
+  },
+  {
+   "id": "Q974519",
+   "steps": [
+    {
+     "id": "Q207366"
+    }
+   ],
+   "sea": "atlantic",
+   "difficulty": "medium"
+  },
+  {
+   "id": "Q1406197",
+   "steps": [],
+   "sea": "atlantic",
+   "difficulty": "medium"
+  },
+  {
+   "id": "Q2003831",
+   "steps": [
+    {
+     "id": "Q476475"
+    },
+    {
+     "id": "Q37646"
+    }
+   ],
+   "sea": "channel",
+   "difficulty": "hard"
+  },
+  {
+   "id": "Q1244790",
+   "steps": [],
+   "sea": "atlantic",
+   "difficulty": "easy"
+  },
+  {
+   "id": "Q729029",
+   "steps": [
+    {
+     "id": "Q659526"
+    }
+   ],
+   "sea": "channel",
+   "difficulty": "medium"
+  },
+  {
+   "id": "Q286477",
+   "steps": [
+    {
+     "id": "Q187834"
+    },
+    {
+     "id": "Q602"
+    }
+   ],
+   "sea": "mediterranean",
+   "difficulty": "medium"
+  },
+  {
+   "id": "Q200231",
+   "steps": [
+    {
+     "id": "Q1471"
+    }
+   ],
+   "sea": "channel",
+   "difficulty": "easy"
+  },
+  {
+   "id": "Q2028483",
+   "steps": [],
+   "sea": "mediterranean",
+   "difficulty": "easy"
+  },
+  {
+   "id": "Q53746",
+   "steps": [
+    {
+     "id": "Q24792"
+    },
+    {
+     "id": "Q1675"
+    },
+    {
+     "id": "Q584"
+    }
+   ],
+   "sea": "north-sea",
+   "difficulty": "hard"
+  },
+  {
+   "id": "Q179264",
+   "steps": [
+    {
+     "id": "Q214240"
+    }
+   ],
+   "sea": "mediterranean",
+   "difficulty": "medium"
+  },
+  {
+   "id": "Q932382",
+   "steps": [
+    {
+     "id": "Q1471"
+    }
+   ],
+   "sea": "channel",
+   "difficulty": "medium"
+  },
+  {
+   "id": "Q1553526",
+   "steps": [
+    {
+     "id": "Q1908951"
+    },
+    {
+     "id": "Q41983"
+    },
+    {
+     "id": "Q1471"
+    }
+   ],
+   "sea": "channel",
+   "difficulty": "hard"
+  },
+  {
+   "id": "Q659526",
+   "steps": [],
+   "sea": "channel",
+   "difficulty": "easy"
+  },
+  {
+   "id": "Q218262",
+   "steps": [
+    {
+     "id": "Q187834"
+    },
+    {
+     "id": "Q602"
+    }
+   ],
+   "sea": "mediterranean",
+   "difficulty": "hard"
+  },
+  {
+   "id": "Q927323",
+   "steps": [
+    {
+     "id": "Q280650"
+    },
+    {
+     "id": "Q756886"
+    },
+    {
+     "id": "Q1469"
+    }
+   ],
+   "sea": "atlantic",
+   "difficulty": "hard"
+  },
+  {
+   "id": "Q1808825",
+   "steps": [
+    {
+     "id": "Q1471"
+    }
+   ],
+   "sea": "channel",
+   "difficulty": "medium"
+  },
+  {
+   "id": "Q945377",
+   "steps": [
+    {
+     "id": "Q41983"
+    },
+    {
+     "id": "Q1471"
+    }
+   ],
+   "sea": "channel",
+   "difficulty": "medium"
+  },
+  {
+   "id": "Q773906",
+   "steps": [
+    {
+     "id": "Q842462"
+    }
+   ],
+   "sea": "atlantic",
+   "difficulty": "medium"
+  },
+  {
+   "id": "Q1535195",
+   "steps": [
+    {
+     "id": "Q602"
+    }
+   ],
+   "sea": "mediterranean",
+   "difficulty": "medium"
+  },
+  {
+   "id": "Q3088027",
+   "steps": [],
+   "sea": "mediterranean",
+   "difficulty": "medium"
+  },
+  {
+   "id": "Q1227888",
+   "steps": [],
+   "sea": "atlantic",
+   "difficulty": "medium"
+  },
+  {
+   "id": "Q952791",
+   "steps": [
+    {
+     "id": "Q41983"
+    },
+    {
+     "id": "Q1471"
+    }
+   ],
+   "sea": "channel",
+   "difficulty": "hard"
+  },
+  {
+   "id": "Q1549260",
+   "steps": [
+    {
+     "id": "Q542024"
+    },
+    {
+     "id": "Q5077"
+    },
+    {
+     "id": "Q213517",
+     "optional": true
+    }
+   ],
+   "sea": "atlantic",
+   "difficulty": "hard"
+  },
+  {
+   "id": "Q1128383",
+   "steps": [
+    {
+     "id": "Q841451"
+    },
+    {
+     "id": "Q659546"
+    },
+    {
+     "id": "Q1469"
+    }
+   ],
+   "sea": "atlantic",
+   "difficulty": "hard"
+  },
+  {
+   "id": "Q1127173",
+   "steps": [],
+   "sea": "channel",
+   "difficulty": "easy"
+  },
+  {
+   "id": "Q584",
+   "steps": [],
+   "sea": "north-sea",
+   "difficulty": "easy"
+  },
+  {
+   "id": "Q602",
+   "steps": [],
+   "sea": "mediterranean",
+   "difficulty": "easy"
+  },
+  {
+   "id": "Q1074385",
+   "steps": [
+    {
+     "id": "Q1471"
+    }
+   ],
+   "sea": "channel",
+   "difficulty": "medium"
+  },
+  {
+   "id": "Q1755384",
+   "steps": [
+    {
+     "id": "Q1127096"
+    },
+    {
+     "id": "Q201341"
+    },
+    {
+     "id": "Q602"
+    }
+   ],
+   "sea": "mediterranean",
+   "difficulty": "hard"
+  },
+  {
+   "id": "Q2094628",
+   "steps": [],
+   "sea": "mediterranean",
+   "difficulty": "easy"
+  },
+  {
+   "id": "Q1475200",
+   "steps": [
+    {
+     "id": "Q1667"
+    },
+    {
+     "id": "Q584"
+    }
+   ],
+   "sea": "north-sea",
+   "difficulty": "hard"
+  },
+  {
+   "id": "Q1094808",
+   "steps": [
+    {
+     "id": "Q5077"
+    },
+    {
+     "id": "Q213517",
+     "optional": true
+    }
+   ],
+   "sea": "atlantic",
+   "difficulty": "medium"
+  },
+  {
+   "id": "Q208267",
+   "steps": [
+    {
+     "id": "Q41986"
+    }
+   ],
+   "sea": "north-sea",
+   "difficulty": "easy"
+  },
+  {
+   "id": "Q187834",
+   "steps": [
+    {
+     "id": "Q602"
+    }
+   ],
+   "sea": "mediterranean",
+   "difficulty": "easy"
+  },
+  {
+   "id": "Q153972",
+   "steps": [
+    {
+     "id": "Q1667"
+    },
+    {
+     "id": "Q584"
+    }
+   ],
+   "sea": "north-sea",
+   "difficulty": "medium"
+  },
+  {
+   "id": "Q736600",
+   "steps": [
+    {
+     "id": "Q756886"
+    },
+    {
+     "id": "Q1469"
+    }
+   ],
+   "sea": "atlantic",
+   "difficulty": "medium"
+  },
+  {
+   "id": "Q705057",
+   "steps": [
+    {
+     "id": "Q584"
+    }
+   ],
+   "sea": "north-sea",
+   "difficulty": "medium"
+  },
+  {
+   "id": "Q2092408",
+   "steps": [
+    {
+     "id": "Q213503"
+    },
+    {
+     "id": "Q1469"
+    }
+   ],
+   "sea": "atlantic",
+   "difficulty": "hard"
+  },
+  {
+   "id": "Q1908951",
+   "steps": [
+    {
+     "id": "Q41983"
+    },
+    {
+     "id": "Q1471"
+    }
+   ],
+   "sea": "channel",
+   "difficulty": "hard"
+  },
+  {
+   "id": "Q1075373",
+   "steps": [
+    {
+     "id": "Q5077"
+    },
+    {
+     "id": "Q213517",
+     "optional": true
+    }
+   ],
+   "sea": "atlantic",
+   "difficulty": "medium"
+  },
+  {
+   "id": "Q968936",
+   "steps": [
+    {
+     "id": "Q678634"
+    },
+    {
+     "id": "Q14372"
+    },
+    {
+     "id": "Q187834"
+    },
+    {
+     "id": "Q602"
+    }
+   ],
+   "sea": "mediterranean",
+   "difficulty": "hard"
+  },
+  {
+   "id": "Q1818615",
+   "steps": [
+    {
+     "id": "Q37620"
+    }
+   ],
+   "sea": "north-sea",
+   "difficulty": "medium"
+  },
+  {
+   "id": "Q1244766",
+   "steps": [
+    {
+     "id": "Q745809"
+    }
+   ],
+   "sea": "atlantic",
+   "difficulty": "medium"
+  },
+  {
+   "id": "Q1247758",
+   "steps": [],
+   "sea": "channel",
+   "difficulty": "medium"
+  },
+  {
+   "id": "Q23145",
+   "steps": [
+    {
+     "id": "Q10965"
+    }
+   ],
+   "sea": "mediterranean",
+   "difficulty": "medium"
+  },
+  {
+   "id": "Q599492",
+   "steps": [
+    {
+     "id": "Q1667"
+    },
+    {
+     "id": "Q584"
+    }
+   ],
+   "sea": "north-sea",
+   "difficulty": "medium"
+  },
+  {
+   "id": "Q1471",
+   "steps": [],
+   "sea": "channel",
+   "difficulty": "easy"
+  },
+  {
+   "id": "Q776590",
+   "steps": [],
+   "sea": "channel",
+   "difficulty": "medium"
+  },
+  {
+   "id": "Q303621",
+   "steps": [
+    {
+     "id": "Q41986"
+    }
+   ],
+   "sea": "north-sea",
+   "difficulty": "easy"
+  },
+  {
+   "id": "Q594824",
+   "steps": [
+    {
+     "id": "Q213967"
+    },
+    {
+     "id": "Q1471"
+    }
+   ],
+   "sea": "channel",
+   "difficulty": "hard"
+  },
+  {
+   "id": "Q2000636",
+   "steps": [],
+   "sea": "atlantic",
+   "difficulty": "medium"
+  },
+  {
+   "id": "Q598322",
+   "steps": [
+    {
+     "id": "Q1469"
+    }
+   ],
+   "sea": "atlantic",
+   "difficulty": "medium"
+  },
+  {
+   "id": "Q1225928",
+   "steps": [],
+   "sea": "atlantic",
+   "difficulty": "easy"
+  },
+  {
+   "id": "Q946604",
+   "steps": [
+    {
+     "id": "Q2464"
+    },
+    {
+     "id": "Q1469"
+    }
+   ],
+   "sea": "atlantic",
+   "difficulty": "medium"
+  },
+  {
+   "id": "Q37646",
+   "steps": [],
+   "sea": "channel",
+   "difficulty": "easy"
+  },
+  {
+   "id": "Q767149",
+   "steps": [
+    {
+     "id": "Q41962"
+    },
+    {
+     "id": "Q200231"
+    },
+    {
+     "id": "Q1471"
+    }
+   ],
+   "sea": "channel",
+   "difficulty": "hard"
+  },
+  {
+   "id": "Q2006062",
+   "steps": [],
+   "sea": "mediterranean",
+   "difficulty": "medium"
+  },
+  {
+   "id": "Q1129465",
+   "steps": [
+    {
+     "id": "Q213503"
+    },
+    {
+     "id": "Q1469"
+    }
+   ],
+   "sea": "atlantic",
+   "difficulty": "hard"
+  },
+  {
+   "id": "Q215653",
+   "steps": [
+    {
+     "id": "Q5077"
+    },
+    {
+     "id": "Q213517",
+     "optional": true
+    }
+   ],
+   "sea": "atlantic",
+   "difficulty": "easy"
+  },
+  {
+   "id": "Q897476",
+   "steps": [
+    {
+     "id": "Q215653"
+    },
+    {
+     "id": "Q5077"
+    },
+    {
+     "id": "Q213517",
+     "optional": true
+    }
+   ],
+   "sea": "atlantic",
+   "difficulty": "hard"
+  },
+  {
+   "id": "Q1684604",
+   "steps": [
+    {
+     "id": "Q659546"
+    },
+    {
+     "id": "Q1469"
+    }
+   ],
+   "sea": "atlantic",
+   "difficulty": "hard"
+  },
+  {
+   "id": "Q182969",
+   "steps": [],
+   "sea": "mediterranean",
+   "difficulty": "easy"
+  },
+  {
+   "id": "Q2063591",
+   "steps": [],
+   "sea": "mediterranean",
+   "difficulty": "easy"
+  },
+  {
+   "id": "Q1220946",
+   "steps": [
+    {
+     "id": "Q1032916"
+    }
+   ],
+   "sea": "channel",
+   "difficulty": "medium"
+  },
+  {
+   "id": "Q1529011",
+   "steps": [],
+   "sea": "mediterranean",
+   "difficulty": "easy"
+  },
+  {
+   "id": "Q1553030",
+   "steps": [
+    {
+     "id": "Q200231"
+    },
+    {
+     "id": "Q1471"
+    }
+   ],
+   "sea": "channel",
+   "difficulty": "hard"
+  },
+  {
+   "id": "Q1548875",
+   "steps": [
+    {
+     "id": "Q1469"
+    }
+   ],
+   "sea": "atlantic",
+   "difficulty": "medium"
+  },
+  {
+   "id": "Q127629",
+   "steps": [
+    {
+     "id": "Q668472"
+    },
+    {
+     "id": "Q584"
+    }
+   ],
+   "sea": "north-sea",
+   "difficulty": "hard"
+  },
+  {
+   "id": "Q119610",
+   "steps": [
+    {
+     "id": "Q187834"
+    },
+    {
+     "id": "Q602"
+    }
+   ],
+   "sea": "mediterranean",
+   "difficulty": "hard"
+  },
+  {
+   "id": "Q1524318",
+   "steps": [
+    {
+     "id": "Q933979"
+    }
+   ],
+   "sea": "mediterranean",
+   "difficulty": "medium"
+  },
+  {
+   "id": "Q897439",
+   "steps": [
+    {
+     "id": "Q5077"
+    },
+    {
+     "id": "Q213517",
+     "optional": true
+    }
+   ],
+   "sea": "atlantic",
+   "difficulty": "medium"
+  },
+  {
+   "id": "Q969618",
+   "steps": [],
+   "sea": "channel",
+   "difficulty": "medium"
+  },
+  {
+   "id": "Q1232651",
+   "steps": [],
+   "sea": "channel",
+   "difficulty": "medium"
+  },
+  {
+   "id": "Q979109",
+   "steps": [
+    {
+     "id": "Q211766"
+    },
+    {
+     "id": "Q5077"
+    },
+    {
+     "id": "Q213517",
+     "optional": true
+    }
+   ],
+   "sea": "atlantic",
+   "difficulty": "medium"
+  },
+  {
+   "id": "Q604405",
+   "steps": [
+    {
+     "id": "Q754718"
+    },
+    {
+     "id": "Q602"
+    }
+   ],
+   "sea": "mediterranean",
+   "difficulty": "hard"
+  },
+  {
+   "id": "Q933979",
+   "steps": [],
+   "sea": "mediterranean",
+   "difficulty": "easy"
+  },
+  {
+   "id": "Q649696",
+   "steps": [
+    {
+     "id": "Q1225928"
+    }
+   ],
+   "sea": "atlantic",
+   "difficulty": "medium"
+  },
+  {
+   "id": "Q255784",
+   "steps": [
+    {
+     "id": "Q754718"
+    },
+    {
+     "id": "Q602"
+    }
+   ],
+   "sea": "mediterranean",
+   "difficulty": "medium"
+  },
+  {
+   "id": "Q688533",
+   "steps": [
+    {
+     "id": "Q6403",
+     "optional": true
+    },
+    {
+     "id": "Q602"
+    }
+   ],
+   "sea": "mediterranean",
+   "difficulty": "medium"
+  },
+  {
+   "id": "Q729611",
+   "steps": [
+    {
+     "id": "Q41962"
+    },
+    {
+     "id": "Q200231"
+    },
+    {
+     "id": "Q1471"
+    }
+   ],
+   "sea": "channel",
+   "difficulty": "hard"
+  },
+  {
+   "id": "Q938197",
+   "steps": [
+    {
+     "id": "Q933979"
+    }
+   ],
+   "sea": "mediterranean",
+   "difficulty": "medium"
+  },
+  {
+   "id": "Q118167",
+   "steps": [
+    {
+     "id": "Q208174"
+    },
+    {
+     "id": "Q213517",
+     "optional": true
+    }
+   ],
+   "sea": "atlantic",
+   "difficulty": "easy"
+  },
+  {
+   "id": "Q372616",
+   "steps": [
+    {
+     "id": "Q751887"
+    },
+    {
+     "id": "Q215653"
+    },
+    {
+     "id": "Q5077"
+    },
+    {
+     "id": "Q213517",
+     "optional": true
+    }
+   ],
+   "sea": "atlantic",
+   "difficulty": "hard"
+  },
+  {
+   "id": "Q2096448",
+   "steps": [],
+   "sea": "mediterranean",
+   "difficulty": "medium"
+  },
+  {
+   "id": "Q659546",
+   "steps": [
+    {
+     "id": "Q1469"
+    }
+   ],
+   "sea": "atlantic",
+   "difficulty": "easy"
+  },
+  {
+   "id": "Q842462",
+   "steps": [],
+   "sea": "atlantic",
+   "difficulty": "easy"
+  },
+  {
+   "id": "Q1346326",
+   "steps": [],
+   "sea": "channel",
+   "difficulty": "easy"
+  },
+  {
+   "id": "Q1818933",
+   "steps": [
+    {
+     "id": "Q41986"
+    }
+   ],
+   "sea": "north-sea",
+   "difficulty": "medium"
+  },
+  {
+   "id": "Q1301259",
+   "steps": [
+    {
+     "id": "Q81773"
+    }
+   ],
+   "sea": "mediterranean",
+   "difficulty": "medium"
+  },
+  {
+   "id": "Q1192859",
+   "steps": [
+    {
+     "id": "Q1667"
+    },
+    {
+     "id": "Q584"
+    }
+   ],
+   "sea": "north-sea",
+   "difficulty": "hard"
+  },
+  {
+   "id": "Q288629",
+   "steps": [
+    {
+     "id": "Q5077"
+    },
+    {
+     "id": "Q213517",
+     "optional": true
+    }
+   ],
+   "sea": "atlantic",
+   "difficulty": "medium"
+  },
+  {
+   "id": "Q905718",
+   "steps": [
+    {
+     "id": "Q213503"
+    },
+    {
+     "id": "Q1469"
+    }
+   ],
+   "sea": "atlantic",
+   "difficulty": "hard"
+  },
+  {
+   "id": "Q213967",
+   "steps": [
+    {
+     "id": "Q1471"
+    }
+   ],
+   "sea": "channel",
+   "difficulty": "easy"
+  },
+  {
+   "id": "Q217061",
+   "steps": [],
+   "sea": "north-sea",
+   "difficulty": "easy"
+  },
+  {
+   "id": "Q1548403",
+   "steps": [
+    {
+     "id": "Q932382"
+    },
+    {
+     "id": "Q1471"
+    }
+   ],
+   "sea": "channel",
+   "difficulty": "hard"
+  },
+  {
+   "id": "Q226757",
+   "steps": [
+    {
+     "id": "Q1462580"
+    },
+    {
+     "id": "Q584"
+    }
+   ],
+   "sea": "north-sea",
+   "difficulty": "hard"
+  }
+ ]
+}

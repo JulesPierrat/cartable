@@ -64,21 +64,38 @@ Aucune erreur Wikidata n'a été trouvée dans cet échantillon.
 - **Corse** : ses fleuves arrivent en « mer Tyrrhénienne » ou en « mer Ligure », à ramener à la Méditerranée.
 - **Rivières étrangères ayant un code Sandre** (Alzette, Doire ripaire) : à exclure.
 
-## Décisions à prendre
+## Règles décidées (28/10/2026)
 
-1. **La Gironde est-elle une étape ?** Proposition : accepter les deux chemins, Garonne → Atlantique et Garonne → Gironde → Atlantique.
-2. **Un lac traversé compte-t-il comme une étape ?** Proposition : non, le lac est transparent. Pour la Dranse, la bonne réponse serait le Rhône, et « Léman » serait aussi accepté.
-3. **Inclure la Corse ?** Proposition : oui, ses fleuves finissent tous en Méditerranée.
+1. **La Gironde est une étape facultative** : les chemins Garonne → Atlantique et Garonne → Gironde → Atlantique sont tous deux justes (de même pour la Dordogne).
+2. **Un lac traversé ne compte pas comme une étape** : pour la Dranse, la réponse attendue est le Rhône ; citer le Léman n'est pas une erreur.
+3. **La Corse est incluse** : ses fleuves aboutissent tous en Méditerranée.
 
-## Pipeline recommandé (`scripts/data/`, Python avec `uv`)
+## Le pipeline
 
-1. **Wikidata** : télécharger tous les éléments qui ont un code Sandre, avec leur embouchure, leur longueur, leurs sitelinks et leurs coordonnées. Filtrer, puis remonter les embouchures avec la table des points d'arrivée et les règles des lacs.
-2. **Contrôle IGN** : relier code Sandre → tronçons BD TOPO → objet « Graphe unitaire » → nœud de confluence. Chaque écart avec Wikidata part en revue manuelle.
-3. **Géométries** : prendre les tronçons du réseau principal (`reseau_principal_coulant`), les fusionner, les simplifier, puis les exporter en TopoJSON ou en polyline encodée. Le Loir, simplifié à 300 m, tient en 213 points, soit environ 8 Ko.
-4. **Difficulté** : utiliser le nombre de sitelinks (le meilleur indicateur de notoriété), les pages vues Wikipédia, la longueur et le nombre d'étapes. Éviter l'ordre de Strahler, qui n'est pas comparable d'une région à l'autre.
-5. **Instantané** : figer le résultat dans `assets/data/`, revu à la main. L'app n'interroge jamais Wikidata.
+```bash
+uv run scripts/data/build_rivers.py            # utilise le cache scripts/data/cache/
+uv run scripts/data/build_rivers.py --refresh  # retélécharge Wikidata et Wikipédia
+```
 
-Outils : `requests`, `geopandas`/`pyogrio`, `shapely` 2, `pyproj`, et `networkx` si besoin.
+1. **Wikidata** : deux requêtes SPARQL. La première ramène tous les cours d'eau ayant un code Sandre, avec leur longueur. La seconde ramène tous les nœuds atteignables en suivant les embouchures, avec leur nom, leurs sitelinks et leur article Wikipédia.
+2. **Sélection** : cours d'eau de métropole, Corse comprise (code Sandre de 8 caractères commençant par une lettre ou un tiret), ayant au moins 12 sitelinks, plus les ajouts de `rules.yaml`. Quand deux rivières de départ portent le même nom, on ne garde que la plus connue.
+3. **Chaînes** : on remonte les embouchures jusqu'à un point d'arrivée de `rules.yaml` (mers, golfes, baies, estuaires). Les étapes facultatives et les lacs transparents y sont aussi déclarés. Une embouchure multiple se résout au profit d'un cours d'eau français ; sinon, il faut une règle.
+4. **Noms** : on prend le libellé Wikidata, et l'article est tiré de la première phrase de l'article Wikipédia (« La Sarthe est une rivière… »). On peut aussi l'imposer dans `rules.yaml`.
+5. **Difficulté** : nombre d'étapes obligatoires, notoriété (sitelinks), et un bonus quand le chemin passe par l'étranger.
+6. **Sorties** :
+   - `assets/data/rivers.json` : rivières jouables, étapes et mers ;
+   - `assets/data/watercourse-names.json` : 4 648 noms, sans article, pour l'autocomplétion ;
+   - `scripts/data/report.md` : chaînes non résolues, rivières écartées, articles devinés, toutes les chaînes ;
+   - `scripts/data/review.md` : les 50 chaînes à relire à la main.
+
+Pour corriger une chaîne : une règle dans `rules.yaml`, puis on relance. On ne touche jamais aux JSON à la main.
+
+**Reste à faire** :
+- **Contrôle IGN** : relier code Sandre → tronçons BD TOPO → objet « Graphe unitaire » → nœud de confluence. Chaque écart avec Wikidata part en revue manuelle.
+- **Géométries** : prendre les tronçons du réseau principal (`reseau_principal_coulant`), les fusionner, les simplifier, puis les exporter en TopoJSON ou en polyline encodée. Le Loir, simplifié à 300 m, tient en 213 points, soit environ 8 Ko.
+- **Difficulté** : l'affiner avec les pages vues de Wikipédia en français, qui reflètent mieux la notoriété en France que les sitelinks. Éviter l'ordre de Strahler, qui n'est pas comparable d'une région à l'autre.
+
+Outils prévus pour la suite : `geopandas`/`pyogrio`, `shapely` 2 et `pyproj`.
 
 ## Licences et mentions à afficher
 

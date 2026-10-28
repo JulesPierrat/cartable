@@ -1,0 +1,288 @@
+# Rapport de construction des données
+
+Généré par `scripts/data/build_rivers.py` à partir de l'instantané Wikidata du 2026-10-28. Ne pas modifier à la main.
+
+- **257 rivières jouables** (au moins 12 articles Wikipédia).
+- Difficulté : easy 55, medium 121, hard 81.
+- Étapes obligatoires avant la mer : 0 → 51, 1 → 105, 2 → 73, 3 → 24, 4 → 3, 5 → 1.
+
+## Chaînes non résolues
+
+Rivières candidates écartées faute de chaîne complète : ajouter une règle dans `rules.yaml` si elles méritent d'être jouables.
+
+Aucune.
+
+## Rivières écartées
+
+- Doire ripaire (Q670414) : Doire ripaire : finit dans l'Adriatique, hors des quatre mers du jeu
+- Rhin Supérieur (Q663546) : Rhin supérieur : tronçon du Rhin, remplacé par le Rhin (Q584)
+- Orne (Q1047027) : homonyme de Orne (Q659526), plus connue
+- Seille (Q1782483) : homonyme de Seille (Q599492), plus connue
+- Arc (Q631028) : homonyme de Arc (Q631049), plus connue
+- Avre (Q476475) : homonyme de Avre (Q739893), plus connue
+
+## Articles devinés
+
+Wikipédia ne les donnait pas : à vérifier, et à corriger dans `names` de `rules.yaml`.
+
+Aucun.
+
+## Toutes les chaînes
+
+- l'Aa → mer du Nord — *easy*
+- l'Acolin → la Loire → océan Atlantique — *medium*
+- l'Adour → océan Atlantique — *easy*
+- l'Aff → l'Oust → la Vilaine → océan Atlantique — *hard*
+- l'Agly → mer Méditerranée — *medium*
+- l'Agout → le Tarn → la Garonne → (la Gironde) → océan Atlantique — *medium*
+- l'Ailette → l'Oise → la Seine → Manche — *hard*
+- l'Ain → le Rhône → mer Méditerranée — *medium*
+- l'Aire → l'Aisne → l'Oise → la Seine → Manche — *hard*
+- l'Aisne → l'Oise → la Seine → Manche — *medium*
+- l'Alagnon → l'Allier → la Loire → océan Atlantique — *hard*
+- l'Albarine → l'Ain → le Rhône → mer Méditerranée — *hard*
+- l'Allaine → le Doubs → la Saône → le Rhône → mer Méditerranée — *hard*
+- l'Allier → la Loire → océan Atlantique — *easy*
+- l'Allondon → le Rhône → mer Méditerranée — *medium*
+- l'Alzette → la Sûre → la Moselle → le Rhin → mer du Nord — *hard*
+- l'Ancre → la Somme → Manche — *medium*
+- l'Andelle → la Seine → Manche — *medium*
+- l'Anglin → la Gartempe → la Creuse → la Vienne → la Loire → océan Atlantique — *hard*
+- l'Arc → l'Isère → le Rhône → mer Méditerranée — *medium*
+- l'Ardèche → le Rhône → mer Méditerranée — *medium*
+- l'Ardre → la Vesle → l'Aisne → l'Oise → la Seine → Manche — *hard*
+- l'Argens → mer Méditerranée — *easy*
+- l'Ariège → la Garonne → (la Gironde) → océan Atlantique — *easy*
+- l'Arize → la Garonne → (la Gironde) → océan Atlantique — *medium*
+- l'Arly → l'Isère → le Rhône → mer Méditerranée — *hard*
+- l'Armançon → l'Yonne → la Seine → Manche — *medium*
+- l'Arnon → le Cher → la Loire → océan Atlantique — *hard*
+- l'Aron → la Loire → océan Atlantique — *medium*
+- l'Arrats → la Garonne → (la Gironde) → océan Atlantique — *medium*
+- l'Arros → l'Adour → océan Atlantique — *medium*
+- l'Arroux → la Loire → océan Atlantique — *medium*
+- l'Arve → le Rhône → mer Méditerranée — *medium*
+- l'Aube → la Seine → Manche — *easy*
+- l'Aude → mer Méditerranée — *easy*
+- l'Aujon → l'Aube → la Seine → Manche — *hard*
+- l'Aulne → océan Atlantique — *easy*
+- l'Aure → la Vire → Manche — *medium*
+- l'Authie → Manche — *medium*
+- l'Aveyron → le Tarn → la Garonne → (la Gironde) → océan Atlantique — *medium*
+- l'Avre → l'Eure → la Seine → Manche — *hard*
+- la Baïse → la Garonne → (la Gironde) → océan Atlantique — *medium*
+- le Bandiat → la Tardoire → la Bonnieure → la Charente → océan Atlantique — *hard*
+- la Bar → la Meuse → mer du Nord — *medium*
+- la Benaize → l'Anglin → la Gartempe → la Creuse → la Vienne → la Loire → océan Atlantique — *hard*
+- la Besbre → la Loire → océan Atlantique — *medium*
+- le Beuvron → la Loire → océan Atlantique — *medium*
+- la Bévéra → la Roya → mer Méditerranée — *medium*
+- la Bidassoa → océan Atlantique — *easy*
+- la Bidouze → l'Adour → océan Atlantique — *medium*
+- la Bièvre → la Seine → Manche — *medium*
+- le Birsig → le Rhin → mer du Nord — *medium*
+- le Blavet → océan Atlantique — *easy*
+- la Bléone → la Durance → le Rhône → mer Méditerranée — *hard*
+- la Blies → la Sarre → la Moselle → le Rhin → mer du Nord — *hard*
+- la Bourbince → l'Arroux → la Loire → océan Atlantique — *hard*
+- la Boutonne → la Charente → océan Atlantique — *medium*
+- la Brenne → l'Armançon → l'Yonne → la Seine → Manche — *hard*
+- la Bresle → Manche — *medium*
+- la Bruche → l'Ill → le Rhin → mer du Nord — *hard*
+- le Buëch → la Durance → le Rhône → mer Méditerranée — *hard*
+- le Calavon → la Durance → le Rhône → mer Méditerranée — *hard*
+- la Canche → Manche — *easy*
+- le Célé → le Lot → la Garonne → (la Gironde) → océan Atlantique — *hard*
+- la Cère → la Dordogne → (la Gironde) → océan Atlantique — *medium*
+- le Cérou → l'Aveyron → le Tarn → la Garonne → (la Gironde) → océan Atlantique — *hard*
+- la Cèze → le Rhône → mer Méditerranée — *medium*
+- la Charente → océan Atlantique — *easy*
+- la Charentonne → la Risle → la Seine → Manche — *hard*
+- le Chassezac → l'Ardèche → le Rhône → mer Méditerranée — *hard*
+- la Chée → la Saulx → la Marne → la Seine → Manche — *hard*
+- le Cher → la Loire → océan Atlantique — *easy*
+- la Chère → la Vilaine → océan Atlantique — *medium*
+- la Chiers → la Meuse → mer du Nord — *medium*
+- le Ciron → la Garonne → (la Gironde) → océan Atlantique — *medium*
+- la Cisse → la Loire → océan Atlantique — *medium*
+- le Clain → la Vienne → la Loire → océan Atlantique — *medium*
+- la Corrèze → la Vézère → la Dordogne → (la Gironde) → océan Atlantique — *medium*
+- le Couesnon → Manche — *easy*
+- la Creuse → la Vienne → la Loire → océan Atlantique — *medium*
+- la Cure → l'Yonne → la Seine → Manche — *hard*
+- le Dadou → l'Agout → le Tarn → la Garonne → (la Gironde) → océan Atlantique — *hard*
+- la Deûle → la Lys → l'Escaut → mer du Nord — *hard*
+- la Dives → Manche — *easy*
+- la Doller → l'Ill → le Rhin → mer du Nord — *hard*
+- le Don → la Vilaine → océan Atlantique — *medium*
+- la Dordogne → (la Gironde) → océan Atlantique — *easy*
+- la Dore → l'Allier → la Loire → océan Atlantique — *hard*
+- le Doubs → la Saône → le Rhône → mer Méditerranée — *medium*
+- la Dourbie → le Tarn → la Garonne → (la Gironde) → océan Atlantique — *hard*
+- le Dourdou de Camarès → le Tarn → la Garonne → (la Gironde) → océan Atlantique — *hard*
+- la Douve → Manche — *medium*
+- le Drac → l'Isère → le Rhône → mer Méditerranée — *medium*
+- la Drôme → le Rhône → mer Méditerranée — *medium*
+- la Dronne → l'Isle → la Dordogne → (la Gironde) → océan Atlantique — *hard*
+- le Dropt → la Garonne → (la Gironde) → océan Atlantique — *medium*
+- la Durance → le Rhône → mer Méditerranée — *easy*
+- l'Échez → l'Adour → océan Atlantique — *medium*
+- l'Élorn → océan Atlantique — *medium*
+- l'Epte → la Seine → Manche — *medium*
+- l'Erdre → la Loire → océan Atlantique — *medium*
+- l'Escaut → mer du Nord — *easy*
+- l'Essonne → la Seine → Manche — *medium*
+- l'Estéron → le Var → mer Méditerranée — *medium*
+- l'Eure → la Seine → Manche — *easy*
+- l'Eygues → le Rhône → mer Méditerranée — *medium*
+- l'Eyre → océan Atlantique — *medium*
+- le Fier → le Rhône → mer Méditerranée — *medium*
+- le Furan → la Loire → océan Atlantique — *medium*
+- le Gabas → l'Adour → océan Atlantique — *medium*
+- le Gardon → le Rhône → mer Méditerranée — *medium*
+- la Garonne → (la Gironde) → océan Atlantique — *easy*
+- la Gartempe → la Creuse → la Vienne → la Loire → océan Atlantique — *hard*
+- le Gave d'Aspe → le Gave d'Oloron → (les Gaves réunis) → l'Adour → océan Atlantique — *hard*
+- le Gave d'Oloron → (les Gaves réunis) → l'Adour → océan Atlantique — *medium*
+- le Gave d'Ossau → le Gave d'Oloron → (les Gaves réunis) → l'Adour → océan Atlantique — *hard*
+- le Gave de Pau → l'Adour → océan Atlantique — *medium*
+- la Gélise → la Baïse → la Garonne → (la Gironde) → océan Atlantique — *hard*
+- le Gers → la Garonne → (la Gironde) → océan Atlantique — *medium*
+- la Gimone → la Garonne → (la Gironde) → océan Atlantique — *medium*
+- le Golo → mer Méditerranée — *easy*
+- le Grand Morin → la Marne → la Seine → Manche — *hard*
+- la Grosne → la Saône → le Rhône → mer Méditerranée — *hard*
+- l'Hérault → mer Méditerranée — *easy*
+- l'Hers-Mort → la Garonne → (la Gironde) → océan Atlantique — *medium*
+- l'Hers-Vif → l'Ariège → la Garonne → (la Gironde) → océan Atlantique — *hard*
+- l'Huisne → la Sarthe → la Maine → la Loire → océan Atlantique — *hard*
+- l'Ill → le Rhin → mer du Nord — *easy*
+- l'Ille → la Vilaine → océan Atlantique — *medium*
+- l'Indre → la Loire → océan Atlantique — *medium*
+- l'Isère → le Rhône → mer Méditerranée — *easy*
+- l'Isle → la Dordogne → (la Gironde) → océan Atlantique — *medium*
+- l'Iton → l'Eure → la Seine → Manche — *hard*
+- la Jouanne → la Mayenne → la Maine → la Loire → océan Atlantique — *hard*
+- la Lauter → le Rhin → mer du Nord — *medium*
+- le Layon → la Loire → océan Atlantique — *medium*
+- la Lède → le Lot → la Garonne → (la Gironde) → océan Atlantique — *hard*
+- la Lèze → l'Ariège → la Garonne → (la Gironde) → océan Atlantique — *hard*
+- le Loing → la Seine → Manche — *medium*
+- le Loir → la Sarthe → la Maine → la Loire → océan Atlantique — *hard*
+- la Loire → océan Atlantique — *easy*
+- le Loiret → la Loire → océan Atlantique — *medium*
+- le Lot → la Garonne → (la Gironde) → océan Atlantique — *easy*
+- la Loue → le Doubs → la Saône → le Rhône → mer Méditerranée — *hard*
+- la Louge → la Garonne → (la Gironde) → océan Atlantique — *medium*
+- la Lys → l'Escaut → mer du Nord — *easy*
+- le Madon → la Moselle → le Rhin → mer du Nord — *hard*
+- la Maine → la Loire → océan Atlantique — *medium*
+- la Marne → la Seine → Manche — *easy*
+- la Maronne → la Dordogne → (la Gironde) → océan Atlantique — *medium*
+- la Marque → la Deûle → la Lys → l'Escaut → mer du Nord — *hard*
+- la Mayenne → la Maine → la Loire → océan Atlantique — *medium*
+- la Meurthe → la Moselle → le Rhin → mer du Nord — *medium*
+- la Meuse → mer du Nord — *easy*
+- la Midouze → l'Adour → océan Atlantique — *medium*
+- la Moder → le Rhin → mer du Nord — *medium*
+- la Moselle → le Rhin → mer du Nord — *easy*
+- la Moselotte → la Moselle → le Rhin → mer du Nord — *hard*
+- la Neste → la Garonne → (la Gironde) → océan Atlantique — *medium*
+- la Nied → la Sarre → la Moselle → le Rhin → mer du Nord — *hard*
+- la Nièvre → la Loire → océan Atlantique — *medium*
+- la Nive → l'Adour → océan Atlantique — *medium*
+- la Nivelle → océan Atlantique — *medium*
+- la Noye → l'Avre → la Somme → Manche — *hard*
+- l'Odet → océan Atlantique — *easy*
+- l'Odon → l'Orne → Manche — *medium*
+- l'Ognon → la Saône → le Rhône → mer Méditerranée — *medium*
+- l'Oise → la Seine → Manche — *easy*
+- l'Orb → mer Méditerranée — *easy*
+- l'Orbe → la Thièle → l'Aar → le Rhin → mer du Nord — *hard*
+- l'Orbieu → l'Aude → mer Méditerranée — *medium*
+- l'Orge → la Seine → Manche — *medium*
+- l'Ornain → la Saulx → la Marne → la Seine → Manche — *hard*
+- l'Orne → Manche — *easy*
+- l'Ouche → la Saône → le Rhône → mer Méditerranée — *hard*
+- l'Ouette → la Mayenne → la Maine → la Loire → océan Atlantique — *hard*
+- l'Ource → la Seine → Manche — *medium*
+- l'Ourcq → la Marne → la Seine → Manche — *medium*
+- l'Oust → la Vilaine → océan Atlantique — *medium*
+- l'Ouvèze → le Rhône → mer Méditerranée — *medium*
+- le Paillon → mer Méditerranée — *medium*
+- la Penfeld → océan Atlantique — *medium*
+- le Petit Morin → la Marne → la Seine → Manche — *hard*
+- la Petite Baïse → la Baïse → la Garonne → (la Gironde) → océan Atlantique — *hard*
+- la Petite Creuse → la Creuse → la Vienne → la Loire → océan Atlantique — *hard*
+- la Rance → Manche — *easy*
+- le Rhin → mer du Nord — *easy*
+- le Rhône → mer Méditerranée — *easy*
+- la Risle → la Seine → Manche — *medium*
+- la Romanche → le Drac → l'Isère → le Rhône → mer Méditerranée — *hard*
+- la Roya → mer Méditerranée — *easy*
+- le Rupt de Mad → la Moselle → le Rhin → mer du Nord — *hard*
+- le Salat → la Garonne → (la Gironde) → océan Atlantique — *medium*
+- la Sambre → la Meuse → mer du Nord — *easy*
+- la Saône → le Rhône → mer Méditerranée — *easy*
+- la Sarre → la Moselle → le Rhin → mer du Nord — *medium*
+- la Sarthe → la Maine → la Loire → océan Atlantique — *medium*
+- la Sauer → le Rhin → mer du Nord — *medium*
+- la Sauldre → le Cher → la Loire → océan Atlantique — *hard*
+- la Saulx → la Marne → la Seine → Manche — *hard*
+- la Save → la Garonne → (la Gironde) → océan Atlantique — *medium*
+- la Savoureuse → l'Allaine → le Doubs → la Saône → le Rhône → mer Méditerranée — *hard*
+- la Scarpe → l'Escaut → mer du Nord — *medium*
+- le Scorff → le Blavet → océan Atlantique — *medium*
+- la Sée → Manche — *medium*
+- le Sègre → l'Èbre → mer Méditerranée — *medium*
+- la Seille → la Moselle → le Rhin → mer du Nord — *medium*
+- la Seine → Manche — *easy*
+- la Sélune → Manche — *medium*
+- la Semois → la Meuse → mer du Nord — *easy*
+- le Serein → l'Yonne → la Seine → Manche — *hard*
+- la Seudre → océan Atlantique — *medium*
+- la Sèvre nantaise → la Loire → océan Atlantique — *medium*
+- la Sèvre niortaise → océan Atlantique — *easy*
+- la Sioule → l'Allier → la Loire → océan Atlantique — *medium*
+- la Somme → Manche — *easy*
+- la Suippe → l'Aisne → l'Oise → la Seine → Manche — *hard*
+- le Taravo → mer Méditerranée — *medium*
+- la Tardes → le Cher → la Loire → océan Atlantique — *hard*
+- le Tarn → la Garonne → (la Gironde) → océan Atlantique — *easy*
+- le Tarnon → le Tarn → la Garonne → (la Gironde) → océan Atlantique — *hard*
+- le Taurion → la Vienne → la Loire → océan Atlantique — *hard*
+- le Tavignano → mer Méditerranée — *easy*
+- le Tech → mer Méditerranée — *easy*
+- la Ternoise → la Canche → Manche — *medium*
+- la Têt → mer Méditerranée — *easy*
+- le Thérain → l'Oise → la Seine → Manche — *hard*
+- le Thouet → la Loire → océan Atlantique — *medium*
+- la Thur → l'Ill → le Rhin → mer du Nord — *hard*
+- la Tille → la Saône → le Rhône → mer Méditerranée — *hard*
+- la Tinée → le Var → mer Méditerranée — *medium*
+- le Touch → la Garonne → (la Gironde) → océan Atlantique — *medium*
+- la Touques → Manche — *medium*
+- le Trieux → Manche — *medium*
+- la Truyère → le Lot → la Garonne → (la Gironde) → océan Atlantique — *medium*
+- l'Ubaye → la Durance → le Rhône → mer Méditerranée — *hard*
+- le Var → mer Méditerranée — *easy*
+- la Vendée → la Sèvre niortaise → océan Atlantique — *medium*
+- le Verdon → la Durance → le Rhône → mer Méditerranée — *medium*
+- la Versoix → (le Léman) → le Rhône → mer Méditerranée — *medium*
+- la Vesle → l'Aisne → l'Oise → la Seine → Manche — *hard*
+- la Vésubie → le Var → mer Méditerranée — *medium*
+- la Vézère → la Dordogne → (la Gironde) → océan Atlantique — *easy*
+- le Viaur → l'Aveyron → le Tarn → la Garonne → (la Gironde) → océan Atlantique — *hard*
+- le Vidourle → mer Méditerranée — *medium*
+- la Vienne → la Loire → océan Atlantique — *easy*
+- la Vilaine → océan Atlantique — *easy*
+- la Vire → Manche — *easy*
+- le Viroin → la Meuse → mer du Nord — *medium*
+- la Vis → l'Hérault → mer Méditerranée — *medium*
+- la Vologne → la Moselle → le Rhin → mer du Nord — *hard*
+- le Volp → la Garonne → (la Gironde) → océan Atlantique — *medium*
+- l'Yèvre → le Cher → la Loire → océan Atlantique — *hard*
+- l'Yonne → la Seine → Manche — *easy*
+- l'Yser → mer du Nord — *easy*
+- l'Yvette → l'Orge → la Seine → Manche — *hard*
+- la Zorn → la Moder → le Rhin → mer du Nord — *hard*

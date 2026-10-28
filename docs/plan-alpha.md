@@ -65,19 +65,20 @@ Objectif : un fichier qui donne, pour chaque rivière, la chaîne exacte jusqu'�
 
 - [x] **Exploration d'abord** : d'où tirer, pour chaque rivière, le cours d'eau dans lequel elle se jette ? Résultat dans [`docs/donnees.md`](donnees.md) : Wikidata (P403) pour les chaînes, BD TOPO de l'IGN pour le contrôle et les géométries.
 - [x] Vérifier la licence des données et la mention à afficher dans l'app (voir `docs/donnees.md`).
-- [ ] Trancher les trois décisions de `docs/donnees.md` : la Gironde comme étape, les lacs traversés, la Corse.
-- [ ] Pipeline `scripts/data/` (Python + uv) : extraction Wikidata (rivières ayant un code Sandre) → remontée des embouchures → table des points d'arrivée vers les 4 mers (Manche, mer du Nord, Atlantique, Méditerranée) → contrôle croisé avec les confluences BD TOPO → liste des écarts à revoir.
-- [ ] Noms : article (`le`, `la`, `l'`), forme d'affichage, variantes acceptées (`Gironde` pour la Garonne, etc.).
-- [ ] Fichier de corrections manuelles (`corrections.yaml`) pour les cas particuliers :
+- [x] Trancher les trois décisions de `docs/donnees.md` : Gironde étape facultative, lac traversé transparent, Corse incluse.
+- [x] Pipeline `scripts/data/build_rivers.py` (Python + uv) : extraction Wikidata (rivières ayant un code Sandre) → remontée des embouchures → table des points d'arrivée vers les 4 mers → `assets/data/rivers.json` et rapport de relecture `scripts/data/report.md`.
+- [ ] Contrôle croisé des chaînes avec les confluences BD TOPO, et liste des écarts à revoir.
+- [x] Noms : article (`le`, `la`, `l'`, `les`, tiré de Wikipédia) et forme d'affichage ; étapes facultatives (Gironde, Gaves réunis, lacs traversés).
+- [x] Fichier de règles manuelles (`scripts/data/rules.yaml`) pour les cas particuliers :
   - estuaires partagés (Dordogne → Garonne ou Gironde) ;
   - rivières qui traversent un lac (Rhône et Léman) ;
   - fleuves qui finissent à l'étranger (Moselle → Rhin → mer du Nord, Meuse, Escaut) ;
-  - rivières qui finissent dans un étang (Arc → étang de Berre) : à exclure ou à traiter à part.
-- [ ] Niveau de difficulté calculé : nombre d'étapes, notoriété (sitelinks Wikidata, pages vues Wikipédia) et longueur.
-- [ ] Sélection de 200 à 300 rivières jouables, avec leur niveau (le filtre « métropole, au moins 12 sitelinks » en donne 257), identifiées par leur QID Wikidata.
+  - rivières qui finissent dans un étang (Arc → étang de Berre → Méditerranée).
+- [x] Niveau de difficulté calculé : nombre d'étapes, notoriété (sitelinks Wikidata) et passage par l'étranger. À affiner avec les pages vues de Wikipédia en français.
+- [x] Sélection de 200 à 300 rivières jouables, avec leur niveau : 257 rivières (55 faciles, 121 moyennes, 81 difficiles), identifiées par leur QID Wikidata.
 - [ ] Géométries simplifiées (contour de la France et tracés des cours d'eau sélectionnés, tronçons BD TOPO du réseau principal) pour la carte, en coordonnées déjà projetées.
-- [ ] Tests de non-régression sur des chaînes connues : Loir → Sarthe → Maine → Loire → Atlantique ; Aisne → Oise → Seine → Manche ; Gartempe → Creuse → Vienne → Loire → Atlantique ; Vologne → Moselle → Rhin → mer du Nord ; Ognon → Saône → Rhône → Méditerranée.
-- [ ] Revue manuelle de 50 chaînes tirées au hasard.
+- [x] Tests de non-régression sur des chaînes connues (`src/games/jusqua-la-mer/data/__tests__/rivers-test.ts`) : Loir → Sarthe → Maine → Loire → Atlantique ; Aisne → Oise → Seine → Manche ; Gartempe → Creuse → Vienne → Loire → Atlantique ; Vologne → Moselle → Rhin → mer du Nord ; Ognon → Saône → Rhône → Méditerranée.
+- [ ] Revue manuelle de 50 chaînes tirées au hasard : la liste à cocher est dans `scripts/data/review.md`.
 
 **Démontrable** : `assets/data/rivers.json` et `assets/data/geo.json`, plus un rapport des cas douteux.
 
