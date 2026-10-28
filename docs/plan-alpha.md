@@ -103,13 +103,15 @@ Objectif : toute la logique du jeu, sans interface.
 
 Objectif : reproduire les maquettes avec le moteur branché.
 
-- [ ] Accueil : carte du défi du jour, partie libre en 3 niveaux, « Bientôt », série de jours, barre d'onglets.
-- [ ] Comment jouer : affiché au premier lancement, puis accessible depuis la partie.
-- [ ] Partie : chaîne verticale, vies, saisie avec suggestions, choix de la mer, bouton indice.
-- [ ] Gestion du clavier : la saisie et les suggestions restent visibles ; le choix de la mer passe dans une feuille quand le clavier est ouvert.
-- [ ] Retours : secousse et vibration sur une erreur (`expo-haptics`), animation quand une étape est trouvée.
-- [ ] Résultat : récapitulatif, grille, série, anecdote, partager, rejouer, compte à rebours avant le prochain défi.
-- [ ] Écran de défaite qui montre la bonne chaîne.
+- [x] Accueil : carte du défi du jour (numéro et date), partie libre en 3 niveaux, « Bientôt », barre d'onglets. La série de jours viendra avec la phase 5.
+- [x] Comment jouer : contenu des maquettes, affiché avant chaque défi du jour.
+- [ ] Ne l'afficher qu'au premier lancement (il faut le stockage de la phase 5).
+- [x] Partie : chaîne verticale (étapes trouvées, erreurs sous la bonne ligne, étapes à venir cachées), vies, saisie avec suggestions, choix de la mer, bouton indice.
+- [x] Gestion du clavier : la saisie et les suggestions restent visibles ; clavier ouvert, les mers laissent place à un lien qui le ferme.
+- [x] Retours : secousse et vibration sur une erreur (`expo-haptics`), apparition en fondu quand une étape est trouvée, messages explicites (« pas directement ! », « pas encore »).
+- [x] Résultat : récapitulatif, chemin complet, grille, score, anecdote tirée des données, partage, partie libre, compte à rebours avant le prochain défi.
+- [x] Écran de défaite qui montre la bonne chaîne.
+- [ ] Tester sur un vrai téléphone (iOS et Android) : clavier, vibrations, polices. Testé jusqu'ici dans la version web de l'app.
 
 **Démontrable** : le défi du jour se joue sur le téléphone, sans la carte.
 

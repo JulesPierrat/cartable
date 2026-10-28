@@ -20,7 +20,8 @@ Les règles Expo du template s'appliquent, en particulier « ne te fie pas à ta
 ## Commandes
 
 - `npm run lint`, `npm run typecheck`, `npm test` : les trois doivent passer, c'est ce que vérifie la CI.
-- Node n'est pas encore installé sur la machine de Jules : en attendant, lance les commandes npm et npx dans Docker, avec l'image locale `node:24-alpine` (commande type dans le README). Le serveur de dev (`npx expo start`), lui, attend Node sur la machine.
+- Node 24 est installé avec nvm : dans un shell non interactif, commence par `source ~/.nvm/nvm.sh`.
+- Pour vérifier un écran sans téléphone : `npx expo start --web`, puis le navigateur intégré en taille mobile. Le premier chargement est lent (polices). Les vibrations et le clavier, eux, ne se vérifient que sur un vrai téléphone.
 
 ## Navigation
 

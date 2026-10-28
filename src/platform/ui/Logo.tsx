@@ -8,7 +8,7 @@ import { AppText } from '@/platform/ui/AppText';
 export function Logo() {
   return (
     <View style={styles.row} accessibilityRole="header" accessibilityLabel="Cartable">
-      <Svg width={34} height={34} viewBox="0 0 34 34" accessible={false}>
+      <Svg width={34} height={34} viewBox="0 0 34 34">
         <Rect width={34} height={34} rx={10} fill={colors.water} />
         <Path
           d="M8 10l6-2 6 2 6-2v16l-6 2-6-2-6 2z M14 8v16 M20 10v16"

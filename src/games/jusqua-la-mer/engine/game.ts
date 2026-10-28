@@ -44,11 +44,13 @@ export type Feedback =
 
 export type HintTarget = { kind: 'step'; stepIndex: number } | { kind: 'sea' };
 
-export type Hint = { target: HintTarget; initial: string };
+/** Pour une étape, l'initiale de son nom ; pour la mer, le moteur ne donne que la cible (l'écran choisit le texte). */
+export type Hint = { target: { kind: 'step'; stepIndex: number }; initial: string } | { target: { kind: 'sea' } };
 
+/** `at` : index de l'étape recherchée au moment du coup (pour afficher une erreur sous la bonne ligne). */
 export type HistoryEntry =
-  | { kind: 'answer'; input: string; feedback: Feedback }
-  | { kind: 'sea'; sea: SeaId; feedback: Feedback }
+  | { kind: 'answer'; input: string; feedback: Feedback; at: number }
+  | { kind: 'sea'; sea: SeaId; feedback: Feedback; at: number }
   | { kind: 'hint'; hint: Hint };
 
 export type StepStatus = 'found' | 'skipped' | 'pending';
@@ -110,7 +112,7 @@ export function answerWatercourse(state: GameState, input: string, context: Game
       const nextSteps = state.steps.map((status, j): StepStatus =>
         j === i ? 'found' : j >= current && j < i ? 'skipped' : status,
       );
-      return record(state, { kind: 'answer', input, feedback: { kind: 'found', stepIndex: i } }, nextSteps);
+      return record(state, { kind: 'answer', input, feedback: { kind: 'found', stepIndex: i }, at: current }, nextSteps);
     }
   }
 
@@ -124,7 +126,7 @@ export function answerWatercourse(state: GameState, input: string, context: Game
       : context.knownNames.has(answer)
         ? { kind: 'wrong' }
         : { kind: 'unknown' };
-  return record(state, { kind: 'answer', input, feedback });
+  return record(state, { kind: 'answer', input, feedback, at: current });
 }
 
 /** Désigne la mer où finit le chemin : gagné si plus aucune étape obligatoire ne manque. */
@@ -132,18 +134,19 @@ export function answerSea(state: GameState, sea: SeaId): Outcome {
   if (state.status !== 'playing') {
     return { state, feedback: { kind: 'game-over' } };
   }
+  const at = currentStepIndex(state);
   if (sea !== state.river.sea) {
-    return record(state, { kind: 'sea', sea, feedback: { kind: 'sea-wrong' } });
+    return record(state, { kind: 'sea', sea, feedback: { kind: 'sea-wrong' }, at });
   }
   if (nextRequiredStepIndex(state) !== null) {
-    return record(state, { kind: 'sea', sea, feedback: { kind: 'sea-too-early' } });
+    return record(state, { kind: 'sea', sea, feedback: { kind: 'sea-too-early' }, at });
   }
   const steps = state.steps.map((status): StepStatus => (status === 'pending' ? 'skipped' : status));
-  return record(state, { kind: 'sea', sea, feedback: { kind: 'sea-correct' } }, steps);
+  return record(state, { kind: 'sea', sea, feedback: { kind: 'sea-correct' }, at }, steps);
 }
 
 /**
- * Indice : l'initiale de la prochaine étape obligatoire, ou de la mer s'il n'en reste plus.
+ * Indice sur la prochaine étape obligatoire (son initiale), ou sur la mer s'il n'en reste plus.
  * Un seul indice par étape ; `null` si celui-ci a déjà été donné ou si la partie est finie.
  */
 export function requestHint(state: GameState, context: GameContext): { state: GameState; hint: Hint | null } {
@@ -158,12 +161,14 @@ export function requestHint(state: GameState, context: GameContext): { state: Ga
   if (given) {
     return { state, hint: null };
   }
-  const { watercourses, seas } = context.dataset;
-  const name =
+  const { watercourses } = context.dataset;
+  const hint: Hint =
     target.kind === 'step'
-      ? watercourses[state.river.steps[target.stepIndex].id].name
-      : seas[state.river.sea].shortName;
-  const hint: Hint = { target, initial: name.charAt(0).toUpperCase() };
+      ? {
+          target,
+          initial: watercourses[state.river.steps[target.stepIndex].id].name.charAt(0).toUpperCase(),
+        }
+      : { target };
   return { state: { ...state, history: [...state.history, { kind: 'hint', hint }] }, hint };
 }
 

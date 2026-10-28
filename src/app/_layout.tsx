@@ -31,9 +31,8 @@ export default function RootLayout() {
           contentStyle: { backgroundColor: colors.background },
         }}>
         <Stack.Screen name="(tabs)" />
-        <Stack.Screen name="jeux/jusqua-la-mer/regles" />
-        <Stack.Screen name="jeux/jusqua-la-mer/partie" options={{ gestureEnabled: false }} />
-        <Stack.Screen name="jeux/jusqua-la-mer/resultat" options={{ gestureEnabled: false }} />
+        {/* Chaque jeu a son propre `_layout.tsx` (et son état de partie) dans src/app/jeux/<jeu>/. */}
+        <Stack.Screen name="jeux/jusqua-la-mer" />
       </Stack>
     </>
   );

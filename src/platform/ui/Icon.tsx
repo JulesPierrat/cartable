@@ -77,8 +77,7 @@ export function Icon({ name, size = 24, color = colors.ink, strokeWidth = 2, fil
       stroke={filled ? 'none' : color}
       strokeWidth={strokeWidth}
       strokeLinecap="round"
-      strokeLinejoin="round"
-      accessible={false}>
+      strokeLinejoin="round">
       {icons[name]}
     </Svg>
   );

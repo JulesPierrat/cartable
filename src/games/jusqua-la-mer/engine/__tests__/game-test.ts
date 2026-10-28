@@ -141,11 +141,11 @@ describe('une partie de « Jusqu’à la mer »', () => {
       state = first.state;
       expect(requestHint(state, context).hint).toBeNull();
       state = answerWatercourse(state, 'Sarthe', context).state;
-      expect(requestHint(state, context).hint?.initial).toBe('M');
+      expect(requestHint(state, context).hint).toMatchObject({ initial: 'M' });
     });
 
     it("porte sur la mer quand il n'y a plus de cours d'eau à citer", () => {
-      expect(requestHint(startGame(garonne), context).hint).toEqual({ target: { kind: 'sea' }, initial: 'A' });
+      expect(requestHint(startGame(garonne), context).hint).toEqual({ target: { kind: 'sea' } });
     });
 
     it('coûtent des points et apparaissent dans la grille', () => {
