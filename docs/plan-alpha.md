@@ -134,9 +134,10 @@ Objectif : reproduire les maquettes avec le moteur branché.
 ## Phase 6 — Finitions et distribution de l'alpha
 
 - [ ] Icône et écran de démarrage définitifs.
-- [ ] Accessibilité : libellés des boutons-icônes, contrastes, taille de texte système.
+- [x] Accessibilité : libellés des boutons-icônes, contrastes vérifiés par un test, taille de texte système suivie jusqu'à 1,5 fois.
+- [ ] Vérifier VoiceOver / TalkBack sur un vrai téléphone.
 - [x] Mention des sources de données (Wikidata, IGN, avec leurs dates) dans Profil.
-- [ ] EAS : profils `development` et `preview` dans `eas.json`.
+- [x] EAS : profils `preview` (testeurs) et `production` (stores) dans `eas.json`, identifiant `com.julespierrat.cartable`. Marche à suivre dans [`docs/alpha.md`](alpha.md).
 - [ ] Android : APK de test via EAS (lien d'installation direct).
 - [ ] iOS : TestFlight (nécessite un compte Apple Developer, 99 $/an), ou Expo Go pour les premiers testeurs.
 - [ ] Formulaire ou canal de retours pour les testeurs.
