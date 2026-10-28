@@ -1,12 +1,20 @@
 import * as Haptics from 'expo-haptics';
 import { router, useLocalSearchParams } from 'expo-router';
-import { useEffect, useState } from 'react';
-import { KeyboardAvoidingView, Platform, ScrollView, StyleSheet, View } from 'react-native';
+import { useEffect, useRef, useState } from 'react';
+import {
+  Keyboard,
+  KeyboardAvoidingView,
+  Platform,
+  ScrollView,
+  StyleSheet,
+  View,
+  type ScrollViewInstance,
+} from 'react-native';
 import { SafeAreaView } from 'react-native-safe-area-context';
 
 import { AnswerPanel } from '@/games/jusqua-la-mer/components/AnswerPanel';
 import { ChainProgress } from '@/games/jusqua-la-mer/components/ChainProgress';
-import { HintSheet } from '@/games/jusqua-la-mer/components/HintSheet';
+import { HintCard } from '@/games/jusqua-la-mer/components/HintCard';
 import { Lives } from '@/games/jusqua-la-mer/components/Lives';
 import type { SeaId } from '@/games/jusqua-la-mer/data/rivers';
 import {
@@ -45,7 +53,8 @@ export default function GameScreen() {
   const [state, setState] = useState(() => startGame(setup.river));
   const [message, setMessage] = useState<{ text: string; tone: 'error' | 'info' } | null>(null);
   const [shakeKey, setShakeKey] = useState(0);
-  const [shownHint, setShownHint] = useState<Hint | null>(null);
+  const [hintOpen, setHintOpen] = useState(false);
+  const scrollRef = useRef<ScrollViewInstance>(null);
   const [startedAt] = useState(() => Date.now());
   const { finishGame } = useGameSession();
 
@@ -83,24 +92,31 @@ export default function GameScreen() {
     applyOutcome(next, feedback, '');
   };
 
+  // L'indice de l'étape en cours, s'il a déjà été donné : il se revoit sans être payé une seconde fois.
+  const required = nextRequiredStepIndex(state);
+  const currentHint: Hint | undefined = hintFor(
+    state,
+    required === null ? { kind: 'sea' } : { kind: 'step', stepIndex: required },
+  );
+
+  const showHint = () => {
+    Keyboard.dismiss();
+    setHintOpen(true);
+    scrollRef.current?.scrollTo({ y: 0, animated: true });
+  };
+
   const onHint = () => {
     const { state: next, hint, refusal } = requestHint(state, gameContext);
     if (hint) {
       setState(next);
-      setShownHint(hint);
       setMessage({ text: 'Indice utilisé : une vie en moins.', tone: 'info' });
       Haptics.selectionAsync();
+      showHint();
     } else if (refusal === 'already-given') {
-      showCurrentHint();
+      showHint();
     } else if (refusal === 'last-life') {
       setMessage({ text: 'Il te faut au moins deux vies pour demander un indice.', tone: 'info' });
     }
-  };
-
-  /** Rouvre l'indice déjà donné pour l'étape en cours, sans le payer une seconde fois. */
-  const showCurrentHint = () => {
-    const required = nextRequiredStepIndex(state);
-    setShownHint(hintFor(state, required === null ? { kind: 'sea' } : { kind: 'step', stepIndex: required }) ?? null);
   };
 
   const title = setup.mode === 'daily' ? 'Défi du jour' : `Partie libre · ${difficultyLabels[setup.mode]}`;
@@ -110,6 +126,7 @@ export default function GameScreen() {
     <SafeAreaView edges={['top']} style={styles.safeArea}>
       <KeyboardAvoidingView behavior={Platform.OS === 'ios' ? 'padding' : undefined} style={styles.flex}>
         <ScrollView
+          ref={scrollRef}
           contentContainerStyle={styles.content}
           keyboardShouldPersistTaps="handled"
           showsVerticalScrollIndicator={false}>
@@ -136,12 +153,14 @@ export default function GameScreen() {
             <Lives left={state.livesLeft} total={DEFAULT_LIVES} />
           </View>
 
-          <ChainProgress state={state} onShowHint={showCurrentHint} />
+          {hintOpen && currentHint ? (
+            <HintCard hint={currentHint} state={state} onHide={() => setHintOpen(false)} />
+          ) : null}
+          <ChainProgress state={state} onShowHint={showHint} />
         </ScrollView>
 
         <AnswerPanel onAnswer={onAnswer} onSea={onSea} message={message} shakeKey={shakeKey} />
       </KeyboardAvoidingView>
-      <HintSheet hint={shownHint} state={state} onClose={() => setShownHint(null)} />
     </SafeAreaView>
   );
 }

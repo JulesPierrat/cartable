@@ -1,6 +1,7 @@
 import { StyleSheet, View } from 'react-native';
 import Svg, { G, Path, Rect } from 'react-native-svg';
 
+import { dataset } from '@/games/jusqua-la-mer/data/rivers';
 import {
   boundsOf,
   fitBox,
@@ -23,7 +24,7 @@ type RiverMapProps = {
   height: number;
   /** Cours d'eau déjà connus (le chemin parcouru), en bleu nuit. */
   known: readonly string[];
-  /** Cours d'eau mis en avant (l'indice ou le trajet complet), en bleu vif et plus épais. */
+  /** Cours d'eau mis en avant (l'indice ou les étapes du trajet), en bleu vif. */
   highlight?: readonly string[];
   /** `france` : toute la France, comme une carte vierge ; `path` : zoom sur les tracés, avec la France en médaillon. */
   framing: 'france' | 'path';
@@ -32,9 +33,7 @@ type RiverMapProps = {
 
 /** Carte vierge de la France avec des tracés de rivières (indices et écran de résultat). */
 export function RiverMap({ width, height, known, highlight = [], framing, accessibilityLabel }: RiverMapProps) {
-  const knownLines = known.flatMap((id) => watercourseLines(id) ?? []);
-  const highlightLines = highlight.flatMap((id) => watercourseLines(id) ?? []);
-  const drawn = boundsOf([...knownLines, ...highlightLines]);
+  const drawn = boundsOf([...known, ...highlight].flatMap((id) => watercourseLines(id) ?? []));
   const withInset = framing === 'path' && drawn !== null;
   const box = withInset ? fitWithInset(drawn, width, height) : fitBox(unionBox(franceBox, drawn), width / height, 0.04);
   // Largeur d'un pixel écran en unités de la carte, pour des traits d'épaisseur constante.
@@ -49,8 +48,12 @@ export function RiverMap({ width, height, known, highlight = [], framing, access
       <Svg width={width} height={height} viewBox={viewBox(box)}>
         <Rect x={box.minX} y={box.minY} width={box.maxX - box.minX} height={box.maxY - box.minY} fill={SEA} />
         <Outline px={px} />
-        <Lines lines={knownLines} color={colors.night} width={2.5 * px} halo={5 * px} />
-        <Lines lines={highlightLines} color={colors.water} width={4 * px} halo={8 * px} />
+        {known.map((id) => (
+          <River key={id} id={id} color={colors.night} px={px} />
+        ))}
+        {highlight.map((id) => (
+          <River key={id} id={id} color={colors.water} px={px} />
+        ))}
       </Svg>
       {withInset ? <Inset box={box} /> : null}
     </View>
@@ -66,7 +69,7 @@ function Outline({ px }: { px: number }) {
           d={svgPath(ring, true)}
           fill={colors.white}
           stroke={colors.borderStrong}
-          strokeWidth={px}
+          strokeWidth={0.75 * px}
           strokeLinejoin="round"
         />
       ))}
@@ -74,16 +77,35 @@ function Outline({ px }: { px: number }) {
   );
 }
 
-function Lines({ lines, color, width, halo }: { lines: readonly Line[]; color: string; width: number; halo: number }) {
-  if (lines.length === 0) {
+/** Épaisseur d'un trait (en pixels) selon le rang du cours d'eau : un fleuve est plus épais qu'un affluent. */
+export function riverStrokeWidth(lengthKm: number | undefined): number {
+  const km = lengthKm ?? 50;
+  if (km >= 500) {
+    return 2.4;
+  }
+  if (km >= 200) {
+    return 1.8;
+  }
+  if (km >= 80) {
+    return 1.3;
+  }
+  return 1;
+}
+
+function River({ id, color, px }: { id: string; color: string; px: number }) {
+  const lines = watercourseLines(id);
+  if (!lines) {
     return null;
   }
-  const d = lines.map((line) => svgPath(line)).join('');
   return (
-    <G fill="none" strokeLinecap="round" strokeLinejoin="round">
-      <Path d={d} stroke={colors.white} strokeWidth={halo} />
-      <Path d={d} stroke={color} strokeWidth={width} />
-    </G>
+    <Path
+      d={lines.map((line: Line) => svgPath(line)).join('')}
+      fill="none"
+      stroke={color}
+      strokeWidth={riverStrokeWidth(dataset.watercourses[id]?.lengthKm) * px}
+      strokeLinecap="round"
+      strokeLinejoin="round"
+    />
   );
 }
 
