@@ -39,21 +39,20 @@ describe('présentation de « Jusqu’à la mer »', () => {
     expect(missLabel('garonne', state)).toBe('Garonne');
   });
 
-  it('montre sur la carte le cours d’eau à trouver, sans écrire son nom', () => {
-    const stepHint = requestHint(loir, gameContext).hint!;
-    const sarthe = loir.river.steps[0].id;
-    expect(hintMap(stepHint, loir)).toEqual({ known: [loir.river.id], highlight: [sarthe] });
-    expect(hintCaption(stepHint, loir)).toBe(
-      "En bleu vif, le cours d'eau dans lequel se jette le Loir. À toi de trouver son nom !",
-    );
-  });
-
-  it('ne montre sur la carte que les rivières découvertes et la rivière en cours', () => {
-    let state = startGame(riverNamed('Loir'));
-    state = answerWatercourse(state, 'Sarthe', gameContext).state;
-    const hint = requestHint(state, gameContext).hint!;
+  it('1er indice : seulement les rivières découvertes ; 2e : avec le cours d’eau à trouver', () => {
+    let state = answerWatercourse(loir, 'Sarthe', gameContext).state;
     const [sarthe, maine] = state.river.steps.map((step) => step.id);
-    expect(hintMap(hint, state)).toEqual({ known: [state.river.id, sarthe], highlight: [maine] });
+    const first = requestHint(state, gameContext);
+    expect(hintMap(first.hint!, first.state)).toEqual({ known: [state.river.id, sarthe], highlight: [] });
+    expect(hintCaption(first.hint!, first.state)).toBe(
+      "Voici le chemin déjà découvert. Dans quel cours d'eau se jette la Sarthe ?",
+    );
+    state = first.state;
+    const second = requestHint(state, gameContext);
+    expect(hintMap(second.hint!, second.state)).toEqual({ known: [state.river.id, sarthe], highlight: [maine] });
+    expect(hintCaption(second.hint!, second.state)).toBe(
+      "En bleu vif, le cours d'eau dans lequel se jette la Sarthe. À toi de trouver son nom !",
+    );
   });
 
   it('pour la mer, met en avant le chemin jusqu’à la côte', () => {
@@ -63,8 +62,8 @@ describe('présentation de « Jusqu’à la mer »', () => {
     expect(hintCaption(seaHint, seine)).toBe("Suis la Seine jusqu'à la côte pour trouver sa mer.");
   });
 
-  it('donne l’initiale quand le cours d’eau n’a pas de tracé (hors de France)', () => {
-    const segre = startGame(riverNamed('Sègre'));
+  it('donne l’initiale au 2e indice quand le cours d’eau n’a pas de tracé (hors de France)', () => {
+    const segre = requestHint(startGame(riverNamed('Sègre')), gameContext).state;
     expect(hintCaption(requestHint(segre, gameContext).hint!, segre)).toBe(
       "Ce cours d'eau coule hors de France et n'a pas de tracé : son nom commence par « È ».",
     );

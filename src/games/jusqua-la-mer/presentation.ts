@@ -113,13 +113,16 @@ export function knownPath(state: GameState): string[] {
   return [state.river.id, ...state.river.steps.filter((_, i) => state.steps[i] === 'found').map((step) => step.id)];
 }
 
-/** Ce que montre la carte d'un indice : le chemin connu, et ce qu'il faut deviner mis en avant. */
+/**
+ * Ce que montre la carte d'un indice. 1er indice : les rivières découvertes seulement.
+ * 2e indice : les rivières découvertes et le cours d'eau à trouver. Mer : le chemin jusqu'à la côte.
+ */
 export function hintMap(hint: Hint, state: GameState): { known: string[]; highlight: string[] } {
   const path = knownPath(state);
-  if (hint.target.kind === 'sea') {
+  if (!('initial' in hint)) {
     return { known: [], highlight: path };
   }
-  return { known: path, highlight: [state.river.steps[hint.target.stepIndex].id] };
+  return { known: path, highlight: hint.level === 2 ? [state.river.steps[hint.target.stepIndex].id] : [] };
 }
 
 /** Légende de la carte d'indice, sans jamais écrire la réponse. */
@@ -127,6 +130,9 @@ export function hintCaption(hint: Hint, state: GameState): string {
   const from = watercourseName(lastFoundId(state));
   if (!('initial' in hint)) {
     return `Suis ${from} jusqu'à la côte pour trouver sa mer.`;
+  }
+  if (hint.level === 1) {
+    return `Voici le chemin déjà découvert. Dans quel cours d'eau se jette ${from} ?`;
   }
   const target = state.river.steps[hint.target.stepIndex].id;
   return hasGeometry(target)

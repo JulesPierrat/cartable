@@ -44,8 +44,18 @@ export type Feedback =
 
 export type HintTarget = { kind: 'step'; stepIndex: number } | { kind: 'sea' };
 
-/** Pour une étape, l'initiale de son nom ; pour la mer, le moteur ne donne que la cible (l'écran choisit le texte). */
-export type Hint = { target: { kind: 'step'; stepIndex: number }; initial: string } | { target: { kind: 'sea' } };
+/**
+ * Un indice et son niveau. Pour une étape : niveau 1, la carte des rivières découvertes ;
+ * niveau 2, la même carte avec le cours d'eau à trouver (son initiale sert quand il n'a pas de tracé).
+ * Pour la mer, un seul niveau : le chemin jusqu'à la côte. Le moteur ne donne que la cible et le
+ * niveau, l'écran choisit quoi montrer.
+ */
+export type Hint =
+  | { target: { kind: 'step'; stepIndex: number }; level: 1 | 2; initial: string }
+  | { target: { kind: 'sea' }; level: 1 };
+
+/** Nombre d'indices possibles par cible. */
+export const MAX_HINTS = { step: 2, sea: 1 } as const;
 
 /** `at` : index de l'étape recherchée au moment du coup (pour afficher une erreur sous la bonne ligne). */
 export type HistoryEntry =
@@ -145,12 +155,11 @@ export function answerSea(state: GameState, sea: SeaId): Outcome {
   return record(state, { kind: 'sea', sea, feedback: { kind: 'sea-correct' }, at }, steps);
 }
 
-export type HintRefusal = 'already-given' | 'last-life' | 'game-over';
+export type HintRefusal = 'all-given' | 'last-life' | 'game-over';
 
 /**
- * Indice sur la prochaine étape obligatoire, ou sur la mer s'il n'en reste plus : l'écran le
- * montre sur une carte (l'initiale sert quand le cours d'eau n'a pas de tracé). Il coûte une vie,
- * un seul par étape, et il est refusé quand il ne reste qu'une vie.
+ * Indice suivant sur la prochaine étape obligatoire (deux niveaux), ou sur la mer s'il n'en reste
+ * plus (un niveau). Chaque indice coûte une vie ; il est refusé quand il ne reste qu'une vie.
  */
 export function requestHint(
   state: GameState,
@@ -159,10 +168,10 @@ export function requestHint(
   if (state.status !== 'playing') {
     return { state, hint: null, refusal: 'game-over' };
   }
-  const required = nextRequiredStepIndex(state);
-  const target: HintTarget = required === null ? { kind: 'sea' } : { kind: 'step', stepIndex: required };
-  if (hintFor(state, target)) {
-    return { state, hint: null, refusal: 'already-given' };
+  const target = currentHintTarget(state);
+  const given = hintsFor(state, target).length;
+  if (given >= MAX_HINTS[target.kind]) {
+    return { state, hint: null, refusal: 'all-given' };
   }
   if (state.livesLeft <= 1) {
     return { state, hint: null, refusal: 'last-life' };
@@ -172,22 +181,32 @@ export function requestHint(
     target.kind === 'step'
       ? {
           target,
+          level: given === 0 ? 1 : 2,
           initial: watercourses[state.river.steps[target.stepIndex].id].name.charAt(0).toUpperCase(),
         }
-      : { target };
+      : { target, level: 1 };
   return {
     state: { ...state, livesLeft: state.livesLeft - 1, history: [...state.history, { kind: 'hint', hint }] },
     hint,
   };
 }
 
+/** Les indices déjà donnés pour une cible, dans l'ordre. */
+export function hintsFor(state: GameState, target: HintTarget): Hint[] {
+  return state.history.flatMap((entry) =>
+    entry.kind === 'hint' && sameTarget(entry.hint.target, target) ? [entry.hint] : [],
+  );
+}
+
+/** Le dernier indice donné pour une cible (le plus fort), s'il y en a un. */
 export function hintFor(state: GameState, target: HintTarget): Hint | undefined {
-  for (const entry of state.history) {
-    if (entry.kind === 'hint' && sameTarget(entry.hint.target, target)) {
-      return entry.hint;
-    }
-  }
-  return undefined;
+  return hintsFor(state, target).at(-1);
+}
+
+/** Cible de l'indice pour l'étape en cours : la prochaine étape obligatoire, ou la mer. */
+export function currentHintTarget(state: GameState): HintTarget {
+  const required = nextRequiredStepIndex(state);
+  return required === null ? { kind: 'sea' } : { kind: 'step', stepIndex: required };
 }
 
 /** Les retours qui coûtent une vie. */

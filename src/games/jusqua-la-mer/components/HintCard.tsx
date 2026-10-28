@@ -6,19 +6,22 @@ import type { GameState, Hint } from '@/games/jusqua-la-mer/engine/game';
 import { hintCaption, hintMap } from '@/games/jusqua-la-mer/presentation';
 import { colors, fonts, radius, spacing } from '@/platform/theme';
 import { AppText } from '@/platform/ui/AppText';
+import { Button } from '@/platform/ui/Button';
 import { IconButton } from '@/platform/ui/IconButton';
 
 type HintCardProps = {
   hint: Hint;
   state: GameState;
   onHide: () => void;
+  /** Le 2e indice de l'étape, s'il en reste un : `null` quand il ne reste qu'une vie. */
+  onNextHint?: (() => void) | null;
 };
 
 /**
  * L'indice, affiché en haut de l'écran de partie (au-dessus du chemin, pour rester visible
  * au-dessus de la zone de saisie) : la carte vierge de la France et sa légende.
  */
-export function HintCard({ hint, state, onHide }: HintCardProps) {
+export function HintCard({ hint, state, onHide, onNextHint }: HintCardProps) {
   const [width, setWidth] = useState(0);
   const onLayout = (event: LayoutChangeEvent) => setWidth(Math.round(event.nativeEvent.layout.width));
 
@@ -44,6 +47,13 @@ export function HintCard({ hint, state, onHide }: HintCardProps) {
         </AppText>
         {hintCaption(hint, state)}
       </AppText>
+      {onNextHint ? (
+        <Button label="2e indice : le cours d'eau à trouver (−1 vie)" variant="secondary" onPress={onNextHint} />
+      ) : onNextHint === null ? (
+        <AppText variant="caption" color={colors.inkMuted}>
+          Il te faut au moins deux vies pour le 2e indice.
+        </AppText>
+      ) : null}
     </View>
   );
 }

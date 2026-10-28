@@ -71,9 +71,10 @@ export default function RulesScreen() {
           </Rule>
           <Rule icon="hint">
             <AppText variant="small" color={colors.ink} style={styles.bold}>
-              Indice
+              Indices
             </AppText>{' '}
-            — montre sur une carte vierge le cours d&apos;eau à trouver, contre une vie.
+            — le 1er montre sur une carte vierge les rivières déjà découvertes, le 2e ajoute celle à
+            trouver. Chacun coûte une vie.
           </Rule>
           <Rule icon="calendar" last>
             <AppText variant="small" color={colors.ink} style={styles.bold}>
