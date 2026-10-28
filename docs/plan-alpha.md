@@ -63,18 +63,19 @@ Objectif : un projet propre qui démarre sur le téléphone avec l'identité vis
 
 Objectif : un fichier qui donne, pour chaque rivière, la chaîne exacte jusqu'à la mer.
 
-- [ ] **Exploration d'abord** : vérifier si la BD TOPAGE (IGN/OFB) ou le référentiel SANDRE donnent directement le cours d'eau dans lequel chaque rivière se jette. Sinon, le déduire en suivant les tronçons vers l'aval. C'est le principal risque du projet : à trancher avant tout le reste.
-- [ ] Vérifier la licence des données et la mention à afficher dans l'app.
-- [ ] Pipeline `scripts/data/` (Python + uv) : téléchargement → graphe « rivière → cours d'eau receveur » → chaîne jusqu'à l'exutoire → mer d'arrivée (Manche, mer du Nord, Atlantique, Méditerranée).
+- [x] **Exploration d'abord** : d'où tirer, pour chaque rivière, le cours d'eau dans lequel elle se jette ? Résultat dans [`docs/donnees.md`](donnees.md) : Wikidata (P403) pour les chaînes, BD TOPO de l'IGN pour le contrôle et les géométries.
+- [x] Vérifier la licence des données et la mention à afficher dans l'app (voir `docs/donnees.md`).
+- [ ] Trancher les trois décisions de `docs/donnees.md` : la Gironde comme étape, les lacs traversés, la Corse.
+- [ ] Pipeline `scripts/data/` (Python + uv) : extraction Wikidata (rivières ayant un code Sandre) → remontée des embouchures → table des points d'arrivée vers les 4 mers (Manche, mer du Nord, Atlantique, Méditerranée) → contrôle croisé avec les confluences BD TOPO → liste des écarts à revoir.
 - [ ] Noms : article (`le`, `la`, `l'`), forme d'affichage, variantes acceptées (`Gironde` pour la Garonne, etc.).
 - [ ] Fichier de corrections manuelles (`corrections.yaml`) pour les cas particuliers :
   - estuaires partagés (Dordogne → Garonne ou Gironde) ;
   - rivières qui traversent un lac (Rhône et Léman) ;
   - fleuves qui finissent à l'étranger (Moselle → Rhin → mer du Nord, Meuse, Escaut) ;
   - rivières qui finissent dans un étang (Arc → étang de Berre) : à exclure ou à traiter à part.
-- [ ] Niveau de difficulté calculé : longueur de la chaîne, longueur et notoriété du cours d'eau.
-- [ ] Sélection de 200 à 300 rivières jouables, avec leur niveau.
-- [ ] Géométries simplifiées (contour de la France et tracés des cours d'eau sélectionnés) pour la carte, en coordonnées déjà projetées.
+- [ ] Niveau de difficulté calculé : nombre d'étapes, notoriété (sitelinks Wikidata, pages vues Wikipédia) et longueur.
+- [ ] Sélection de 200 à 300 rivières jouables, avec leur niveau (le filtre « métropole, au moins 12 sitelinks » en donne 257), identifiées par leur QID Wikidata.
+- [ ] Géométries simplifiées (contour de la France et tracés des cours d'eau sélectionnés, tronçons BD TOPO du réseau principal) pour la carte, en coordonnées déjà projetées.
 - [ ] Tests de non-régression sur des chaînes connues : Loir → Sarthe → Maine → Loire → Atlantique ; Aisne → Oise → Seine → Manche ; Gartempe → Creuse → Vienne → Loire → Atlantique ; Vologne → Moselle → Rhin → mer du Nord ; Ognon → Saône → Rhône → Méditerranée.
 - [ ] Revue manuelle de 50 chaînes tirées au hasard.
 
@@ -149,7 +150,7 @@ La phase 2 peut commencer avec un petit jeu de données écrit à la main (une v
 
 | Risque | Parade |
 |---|---|
-| Les données ne donnent pas directement le cours d'eau receveur | Phase 1 commence par une exploration ; plan B : topologie des tronçons + corrections manuelles |
+| Erreurs ou modifications malveillantes dans Wikidata | Instantané figé dans le repo, contrôle croisé avec les confluences BD TOPO, revue manuelle des écarts |
 | Chaînes ambiguës ou contestables | Variantes acceptées, plusieurs chemins valides, cas tordus exclus du défi du jour |
 | Noms mal saisis sur mobile | Autocomplétion obligatoire et normalisation des réponses |
 | Expo change d'API à chaque SDK | Suivre `AGENTS.md` : lire la doc de la version installée avant de coder |
