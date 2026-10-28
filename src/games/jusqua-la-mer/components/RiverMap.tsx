@@ -1,5 +1,5 @@
 import { StyleSheet, View } from 'react-native';
-import Svg, { G, Path, Rect } from 'react-native-svg';
+import Svg, { G, Path, Rect, Text as SvgText } from 'react-native-svg';
 
 import { dataset } from '@/games/jusqua-la-mer/data/rivers';
 import {
@@ -13,11 +13,13 @@ import {
   type Box,
   type Line,
 } from '@/games/jusqua-la-mer/data/geo';
-import { colors, radius } from '@/platform/theme';
+import { placeLabels } from '@/games/jusqua-la-mer/components/map-labels';
+import { colors, fonts, radius } from '@/platform/theme';
 
 const SEA = '#CFE3F6';
 /** Place réservée à droite pour le médaillon de la France, en pixels. */
 const INSET_SPACE = 76;
+const LABEL_SIZE = 11;
 
 type RiverMapProps = {
   width: number;
@@ -28,16 +30,40 @@ type RiverMapProps = {
   highlight?: readonly string[];
   /** `france` : toute la France, comme une carte vierge ; `path` : zoom sur les tracés, avec la France en médaillon. */
   framing: 'france' | 'path';
+  /** Écrit le nom des rivières (écran de résultat ; jamais sur une carte d'indice). */
+  labels?: boolean;
   accessibilityLabel: string;
 };
 
 /** Carte vierge de la France avec des tracés de rivières (indices et écran de résultat). */
-export function RiverMap({ width, height, known, highlight = [], framing, accessibilityLabel }: RiverMapProps) {
+export function RiverMap({
+  width,
+  height,
+  known,
+  highlight = [],
+  framing,
+  labels = false,
+  accessibilityLabel,
+}: RiverMapProps) {
   const drawn = boundsOf([...known, ...highlight].flatMap((id) => watercourseLines(id) ?? []));
   const withInset = framing === 'path' && drawn !== null;
   const box = withInset ? fitWithInset(drawn, width, height) : fitBox(unionBox(franceBox, drawn), width / height, 0.04);
   // Largeur d'un pixel écran en unités de la carte, pour des traits d'épaisseur constante.
   const px = (box.maxX - box.minX) / width;
+  const placed = labels
+    ? placeLabels(
+        [...known, ...highlight].map((id) => ({
+          id,
+          text: dataset.watercourses[id].name,
+          lines: watercourseLines(id) ?? [],
+        })),
+        box,
+        width,
+        height,
+        LABEL_SIZE,
+        withInset ? [{ left: width - INSET_SPACE, top: height - INSET_SPACE, right: width, bottom: height }] : [],
+      )
+    : [];
 
   return (
     <View
@@ -53,6 +79,26 @@ export function RiverMap({ width, height, known, highlight = [], framing, access
         ))}
         {highlight.map((id) => (
           <River key={id} id={id} color={colors.water} px={px} />
+        ))}
+        {placed.map((label) => (
+          <G key={label.id}>
+            {/* Le liseré blanc d'abord, puis le texte : le nom reste lisible sur les traits. */}
+            {[true, false].map((halo) => (
+              <SvgText
+                key={String(halo)}
+                x={box.minX + label.x * px}
+                y={box.minY + label.baseline * px}
+                fontSize={LABEL_SIZE * px}
+                fontFamily={fonts.bodyBold}
+                textAnchor="middle"
+                fill={colors.ink}
+                stroke={halo ? colors.white : 'none'}
+                strokeWidth={halo ? 3 * px : 0}
+                strokeLinejoin="round">
+                {label.text}
+              </SvgText>
+            ))}
+          </G>
         ))}
       </Svg>
       {withInset ? <Inset box={box} /> : null}

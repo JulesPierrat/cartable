@@ -1923,7 +1923,7 @@
    "id": "Q394311",
    "steps": [],
    "sea": "mediterranean",
-   "difficulty": "medium"
+   "difficulty": "easy"
   },
   {
    "id": "Q395784",
@@ -2171,7 +2171,7 @@
     }
    ],
    "sea": "atlantic",
-   "difficulty": "easy"
+   "difficulty": "medium"
   },
   {
    "id": "Q669907",
@@ -2288,7 +2288,7 @@
     }
    ],
    "sea": "channel",
-   "difficulty": "easy"
+   "difficulty": "medium"
   },
   {
    "id": "Q214240",
@@ -2477,7 +2477,7 @@
     }
    ],
    "sea": "channel",
-   "difficulty": "medium"
+   "difficulty": "easy"
   },
   {
    "id": "Q572072",
@@ -2567,7 +2567,7 @@
    "id": "Q661525",
    "steps": [],
    "sea": "channel",
-   "difficulty": "medium"
+   "difficulty": "easy"
   },
   {
    "id": "Q746324",
@@ -2606,7 +2606,7 @@
     }
    ],
    "sea": "mediterranean",
-   "difficulty": "hard"
+   "difficulty": "medium"
   },
   {
    "id": "Q1032916",
@@ -2629,7 +2629,7 @@
     }
    ],
    "sea": "atlantic",
-   "difficulty": "hard"
+   "difficulty": "medium"
   },
   {
    "id": "Q388802",
@@ -2705,7 +2705,7 @@
     }
    ],
    "sea": "mediterranean",
-   "difficulty": "hard"
+   "difficulty": "medium"
   },
   {
    "id": "Q1090933",
@@ -2731,7 +2731,7 @@
     }
    ],
    "sea": "atlantic",
-   "difficulty": "easy"
+   "difficulty": "medium"
   },
   {
    "id": "Q752108",
@@ -2837,7 +2837,7 @@
     }
    ],
    "sea": "channel",
-   "difficulty": "hard"
+   "difficulty": "medium"
   },
   {
    "id": "Q1157014",
@@ -2870,13 +2870,13 @@
     }
    ],
    "sea": "north-sea",
-   "difficulty": "hard"
+   "difficulty": "medium"
   },
   {
    "id": "Q118784",
    "steps": [],
    "sea": "channel",
-   "difficulty": "easy"
+   "difficulty": "medium"
   },
   {
    "id": "Q1235724",
@@ -2923,7 +2923,7 @@
     }
    ],
    "sea": "atlantic",
-   "difficulty": "hard"
+   "difficulty": "medium"
   },
   {
    "id": "Q14372",
@@ -3016,7 +3016,7 @@
     }
    ],
    "sea": "atlantic",
-   "difficulty": "hard"
+   "difficulty": "medium"
   },
   {
    "id": "Q729593",
@@ -3056,7 +3056,7 @@
    "id": "Q274784",
    "steps": [],
    "sea": "atlantic",
-   "difficulty": "medium"
+   "difficulty": "easy"
   },
   {
    "id": "Q990106",
@@ -3112,7 +3112,7 @@
     }
    ],
    "sea": "channel",
-   "difficulty": "easy"
+   "difficulty": "medium"
   },
   {
    "id": "Q1385804",
@@ -3128,7 +3128,7 @@
    "id": "Q1385881",
    "steps": [],
    "sea": "atlantic",
-   "difficulty": "medium"
+   "difficulty": "easy"
   },
   {
    "id": "Q1411649",
@@ -3317,7 +3317,7 @@
     }
    ],
    "sea": "channel",
-   "difficulty": "hard"
+   "difficulty": "medium"
   },
   {
    "id": "Q1225878",
@@ -3450,7 +3450,7 @@
     }
    ],
    "sea": "channel",
-   "difficulty": "hard"
+   "difficulty": "medium"
   },
   {
    "id": "Q1709766",
@@ -3546,7 +3546,7 @@
     }
    ],
    "sea": "atlantic",
-   "difficulty": "hard"
+   "difficulty": "medium"
   },
   {
    "id": "Q1469",
@@ -3616,7 +3616,7 @@
     }
    ],
    "sea": "north-sea",
-   "difficulty": "easy"
+   "difficulty": "medium"
   },
   {
    "id": "Q522089",
@@ -3629,7 +3629,7 @@
     }
    ],
    "sea": "north-sea",
-   "difficulty": "hard"
+   "difficulty": "medium"
   },
   {
    "id": "Q756886",
@@ -3639,7 +3639,7 @@
     }
    ],
    "sea": "atlantic",
-   "difficulty": "medium"
+   "difficulty": "easy"
   },
   {
    "id": "Q41983",
@@ -3939,7 +3939,7 @@
     }
    ],
    "sea": "mediterranean",
-   "difficulty": "hard"
+   "difficulty": "medium"
   },
   {
    "id": "Q927323",
@@ -4004,7 +4004,7 @@
    "id": "Q3088027",
    "steps": [],
    "sea": "mediterranean",
-   "difficulty": "medium"
+   "difficulty": "easy"
   },
   {
    "id": "Q1227888",
@@ -4143,7 +4143,7 @@
     }
    ],
    "sea": "north-sea",
-   "difficulty": "easy"
+   "difficulty": "medium"
   },
   {
    "id": "Q187834",
@@ -4284,7 +4284,7 @@
     }
    ],
    "sea": "mediterranean",
-   "difficulty": "medium"
+   "difficulty": "hard"
   },
   {
    "id": "Q599492",
@@ -4309,7 +4309,7 @@
    "id": "Q776590",
    "steps": [],
    "sea": "channel",
-   "difficulty": "medium"
+   "difficulty": "easy"
   },
   {
    "id": "Q303621",
@@ -4319,7 +4319,7 @@
     }
    ],
    "sea": "north-sea",
-   "difficulty": "easy"
+   "difficulty": "medium"
   },
   {
    "id": "Q594824",
@@ -4338,7 +4338,7 @@
    "id": "Q2000636",
    "steps": [],
    "sea": "atlantic",
-   "difficulty": "medium"
+   "difficulty": "easy"
   },
   {
    "id": "Q598322",
@@ -4458,7 +4458,7 @@
    "id": "Q182969",
    "steps": [],
    "sea": "mediterranean",
-   "difficulty": "easy"
+   "difficulty": "medium"
   },
   {
    "id": "Q2063591",
@@ -4529,7 +4529,7 @@
     }
    ],
    "sea": "mediterranean",
-   "difficulty": "hard"
+   "difficulty": "medium"
   },
   {
    "id": "Q1524318",
@@ -4559,13 +4559,13 @@
    "id": "Q969618",
    "steps": [],
    "sea": "channel",
-   "difficulty": "medium"
+   "difficulty": "easy"
   },
   {
    "id": "Q1232651",
    "steps": [],
    "sea": "channel",
-   "difficulty": "medium"
+   "difficulty": "easy"
   },
   {
    "id": "Q979109",
@@ -4678,7 +4678,7 @@
     }
    ],
    "sea": "atlantic",
-   "difficulty": "easy"
+   "difficulty": "medium"
   },
   {
    "id": "Q372616",
@@ -4704,7 +4704,7 @@
    "id": "Q2096448",
    "steps": [],
    "sea": "mediterranean",
-   "difficulty": "medium"
+   "difficulty": "easy"
   },
   {
    "id": "Q659546",
@@ -4714,7 +4714,7 @@
     }
    ],
    "sea": "atlantic",
-   "difficulty": "easy"
+   "difficulty": "medium"
   },
   {
    "id": "Q842462",
@@ -4759,7 +4759,7 @@
     }
    ],
    "sea": "north-sea",
-   "difficulty": "hard"
+   "difficulty": "medium"
   },
   {
    "id": "Q288629",
@@ -4815,7 +4815,7 @@
     }
    ],
    "sea": "channel",
-   "difficulty": "hard"
+   "difficulty": "medium"
   },
   {
    "id": "Q226757",

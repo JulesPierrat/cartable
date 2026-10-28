@@ -79,7 +79,7 @@ export function ChainProgress({ state, onShowHint }: { state: GameState; onShowH
         </View>
         <View style={[styles.rowText, styles.current]}>
           <AppText variant="bodyStrong" color={colors.water}>
-            {required === null ? 'Et maintenant, la mer ?' : 'À toi de jouer'}
+            {required === null ? 'Et maintenant, la mer ?' : 'À toi de jouer'}
           </AppText>
           <AppText variant="caption" color={colors.inkSoft}>
             {capitalize(watercourseName(lastFoundId(state)))} se jette dans…
@@ -122,9 +122,9 @@ function Misses({ entries, state }: { entries: HistoryEntry[]; state: GameState 
           entry.kind === 'sea' ? dataset.seas[entry.sea].shortName : capitalize(missLabel(entry.input, state));
         const note =
           entry.feedback.kind === 'downstream'
-            ? ' — pas directement !'
+            ? ' — pas directement !'
             : entry.feedback.kind === 'sea-too-early'
-              ? ' — pas encore !'
+              ? ' — pas encore !'
               : '';
         return (
           <View key={i} style={styles.miss}>

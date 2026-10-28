@@ -29,7 +29,7 @@ describe('présentation de « Jusqu’à la mer »', () => {
 
   it('écrit les messages avec l’article quand le cours d’eau est sur le chemin', () => {
     const { state, feedback } = answerWatercourse(loir, 'loire', gameContext);
-    expect(feedbackMessage(feedback, 'loire', state)).toBe('La Loire : pas directement !');
+    expect(feedbackMessage(feedback, 'loire', state)).toBe('La Loire : pas directement\u00a0!');
     expect(missLabel('loire', state)).toBe('la Loire');
   });
 
@@ -51,7 +51,7 @@ describe('présentation de « Jusqu’à la mer »', () => {
     const second = requestHint(state, gameContext);
     expect(hintMap(second.hint!, second.state)).toEqual({ known: [state.river.id, sarthe], highlight: [maine] });
     expect(hintCaption(second.hint!, second.state)).toBe(
-      "En bleu vif, le cours d'eau dans lequel se jette la Sarthe. À toi de trouver son nom !",
+      "En bleu vif, le cours d'eau dans lequel se jette la Sarthe. À toi de trouver son nom\u00a0!",
     );
   });
 

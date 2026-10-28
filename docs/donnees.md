@@ -81,7 +81,7 @@ uv run scripts/data/build_rivers.py --refresh  # retélécharge Wikidata et Wiki
 2. **Sélection** : cours d'eau de métropole, Corse comprise (code Sandre de 8 caractères commençant par une lettre ou un tiret), ayant au moins 12 sitelinks, plus les ajouts de `rules.yaml`. Quand deux rivières de départ portent le même nom, on ne garde que la plus connue.
 3. **Chaînes** : on remonte les embouchures jusqu'à un point d'arrivée de `rules.yaml` (mers, golfes, baies, estuaires). Les étapes facultatives et les lacs transparents y sont aussi déclarés. Une embouchure multiple se résout au profit d'un cours d'eau français ; sinon, il faut une règle.
 4. **Noms** : on prend le libellé Wikidata, et l'article est tiré de la première phrase de l'article Wikipédia (« La Sarthe est une rivière… »). On peut aussi l'imposer dans `rules.yaml`.
-5. **Difficulté** : nombre d'étapes obligatoires, notoriété (sitelinks), et un bonus quand le chemin passe par l'étranger.
+5. **Difficulté** : nombre d'étapes obligatoires, notoriété en France (pages vues de Wikipédia en français sur les 12 derniers mois : très connue au-delà de 25 000 par an, connue au-delà de 5 000), et un bonus quand le chemin passe par l'étranger. À défaut de pages vues, le nombre de sitelinks.
 6. **Sorties** :
    - `assets/data/rivers.json` : rivières jouables, étapes et mers ;
    - `assets/data/watercourse-names.json` : 4 648 noms, sans article, pour l'autocomplétion ;
@@ -102,8 +102,21 @@ uv run scripts/data/build_geometries.py   # après build_rivers.py ; cache dans 
 - **Limite** : un cours d'eau qui coule hors de France (Aar, Èbre, Sûre…) n'a pas de tracé. Son indice donne alors l'initiale.
 - La première extraction télécharge environ 270 rivières depuis le WFS de l'IGN (une vingtaine de minutes) ; les suivantes utilisent le cache.
 
-**Reste à faire** :
-- **Contrôle IGN** : relier code Sandre → tronçons BD TOPO → objet « Graphe unitaire » → nœud de confluence. Chaque écart avec Wikidata part en revue manuelle.
+## Le contrôle croisé
+
+```bash
+uv run scripts/data/check_chains.py   # après les deux précédents, sans téléchargement
+```
+
+Pour chaque maillon « A se jette dans B », le script mesure la distance entre l'embouchure de A (l'extrémité aval de ses tronçons BD TOPO) et le tracé de B. Le résultat va dans `scripts/data/crosscheck.md` :
+- **confirmé** : à moins de 1,5 km (une confluence sur un bras secondaire tombe souvent à quelques centaines de mètres) ;
+- **à l'étranger** : A quitte la France avant de rejoindre B ;
+- **non comparable** : pas de tracé IGN, ou chemin par un lac ;
+- **écart** : à relire.
+
+Résultat au 29/10/2026 : 198 maillons sur 213 confirmés, 5 à l'étranger, 7 non comparables, 3 écarts. Les trois écarts, la Lys et la Sambre (qui rejoignent l'Escaut et la Meuse en Belgique) et la Marque (qui rejoint un bras de la Deûle), sont justes.
+
+`scripts/data/geometry-report.md` liste aussi les tracés nettement plus courts que la longueur Wikidata : presque toujours des rivières qui sortent de France. Quand une rivière française est canalisée sous un autre code Sandre, on ajoute ce code dans `geometry_codes` (déjà fait pour la Somme et la Sambre ; le cours supérieur de l'Aa reste introuvable).
 - **Difficulté** : l'affiner avec les pages vues de Wikipédia en français, qui reflètent mieux la notoriété en France que les sitelinks. Éviter l'ordre de Strahler, qui n'est pas comparable d'une région à l'autre.
 
 Outils prévus pour la suite : `geopandas`/`pyogrio`, `shapely` 2 et `pyproj`.
