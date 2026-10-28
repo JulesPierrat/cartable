@@ -22,6 +22,7 @@ import argparse
 import json
 import sys
 import time
+from datetime import date
 from pathlib import Path
 
 import requests
@@ -159,6 +160,8 @@ def main() -> None:
             {
                 "version": 1,
                 "source": "IGN – BD TOPO®, ADMIN EXPRESS (Licence Ouverte 2.0)",
+                # Date de consultation du WFS de l'IGN (celle du cache) : la licence demande de la citer.
+                "snapshot": date.fromtimestamp((CACHE / "regions.json").stat().st_mtime).isoformat(),
                 "projection": "Lambert-93 en hectomètres, Y = (7 200 000 - y) / 100",
                 "france": france,
                 "watercourses": lines,

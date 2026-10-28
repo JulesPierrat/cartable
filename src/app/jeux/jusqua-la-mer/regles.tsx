@@ -5,6 +5,7 @@ import { SafeAreaView } from 'react-native-safe-area-context';
 
 import { DEFAULT_LIVES } from '@/games/jusqua-la-mer/engine/game';
 import { parseMode } from '@/games/jusqua-la-mer/presentation';
+import { markRulesSeen } from '@/games/jusqua-la-mer/progress';
 import { colors, fonts, radius, spacing } from '@/platform/theme';
 import { AppText } from '@/platform/ui/AppText';
 import { Button } from '@/platform/ui/Button';
@@ -82,13 +83,24 @@ export default function RulesScreen() {
           </Rule>
         </View>
 
-        <Button
-          label="C'est parti"
-          trailingIcon="arrowRight"
-          onPress={() =>
-            router.replace({ pathname: '/jeux/jusqua-la-mer/partie', params: { mode: parseMode(mode) } })
-          }
-        />
+        {mode ? (
+          <Button
+            label="C'est parti"
+            trailingIcon="arrowRight"
+            onPress={() => {
+              markRulesSeen();
+              router.replace({ pathname: '/jeux/jusqua-la-mer/partie', params: { mode: parseMode(mode) } });
+            }}
+          />
+        ) : (
+          <Button
+            label="Compris"
+            onPress={() => {
+              markRulesSeen();
+              router.back();
+            }}
+          />
+        )}
       </ScrollView>
     </SafeAreaView>
   );

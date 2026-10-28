@@ -104,7 +104,7 @@ Objectif : reproduire les maquettes avec le moteur branché.
 
 - [x] Accueil : carte du défi du jour (numéro et date), partie libre en 3 niveaux, « Bientôt », barre d'onglets. La série de jours viendra avec la phase 5.
 - [x] Comment jouer : contenu des maquettes, affiché avant chaque défi du jour.
-- [ ] Ne l'afficher qu'au premier lancement (il faut le stockage de la phase 5).
+- [x] Ne l'afficher qu'au premier lancement ; ensuite accessible depuis Profil.
 - [x] Partie : chaîne verticale (étapes trouvées, erreurs sous la bonne ligne, étapes à venir cachées), vies, saisie avec suggestions, choix de la mer, bouton indice.
 - [x] Gestion du clavier : la saisie et les suggestions restent visibles ; clavier ouvert, les mers laissent place à un lien qui le ferme.
 - [x] Retours : secousse et vibration sur une erreur (`expo-haptics`), apparition en fondu quand une étape est trouvée, messages explicites (« pas directement ! », « pas encore »).
@@ -124,16 +124,18 @@ Objectif : reproduire les maquettes avec le moteur branché.
 
 ## Phase 5 — Stats, série et partage
 
-- [ ] Stockage local des parties, du résultat du jour et de la série (`expo-sqlite` en clé-valeur, ou AsyncStorage).
-- [ ] Écran Stats : parties jouées, % de réussite, série actuelle et record, répartition des erreurs.
-- [ ] Partage du résultat en texte (grille + lien) avec le partage natif.
+- [x] Stockage local (AsyncStorage, chargé en mémoire au démarrage : `src/platform/storage.ts`) : historique des parties, défi du jour sauvegardé à chaque coup (il reprend où on l'a laissé et ne se rejoue pas), règles déjà lues.
+- [x] Série de jours (défis réussis d'affilée, record) sur l'accueil et le résultat (`src/platform/records.ts`).
+- [x] Écran Stats : parties jouées, % de réussite, série actuelle et record, répartition des parties selon les vies perdues.
+- [x] Partage du résultat en texte (grille de carrés de couleur + score) avec le partage natif (fait en phase 3).
+- [ ] Ajouter un lien vers l'app au texte partagé (quand elle aura une adresse).
 - [ ] Notification locale facultative pour rappeler le défi du jour.
 
 ## Phase 6 — Finitions et distribution de l'alpha
 
 - [ ] Icône et écran de démarrage définitifs.
 - [ ] Accessibilité : libellés des boutons-icônes, contrastes, taille de texte système.
-- [ ] Mention des sources de données dans Profil › À propos.
+- [x] Mention des sources de données (Wikidata, IGN, avec leurs dates) dans Profil.
 - [ ] EAS : profils `development` et `preview` dans `eas.json`.
 - [ ] Android : APK de test via EAS (lien d'installation direct).
 - [ ] iOS : TestFlight (nécessite un compte Apple Developer, 99 $/an), ou Expo Go pour les premiers testeurs.

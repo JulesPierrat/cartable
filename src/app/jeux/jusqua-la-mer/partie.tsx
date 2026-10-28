@@ -1,5 +1,5 @@
 import * as Haptics from 'expo-haptics';
-import { router, useLocalSearchParams } from 'expo-router';
+import { Redirect, router, useLocalSearchParams } from 'expo-router';
 import { useEffect, useRef, useState } from 'react';
 import {
   Keyboard,
@@ -25,7 +25,6 @@ import {
   isMistake,
   nextRequiredStepIndex,
   requestHint,
-  startGame,
   type Feedback,
   type GameState,
   type Hint,
@@ -35,9 +34,9 @@ import {
   feedbackMessage,
   gameContext,
   parseMode,
-  setupGame,
   watercourseName,
 } from '@/games/jusqua-la-mer/presentation';
+import { recordGame, saveDaily, startOrResume } from '@/games/jusqua-la-mer/progress';
 import { useGameSession } from '@/games/jusqua-la-mer/session';
 import { capitalize } from '@/platform/text';
 import { colors, spacing } from '@/platform/theme';
@@ -49,28 +48,46 @@ const RESULT_DELAY_MS = 700;
 
 export default function GameScreen() {
   const { mode } = useLocalSearchParams<{ mode?: string }>();
-  const [setup] = useState(() => setupGame(parseMode(mode)));
-  const [state, setState] = useState(() => startGame(setup.river));
+  // Nouvelle partie, ou reprise du défi du jour : il reprend où on l'a laissé et ne se rejoue pas.
+  const [start] = useState(() => startOrResume(parseMode(mode), new Date()));
+  const { setup, startedAt, dateKey } = start;
+  const [state, setState] = useState(start.state);
   const [message, setMessage] = useState<{ text: string; tone: 'error' | 'info' } | null>(null);
   const [shakeKey, setShakeKey] = useState(0);
   const [hintOpen, setHintOpen] = useState(false);
   const scrollRef = useRef<ScrollViewInstance>(null);
-  const [startedAt] = useState(() => Date.now());
   const { finishGame } = useGameSession();
 
   useEffect(() => {
-    if (state.status === 'playing') {
+    if (state.status === 'playing' || start.finished) {
       return;
     }
+    const finishedAt = Date.now();
+    recordGame(setup, state, startedAt, finishedAt, dateKey);
     const timer = setTimeout(() => {
-      finishGame({ setup, state, durationMs: Date.now() - startedAt });
+      finishGame({ setup, state, durationMs: finishedAt - startedAt });
       router.replace('/jeux/jusqua-la-mer/resultat');
     }, RESULT_DELAY_MS);
     return () => clearTimeout(timer);
-  }, [state, setup, finishGame, startedAt]);
+  }, [state, start.finished, setup, finishGame, startedAt, dateKey]);
+
+  /** Nouvel état de la partie ; le défi du jour est sauvegardé à chaque coup. */
+  const commit = (next: GameState) => {
+    setState(next);
+    if (setup.mode === 'daily') {
+      saveDaily({
+        dateKey,
+        number: setup.dailyNumber!,
+        riverId: setup.river.id,
+        state: next,
+        startedAt,
+        finishedAt: next.status === 'playing' ? undefined : Date.now(),
+      });
+    }
+  };
 
   const applyOutcome = (next: GameState, feedback: Feedback, input: string) => {
-    setState(next);
+    commit(next);
     setMessage(textFor(feedback, input, next));
     if (isMistake(feedback)) {
       setShakeKey((key) => key + 1);
@@ -108,7 +125,7 @@ export default function GameScreen() {
   const onHint = () => {
     const { state: next, hint, refusal } = requestHint(state, gameContext);
     if (hint) {
-      setState(next);
+      commit(next);
       setMessage({ text: 'Indice utilisé : une vie en moins.', tone: 'info' });
       Haptics.selectionAsync();
       showHint();
@@ -118,6 +135,10 @@ export default function GameScreen() {
       setMessage({ text: 'Il te faut au moins deux vies pour demander un indice.', tone: 'info' });
     }
   };
+
+  if (start.finished) {
+    return <Redirect href="/jeux/jusqua-la-mer/resultat" />;
+  }
 
   const title = setup.mode === 'daily' ? 'Défi du jour' : `Partie libre · ${difficultyLabels[setup.mode]}`;
   const subtitle = setup.mode === 'daily' ? `n°${setup.dailyNumber} · Jusqu'à la mer` : "Jusqu'à la mer";
