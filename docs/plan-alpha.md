@@ -76,7 +76,7 @@ Objectif : un fichier qui donne, pour chaque rivière, la chaîne exacte jusqu'�
   - rivières qui finissent dans un étang (Arc → étang de Berre → Méditerranée).
 - [x] Niveau de difficulté calculé : nombre d'étapes, notoriété (sitelinks Wikidata) et passage par l'étranger. À affiner avec les pages vues de Wikipédia en français.
 - [x] Sélection de 200 à 300 rivières jouables, avec leur niveau : 257 rivières (55 faciles, 121 moyennes, 81 difficiles), identifiées par leur QID Wikidata.
-- [ ] Géométries simplifiées (contour de la France et tracés des cours d'eau sélectionnés, tronçons BD TOPO du réseau principal) pour la carte, en coordonnées déjà projetées.
+- [x] Géométries simplifiées (`scripts/data/build_geometries.py` → `assets/data/geo.json`) : contour de la France (ADMIN EXPRESS petite échelle) et tracés des cours d'eau (tronçons BD TOPO du réseau principal), en Lambert-93.
 - [x] Tests de non-régression sur des chaînes connues (`src/games/jusqua-la-mer/data/__tests__/rivers-test.ts`) : Loir → Sarthe → Maine → Loire → Atlantique ; Aisne → Oise → Seine → Manche ; Gartempe → Creuse → Vienne → Loire → Atlantique ; Vologne → Moselle → Rhin → mer du Nord ; Ognon → Saône → Rhône → Méditerranée.
 - [ ] Revue manuelle de 50 chaînes tirées au hasard : la liste à cocher est dans `scripts/data/review.md`.
 
@@ -89,10 +89,9 @@ Objectif : toute la logique du jeu, sans interface.
 - [x] État d'une partie : rivière de départ, chaîne attendue, réponses données, vies (3), indices utilisés, fin (gagnée ou perdue). Code dans `src/games/jusqua-la-mer/engine/game.ts`.
 - [x] Vérification d'une réponse : majuscules, accents, tirets et articles ignorés ; étapes facultatives (plusieurs chemins valides). Une faute de frappe ou un cours d'eau déjà cité ne coûte pas de vie ; un cours d'eau plus loin sur le chemin est signalé « pas directement ».
 - [x] Fin de chaîne : c'est le joueur qui choisit la mer. Donner une mer trop tôt compte comme une erreur.
-- [x] Indice : révèle l'initiale de la prochaine étape obligatoire (ou de la mer), un par étape, 10 points.
-- [ ] Indice plus riche : le département de la prochaine confluence. Il faut d'abord ajouter la position des confluences aux données (phase 1).
+- [x] Indice (décidé le 28/10) : la prochaine étape montrée sur une carte vierge de la France, ou, pour la mer, le chemin jusqu'à la côte. Il coûte une vie, un par étape, refusé à la dernière vie. Sans tracé (rivière étrangère) : son initiale.
 - [x] Autocomplétion sur **tous** les cours d'eau connus (4 648 noms, du plus au moins connu), pour ne jamais trahir la réponse.
-- [x] Score sur 100 (−25 par erreur, −10 par indice) et grille de la partie (une case par bonne réponse, erreur ou indice).
+- [x] Score sur 100 (−25 par vie perdue, sur une erreur ou un indice) et grille de la partie (une case par bonne réponse, erreur ou indice).
 - [x] Défi du jour : rivière tirée de façon déterministe à partir de la date locale, la même pour tout le monde. Il puise dans 125 rivières faciles et moyennes, sans répétition avant de les avoir toutes vues. Le n°1 est le 28/10/2026.
 - [x] Partie libre : tirage au hasard selon le niveau, en évitant les rivières jouées récemment.
 - [x] Tests unitaires sur tout ce qui précède, dont une partie complète avec les vraies données.
@@ -117,9 +116,10 @@ Objectif : reproduire les maquettes avec le moteur branché.
 
 ## Phase 4 — Carte de fin
 
-- [ ] Rendu SVG (`react-native-svg`) du contour de la France et des cours d'eau, à partir de `geo.json`.
-- [ ] Cadrage automatique sur le trajet, avec la France entière en médaillon.
-- [ ] Trajet surligné, source, confluences, embouchure, étiquettes sans chevauchement.
+- [x] Rendu SVG (`react-native-svg`) du contour de la France et des cours d'eau, à partir de `geo.json` (`RiverMap`).
+- [x] Cadrage automatique sur le trajet, avec la France entière en médaillon ; carte vierge de toute la France pour les indices.
+- [x] Trajet surligné.
+- [ ] Source, confluences, embouchure et étiquettes sans chevauchement.
 - [ ] Performance correcte sur un Android d'entrée de gamme.
 
 ## Phase 5 — Stats, série et partage

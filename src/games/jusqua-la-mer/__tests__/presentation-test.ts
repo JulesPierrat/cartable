@@ -3,7 +3,8 @@ import { answerWatercourse, requestHint, startGame } from '@/games/jusqua-la-mer
 import {
   feedbackMessage,
   gameContext,
-  hintText,
+  hintCaption,
+  hintMap,
   missLabel,
   parseMode,
   riverFact,
@@ -38,11 +39,27 @@ describe('présentation de « Jusqu’à la mer »', () => {
     expect(missLabel('garonne', state)).toBe('Garonne');
   });
 
-  it('donne une initiale pour une étape et une direction pour la mer', () => {
+  it('montre sur la carte le cours d’eau à trouver, sans écrire son nom', () => {
     const stepHint = requestHint(loir, gameContext).hint!;
-    expect(hintText(stepHint, loir.river)).toBe('commence par « S »');
+    const sarthe = loir.river.steps[0].id;
+    expect(hintMap(stepHint, loir)).toEqual({ known: [loir.river.id], highlight: [sarthe] });
+    expect(hintCaption(stepHint, loir)).toBe(
+      "En bleu vif, le cours d'eau dans lequel se jette le Loir. À toi de trouver son nom !",
+    );
+  });
+
+  it('pour la mer, met en avant le chemin jusqu’à la côte', () => {
     const seine = startGame(riverNamed('Seine'));
-    expect(hintText(requestHint(seine, gameContext).hint!, seine.river)).toBe('la mer est au nord-ouest');
+    const seaHint = requestHint(seine, gameContext).hint!;
+    expect(hintMap(seaHint, seine)).toEqual({ known: [], highlight: [seine.river.id] });
+    expect(hintCaption(seaHint, seine)).toBe("Suis la Seine jusqu'à la côte pour trouver sa mer.");
+  });
+
+  it('donne l’initiale quand le cours d’eau n’a pas de tracé (hors de France)', () => {
+    const segre = startGame(riverNamed('Sègre'));
+    expect(hintCaption(requestHint(segre, gameContext).hint!, segre)).toBe(
+      "Ce cours d'eau coule hors de France et n'a pas de tracé : son nom commence par « È ».",
+    );
   });
 
   it('tire une anecdote vraie des données', () => {

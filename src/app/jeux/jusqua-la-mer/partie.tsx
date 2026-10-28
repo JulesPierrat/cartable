@@ -6,23 +6,26 @@ import { SafeAreaView } from 'react-native-safe-area-context';
 
 import { AnswerPanel } from '@/games/jusqua-la-mer/components/AnswerPanel';
 import { ChainProgress } from '@/games/jusqua-la-mer/components/ChainProgress';
+import { HintSheet } from '@/games/jusqua-la-mer/components/HintSheet';
 import { Lives } from '@/games/jusqua-la-mer/components/Lives';
 import type { SeaId } from '@/games/jusqua-la-mer/data/rivers';
 import {
   answerSea,
   answerWatercourse,
   DEFAULT_LIVES,
+  hintFor,
   isMistake,
+  nextRequiredStepIndex,
   requestHint,
   startGame,
   type Feedback,
   type GameState,
+  type Hint,
 } from '@/games/jusqua-la-mer/engine/game';
 import {
   difficultyLabels,
   feedbackMessage,
   gameContext,
-  hintText,
   parseMode,
   setupGame,
   watercourseName,
@@ -42,6 +45,7 @@ export default function GameScreen() {
   const [state, setState] = useState(() => startGame(setup.river));
   const [message, setMessage] = useState<{ text: string; tone: 'error' | 'info' } | null>(null);
   const [shakeKey, setShakeKey] = useState(0);
+  const [shownHint, setShownHint] = useState<Hint | null>(null);
   const [startedAt] = useState(() => Date.now());
   const { finishGame } = useGameSession();
 
@@ -80,14 +84,23 @@ export default function GameScreen() {
   };
 
   const onHint = () => {
-    const { state: next, hint } = requestHint(state, gameContext);
+    const { state: next, hint, refusal } = requestHint(state, gameContext);
     if (hint) {
       setState(next);
-      setMessage({ text: `Indice : ${hintText(hint, setup.river)}.`, tone: 'info' });
+      setShownHint(hint);
+      setMessage({ text: 'Indice utilisé : une vie en moins.', tone: 'info' });
       Haptics.selectionAsync();
-    } else {
-      setMessage({ text: 'Tu as déjà ton indice pour cette étape.', tone: 'info' });
+    } else if (refusal === 'already-given') {
+      showCurrentHint();
+    } else if (refusal === 'last-life') {
+      setMessage({ text: 'Il te faut au moins deux vies pour demander un indice.', tone: 'info' });
     }
+  };
+
+  /** Rouvre l'indice déjà donné pour l'étape en cours, sans le payer une seconde fois. */
+  const showCurrentHint = () => {
+    const required = nextRequiredStepIndex(state);
+    setShownHint(hintFor(state, required === null ? { kind: 'sea' } : { kind: 'step', stepIndex: required }) ?? null);
   };
 
   const title = setup.mode === 'daily' ? 'Défi du jour' : `Partie libre · ${difficultyLabels[setup.mode]}`;
@@ -123,11 +136,12 @@ export default function GameScreen() {
             <Lives left={state.livesLeft} total={DEFAULT_LIVES} />
           </View>
 
-          <ChainProgress state={state} />
+          <ChainProgress state={state} onShowHint={showCurrentHint} />
         </ScrollView>
 
         <AnswerPanel onAnswer={onAnswer} onSea={onSea} message={message} shakeKey={shakeKey} />
       </KeyboardAvoidingView>
+      <HintSheet hint={shownHint} state={state} onClose={() => setShownHint(null)} />
     </SafeAreaView>
   );
 }

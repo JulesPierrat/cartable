@@ -55,10 +55,11 @@ Les écrans du jeu sont pour l'instant des coquilles qui annoncent la phase du p
 
 ## Données
 
-Les chaînes de cours d'eau viennent de Wikidata (CC0). La BD TOPO de l'IGN (Licence Ouverte 2.0) servira au contrôle et aux tracés de la carte. Les sources, les règles du jeu et les licences sont détaillées dans [`docs/donnees.md`](docs/donnees.md).
+Les chaînes de cours d'eau viennent de Wikidata (CC0). Les tracés des rivières et le contour de la France viennent de l'IGN (BD TOPO et ADMIN EXPRESS, Licence Ouverte 2.0). Les sources, les règles du jeu et les licences sont détaillées dans [`docs/donnees.md`](docs/donnees.md).
 
 ```bash
-uv run scripts/data/build_rivers.py   # régénère assets/data/ à partir de Wikidata
+uv run scripts/data/build_rivers.py       # chaînes et noms, à partir de Wikidata
+uv run scripts/data/build_geometries.py   # tracés, à partir de l'IGN (après le précédent)
 ```
 
 Les cas particuliers se corrigent dans `scripts/data/rules.yaml`, jamais dans les JSON.

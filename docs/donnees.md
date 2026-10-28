@@ -90,9 +90,20 @@ uv run scripts/data/build_rivers.py --refresh  # retélécharge Wikidata et Wiki
 
 Pour corriger une chaîne : une règle dans `rules.yaml`, puis on relance. On ne touche jamais aux JSON à la main.
 
+## Les tracés
+
+```bash
+uv run scripts/data/build_geometries.py   # après build_rivers.py ; cache dans scripts/data/cache/wfs/
+```
+
+- **Rivières** : tronçons BD TOPO (`BDTOPO_V3:troncon_hydrographique`) du réseau principal (`reseau_principal_coulant`), retrouvés par leur code Sandre (`code_du_cours_d_eau_bdcarthage`). Ils sont fusionnés puis simplifiés à 250 m. Quand Wikidata n'a pas le code, une règle `geometry_codes` de `rules.yaml` le donne (le Rhin).
+- **France** : régions de métropole d'ADMIN EXPRESS petite échelle (`ADMINEXPRESS-COG-CARTO-PE.LATEST:region`), réunies et simplifiées à 1 km. Les îles de moins de 40 km² sont retirées.
+- **Format** (`assets/data/geo.json`) : Lambert-93 en hectomètres, nord en haut. Chaque ligne est une liste d'entiers, le premier point en absolu, les suivants en écart au précédent.
+- **Limite** : un cours d'eau qui coule hors de France (Aar, Èbre, Sûre…) n'a pas de tracé. Son indice donne alors l'initiale.
+- La première extraction télécharge environ 270 rivières depuis le WFS de l'IGN (une vingtaine de minutes) ; les suivantes utilisent le cache.
+
 **Reste à faire** :
 - **Contrôle IGN** : relier code Sandre → tronçons BD TOPO → objet « Graphe unitaire » → nœud de confluence. Chaque écart avec Wikidata part en revue manuelle.
-- **Géométries** : prendre les tronçons du réseau principal (`reseau_principal_coulant`), les fusionner, les simplifier, puis les exporter en TopoJSON ou en polyline encodée. Le Loir, simplifié à 300 m, tient en 213 points, soit environ 8 Ko.
 - **Difficulté** : l'affiner avec les pages vues de Wikipédia en français, qui reflètent mieux la notoriété en France que les sitelinks. Éviter l'ordre de Strahler, qui n'est pas comparable d'une région à l'autre.
 
 Outils prévus pour la suite : `geopandas`/`pyogrio`, `shapely` 2 et `pyproj`.
@@ -102,7 +113,7 @@ Outils prévus pour la suite : `geopandas`/`pyogrio`, `shapely` 2 et `pyproj`.
 | Source | Licence | Mention |
 |---|---|---|
 | Wikidata | CC0 | Aucune obligatoire ; « Données : Wikidata » par courtoisie |
-| BD TOPO, BD CARTO (IGN) | Licence Ouverte 2.0 | « Source : IGN – BD TOPO®, mise à jour du JJ/MM/AAAA » (source et date obligatoires) |
+| BD TOPO, BD CARTO, ADMIN EXPRESS (IGN) | Licence Ouverte 2.0 | « Source : IGN – BD TOPO®, mise à jour du JJ/MM/AAAA » (source et date obligatoires) |
 | BD TOPAGE (si utilisée) | Licence Ouverte 2.0 | « BD TOPAGE® – Sandre/OFB/IGN, millésime AAAA » |
 | Marine Regions (si utilisé pour contrôler la mer d'arrivée) | CC-BY | « Flanders Marine Institute : MarineRegions.org » |
 

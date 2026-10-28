@@ -140,6 +140,7 @@ describe('une partie de « Jusqu’à la mer »', () => {
       expect(first.hint).toEqual({ target: { kind: 'step', stepIndex: 0 }, initial: 'S' });
       state = first.state;
       expect(requestHint(state, context).hint).toBeNull();
+      expect(state.livesLeft).toBe(2);
       state = answerWatercourse(state, 'Sarthe', context).state;
       expect(requestHint(state, context).hint).toMatchObject({ initial: 'M' });
     });
@@ -148,11 +149,21 @@ describe('une partie de « Jusqu’à la mer »', () => {
       expect(requestHint(startGame(garonne), context).hint).toEqual({ target: { kind: 'sea' } });
     });
 
-    it('coûtent des points et apparaissent dans la grille', () => {
+    it('coûtent une vie, comptent dans le score et apparaissent dans la grille', () => {
       let state = requestHint(startGame(garonne), context).state;
+      expect(state.livesLeft).toBe(2);
       state = answerSea(state, 'atlantic').state;
       expect(gameGrid(state)).toEqual(['hint', 'hit']);
-      expect(score(state)).toBe(90);
+      expect(score(state)).toBe(75);
+    });
+
+    it('sont refusés à la dernière vie, ou quand ils ont déjà été donnés', () => {
+      let state = requestHint(startGame(loir), context).state;
+      expect(requestHint(state, context).refusal).toBe('already-given');
+      state = answerWatercourse(state, 'Marne', context).state;
+      state = answerWatercourse(state, 'Sarthe', context).state;
+      expect(state.livesLeft).toBe(1);
+      expect(requestHint(state, context)).toMatchObject({ hint: null, refusal: 'last-life' });
     });
   });
 });

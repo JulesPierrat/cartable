@@ -7,6 +7,7 @@ import {
   type GameState,
   type Hint,
 } from '@/games/jusqua-la-mer/engine/game';
+import { hasGeometry } from '@/games/jusqua-la-mer/data/geo';
 import { buildNameIndex } from '@/platform/autocomplete';
 import { localDateKey } from '@/platform/daily';
 import { capitalize, normalizeName } from '@/platform/text';
@@ -107,16 +108,30 @@ export function feedbackMessage(feedback: Feedback, input: string, state: GameSt
   }
 }
 
-const seaDirections: Record<SeaId, string> = {
-  channel: 'au nord-ouest',
-  'north-sea': 'au nord',
-  atlantic: "à l'ouest",
-  mediterranean: 'au sud',
-};
+/** Cours d'eau connus à ce stade de la partie : la rivière de départ et les étapes trouvées. */
+export function knownPath(state: GameState): string[] {
+  return [state.river.id, ...state.river.steps.filter((_, i) => state.steps[i] === 'found').map((step) => step.id)];
+}
 
-/** Texte d'un indice : l'initiale d'un cours d'eau, ou la direction de la mer (trois mers sur quatre commencent par « M »). */
-export function hintText(hint: Hint, river: River): string {
-  return 'initial' in hint ? `commence par « ${hint.initial} »` : `la mer est ${seaDirections[river.sea]}`;
+/** Ce que montre la carte d'un indice : le chemin connu, et ce qu'il faut deviner mis en avant. */
+export function hintMap(hint: Hint, state: GameState): { known: string[]; highlight: string[] } {
+  const path = knownPath(state);
+  if (hint.target.kind === 'sea') {
+    return { known: [], highlight: path };
+  }
+  return { known: path, highlight: [state.river.steps[hint.target.stepIndex].id] };
+}
+
+/** Légende de la carte d'indice, sans jamais écrire la réponse. */
+export function hintCaption(hint: Hint, state: GameState): string {
+  const from = watercourseName(lastFoundId(state));
+  if (!('initial' in hint)) {
+    return `Suis ${from} jusqu'à la côte pour trouver sa mer.`;
+  }
+  const target = state.river.steps[hint.target.stepIndex].id;
+  return hasGeometry(target)
+    ? `En bleu vif, le cours d'eau dans lequel se jette ${from}. À toi de trouver son nom !`
+    : `Ce cours d'eau coule hors de France et n'a pas de tracé : son nom commence par « ${hint.initial} ».`;
 }
 
 export const victoryTitles: Record<SeaId, string> = {

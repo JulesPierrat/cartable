@@ -145,21 +145,27 @@ export function answerSea(state: GameState, sea: SeaId): Outcome {
   return record(state, { kind: 'sea', sea, feedback: { kind: 'sea-correct' }, at }, steps);
 }
 
+export type HintRefusal = 'already-given' | 'last-life' | 'game-over';
+
 /**
- * Indice sur la prochaine étape obligatoire (son initiale), ou sur la mer s'il n'en reste plus.
- * Un seul indice par étape ; `null` si celui-ci a déjà été donné ou si la partie est finie.
+ * Indice sur la prochaine étape obligatoire, ou sur la mer s'il n'en reste plus : l'écran le
+ * montre sur une carte (l'initiale sert quand le cours d'eau n'a pas de tracé). Il coûte une vie,
+ * un seul par étape, et il est refusé quand il ne reste qu'une vie.
  */
-export function requestHint(state: GameState, context: GameContext): { state: GameState; hint: Hint | null } {
+export function requestHint(
+  state: GameState,
+  context: GameContext,
+): { state: GameState; hint: Hint | null; refusal?: HintRefusal } {
   if (state.status !== 'playing') {
-    return { state, hint: null };
+    return { state, hint: null, refusal: 'game-over' };
   }
   const required = nextRequiredStepIndex(state);
   const target: HintTarget = required === null ? { kind: 'sea' } : { kind: 'step', stepIndex: required };
-  const given = state.history.some(
-    (entry) => entry.kind === 'hint' && sameTarget(entry.hint.target, target),
-  );
-  if (given) {
-    return { state, hint: null };
+  if (hintFor(state, target)) {
+    return { state, hint: null, refusal: 'already-given' };
+  }
+  if (state.livesLeft <= 1) {
+    return { state, hint: null, refusal: 'last-life' };
   }
   const { watercourses } = context.dataset;
   const hint: Hint =
@@ -169,7 +175,10 @@ export function requestHint(state: GameState, context: GameContext): { state: Ga
           initial: watercourses[state.river.steps[target.stepIndex].id].name.charAt(0).toUpperCase(),
         }
       : { target };
-  return { state: { ...state, history: [...state.history, { kind: 'hint', hint }] }, hint };
+  return {
+    state: { ...state, livesLeft: state.livesLeft - 1, history: [...state.history, { kind: 'hint', hint }] },
+    hint,
+  };
 }
 
 export function hintFor(state: GameState, target: HintTarget): Hint | undefined {
@@ -212,15 +221,13 @@ export function mistakeCount(state: GameState): number {
   return gameGrid(state).filter((cell) => cell === 'miss').length;
 }
 
-/** Score sur 100 : une erreur coûte 25 points, un indice 10 ; une partie perdue vaut 0. */
+/** Score sur 100 : chaque vie perdue (erreur ou indice) coûte 25 points ; une partie perdue vaut 0. */
 export function score(state: GameState): number {
   if (state.status !== 'won') {
     return 0;
   }
-  const grid = gameGrid(state);
-  const misses = grid.filter((cell) => cell === 'miss').length;
-  const hints = grid.filter((cell) => cell === 'hint').length;
-  return Math.max(0, 100 - 25 * misses - 10 * hints);
+  const livesLost = gameGrid(state).filter((cell) => cell !== 'hit').length;
+  return Math.max(0, 100 - 25 * livesLost);
 }
 
 /** Enregistre une réponse (cours d'eau ou mer), retire une vie si c'est une erreur et met à jour le statut. */
