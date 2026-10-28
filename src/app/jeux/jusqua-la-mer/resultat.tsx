@@ -1,39 +1,144 @@
-import { router } from 'expo-router';
-import { StyleSheet, View } from 'react-native';
+import { Redirect, router } from 'expo-router';
+import { ScrollView, Share, StyleSheet, View } from 'react-native';
+import { SafeAreaView } from 'react-native-safe-area-context';
 
-import { colors, spacing } from '@/platform/theme';
+import { ResultChain } from '@/games/jusqua-la-mer/components/ResultChain';
+import { ResultGrid } from '@/games/jusqua-la-mer/components/ResultGrid';
+import { gameGrid, mistakeCount, score } from '@/games/jusqua-la-mer/engine/game';
+import {
+  difficultyLabels,
+  plural,
+  riverFact,
+  victoryTitles,
+  type GameSetup,
+} from '@/games/jusqua-la-mer/presentation';
+import { useGameSession } from '@/games/jusqua-la-mer/session';
+import { formatDuration, shareGrid, timeUntilMidnight } from '@/platform/share';
+import { colors, radius, spacing } from '@/platform/theme';
 import { AppText } from '@/platform/ui/AppText';
 import { Button } from '@/platform/ui/Button';
 import { ComingSoon } from '@/platform/ui/ComingSoon';
+import { Icon } from '@/platform/ui/Icon';
 import { IconButton } from '@/platform/ui/IconButton';
-import { Screen } from '@/platform/ui/Screen';
 
 export default function ResultScreen() {
+  const { lastGame } = useGameSession();
+  if (!lastGame) {
+    return <Redirect href="/" />;
+  }
+  const { setup, state, durationMs } = lastGame;
+  const won = state.status === 'won';
+  const grid = gameGrid(state);
+  const required = setup.river.steps.filter((step) => !step.optional).length;
+  const fact = riverFact(setup.river);
+
+  const share = () => {
+    const header = setup.mode === 'daily' ? `Cartable · Jusqu'à la mer n°${setup.dailyNumber}` : "Cartable · Jusqu'à la mer";
+    const outcome = won ? `${score(state)}/100` : 'perdu cette fois';
+    Share.share({ message: `${header}\n${shareGrid(grid)}\n${outcome}` });
+  };
+
   return (
-    <Screen>
-      <View style={styles.header}>
-        <View style={styles.headerText}>
-          <AppText variant="label" color={colors.water}>
-            Défi du jour réussi
-          </AppText>
-          <AppText variant="title" accessibilityRole="header">
-            Jusqu&apos;à l&apos;océan !
-          </AppText>
+    <SafeAreaView style={styles.safeArea}>
+      <ScrollView contentContainerStyle={styles.content} showsVerticalScrollIndicator={false}>
+        <View style={styles.header}>
+          <View style={styles.headerText}>
+            <AppText variant="label" color={won ? colors.water : colors.error}>
+              {label(setup, won)}
+            </AppText>
+            <AppText variant="title" accessibilityRole="header">
+              {won ? victoryTitles[setup.river.sea] : 'Perdu, cette fois…'}
+            </AppText>
+            <AppText variant="body" color={colors.inkMuted}>
+              {required > 0 ? plural(required, 'étape') : 'Directement à la mer'} ·{' '}
+              {plural(mistakeCount(state), 'erreur')} · {formatDuration(durationMs)}
+            </AppText>
+          </View>
+          <IconButton icon="close" accessibilityLabel="Fermer" onPress={() => router.dismissAll()} />
         </View>
-        <IconButton icon="close" accessibilityLabel="Fermer" onPress={() => router.dismissAll()} />
-      </View>
-      <ComingSoon
-        phase="Phases 4 et 5"
-        description="La carte du trajet, la grille de la partie, la série de jours, une anecdote et le partage."
-      />
-      <View style={styles.footer}>
-        <Button label="Retour à l'accueil" onPress={() => router.dismissAll()} />
-      </View>
-    </Screen>
+
+        {won ? null : (
+          <AppText color={colors.inkSoft}>Voici le chemin complet, pour la prochaine fois :</AppText>
+        )}
+        <ResultChain river={setup.river} state={state} />
+
+        <ComingSoon phase="Phase 4" description="Ici, la carte du trajet de la source jusqu'à la mer." />
+
+        <View style={styles.scoreCard}>
+          <View style={styles.scoreGrid}>
+            <AppText variant="caption" color={colors.inkMuted}>
+              Ta partie
+            </AppText>
+            <ResultGrid cells={grid} />
+          </View>
+          <View style={styles.scoreValue}>
+            <AppText variant="caption" color={colors.inkMuted}>
+              Score
+            </AppText>
+            <AppText variant="heading" color={colors.night}>
+              {score(state)}/100
+            </AppText>
+          </View>
+        </View>
+
+        {fact ? (
+          <View style={styles.fact}>
+            <View style={styles.factTitle}>
+              <Icon name="hint" size={18} color={colors.night} />
+              <AppText variant="bodyStrong" color={colors.night}>
+                Le saviez-vous ?
+              </AppText>
+            </View>
+            <AppText variant="small">{fact}</AppText>
+          </View>
+        ) : null}
+
+        <View style={styles.actions}>
+          <View style={styles.action}>
+            <Button label="Partager" icon="share" onPress={share} />
+          </View>
+          <View style={styles.action}>
+            <Button
+              label="Partie libre"
+              variant="secondary"
+              onPress={() =>
+                router.replace({
+                  pathname: '/jeux/jusqua-la-mer/partie',
+                  params: { mode: setup.mode === 'daily' ? 'medium' : setup.mode },
+                })
+              }
+            />
+          </View>
+        </View>
+
+        {setup.mode === 'daily' ? (
+          <AppText variant="small" color={colors.inkMuted} style={styles.countdown}>
+            Prochain défi dans {timeUntilMidnight(new Date())}
+          </AppText>
+        ) : null}
+      </ScrollView>
+    </SafeAreaView>
   );
 }
 
+function label(setup: GameSetup, won: boolean): string {
+  if (setup.mode === 'daily') {
+    return won ? 'Défi du jour réussi' : 'Défi du jour';
+  }
+  return `Partie libre · ${difficultyLabels[setup.mode]}`;
+}
+
 const styles = StyleSheet.create({
+  safeArea: {
+    flex: 1,
+    backgroundColor: colors.background,
+  },
+  content: {
+    paddingHorizontal: spacing.xxl,
+    paddingTop: spacing.md,
+    paddingBottom: spacing.xxl,
+    gap: spacing.lg,
+  },
   header: {
     flexDirection: 'row',
     alignItems: 'flex-start',
@@ -44,7 +149,43 @@ const styles = StyleSheet.create({
     flex: 1,
     gap: spacing.xs,
   },
-  footer: {
-    marginTop: 'auto',
+  scoreCard: {
+    flexDirection: 'row',
+    alignItems: 'center',
+    justifyContent: 'space-between',
+    gap: spacing.md,
+    padding: spacing.lg,
+    borderRadius: radius.lg,
+    backgroundColor: colors.surface,
+    borderWidth: 1,
+    borderColor: colors.border,
+  },
+  scoreGrid: {
+    flex: 1,
+    gap: spacing.sm,
+  },
+  scoreValue: {
+    alignItems: 'flex-end',
+  },
+  fact: {
+    padding: spacing.lg,
+    borderRadius: radius.lg,
+    backgroundColor: colors.waterTint,
+    gap: spacing.xs,
+  },
+  factTitle: {
+    flexDirection: 'row',
+    alignItems: 'center',
+    gap: spacing.sm,
+  },
+  actions: {
+    flexDirection: 'row',
+    gap: spacing.md,
+  },
+  action: {
+    flex: 1,
+  },
+  countdown: {
+    textAlign: 'center',
   },
 });
