@@ -17,6 +17,17 @@ Les règles Expo du template s'appliquent, en particulier « ne te fie pas à ta
 - Node 24 (`.nvmrc`).
 - Données : pipeline Python dans `scripts/data/` (lancé avec `uv`), sorties JSON versionnées dans `assets/data/`.
 
+## Commandes
+
+- `npm run lint`, `npm run typecheck`, `npm test` : les trois doivent passer, c'est ce que vérifie la CI.
+- Node n'est pas encore installé sur la machine de Jules : en attendant, lance les commandes npm et npx dans Docker, avec l'image locale `node:24-alpine` (commande type dans le README). Le serveur de dev (`npx expo start`), lui, attend Node sur la machine.
+
+## Navigation
+
+- `src/app/(tabs)/` : les onglets Jouer, Stats et Profil (`Tabs` vient de `expo-router/js-tabs`, l'import depuis `expo-router` est déprécié en SDK 58).
+- `src/app/jeux/<jeu>/` : les écrans d'un jeu, empilés par-dessus les onglets ; chaque écran est déclaré dans `src/app/_layout.tsx`.
+- Composants d'interface partagés dans `src/platform/ui/` : `Screen`, `AppText` (variantes typographiques du thème), `Button`, `IconButton`, `Icon` (icônes SVG au trait des maquettes), `Logo`.
+
 ## Conventions
 
 - Identifiants et noms de fichiers en anglais ; textes de l'interface, docs et messages de commit en français.

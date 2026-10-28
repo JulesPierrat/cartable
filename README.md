@@ -22,12 +22,23 @@ Scanne ensuite le QR code affiché avec Expo Go (Android) ou l'appareil photo (i
 Autres commandes :
 
 ```bash
-npx expo lint        # lint
-npx tsc --noEmit     # vérification des types
+npm run lint         # lint
+npm run typecheck    # vérification des types
+npm test             # tests unitaires (npm run test:watch pour le mode continu)
 npx expo-doctor      # diagnostic des dépendances
 ```
 
 Pour ajouter une dépendance, utilise toujours `npx expo install <paquet>` : il choisit la version compatible avec le SDK.
+
+Sans Node sur la machine, les commandes qui ne lancent pas le serveur de dev passent par Docker :
+
+```bash
+docker run --rm -u "$(id -u):$(id -g)" -e HOME=/tmp -v "$PWD:/app" -w /app node:24-alpine npm test
+```
+
+La CI GitHub Actions (`.github/workflows/ci.yml`) lance lint, types, tests et la vérification des versions à chaque push sur `main` et sur chaque pull request.
+
+Les icônes et l'écran de démarrage provisoires sont générés par `python3 scripts/generate-icons.py` (Pillow).
 
 ## Organisation
 
@@ -40,7 +51,7 @@ Pour ajouter une dépendance, utilise toujours `npx expo install <paquet>` : il 
 | `scripts/data/` | pipeline de préparation des données hydrographiques |
 | `docs/` | plan et documentation |
 
-Cette organisation est la cible décrite dans le plan ; le code actuel est encore celui du template Expo.
+Les écrans du jeu sont pour l'instant des coquilles qui annoncent la phase du plan qui les remplira. Pour ajouter un mini-jeu : un dossier dans `src/games/`, ses écrans dans `src/app/jeux/<jeu>/`, et une ligne dans `src/platform/games.ts`.
 
 ## Données
 

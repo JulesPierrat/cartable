@@ -49,13 +49,13 @@ Pour ajouter un mini-jeu plus tard, il suffira de créer un dossier dans `src/ga
 Objectif : un projet propre qui démarre sur le téléphone avec l'identité visuelle des maquettes.
 
 - [ ] Installer Node 24 sur la machine (voir README) et vérifier `npx expo start` + Expo Go sur un téléphone.
-- [ ] Retirer le contenu d'exemple du template (écrans, composants et images d'exemple).
-- [ ] Mettre en place l'arborescence ci-dessus avec des écrans vides.
-- [ ] `theme.ts` : couleurs (fond `#F3F6F8`, encre `#0F2537`, eau `#1665C1`, bleu nuit `#0B3A66`, erreur `#B13A0B`…), rayons, espacements.
-- [ ] Polices Bricolage Grotesque (titres) et DM Sans (texte) via `expo-font`.
-- [ ] Nom, icône provisoire et écran de démarrage dans `app.json`.
-- [ ] Lint + `tsc --noEmit` + tests unitaires (jest-expo) branchés dans `package.json`.
-- [ ] GitHub Actions : lint, typecheck et tests à chaque push.
+- [x] Retirer le contenu d'exemple du template (écrans, composants et images d'exemple).
+- [x] Mettre en place l'arborescence ci-dessus avec des écrans vides.
+- [x] `theme.ts` : couleurs (fond `#F3F6F8`, encre `#0F2537`, eau `#1665C1`, bleu nuit `#0B3A66`, erreur `#B13A0B`…), rayons, espacements.
+- [x] Polices Bricolage Grotesque (titres) et DM Sans (texte) via `expo-font`.
+- [x] Nom, icône provisoire et écran de démarrage dans `app.json`.
+- [x] Lint + `tsc --noEmit` + tests unitaires (jest-expo) branchés dans `package.json`.
+- [x] GitHub Actions : lint, typecheck et tests à chaque push.
 
 **Démontrable** : l'app s'ouvre sur un accueil vide aux couleurs de Cartable.
 
