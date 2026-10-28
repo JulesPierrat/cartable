@@ -17,6 +17,19 @@ Les règles Expo du template s'appliquent, en particulier « ne te fie pas à ta
 - Node 24 (`.nvmrc`).
 - Données : pipeline Python dans `scripts/data/` (lancé avec `uv`), sorties JSON versionnées dans `assets/data/`.
 
+## Commandes
+
+- `npm run lint`, `npm run typecheck`, `npm test` : les trois doivent passer, c'est ce que vérifie la CI.
+- Node n'est pas encore installé sur la machine de Jules : en attendant, lance les commandes npm et npx dans Docker, avec l'image locale `node:24-alpine` (commande type dans le README). Le serveur de dev (`npx expo start`), lui, attend Node sur la machine.
+
+## Navigation
+
+- `src/app/(tabs)/` : les onglets Jouer, Stats et Profil (`Tabs` vient de `expo-router/js-tabs`, l'import depuis `expo-router` est déprécié en SDK 58).
+- `src/app/jeux/<jeu>/` : les écrans d'un jeu, empilés par-dessus les onglets ; chaque écran est déclaré dans `src/app/_layout.tsx`.
+- Outils partagés par tous les jeux dans `src/platform/` : `text.ts` (normalisation des noms pour comparer une réponse), `autocomplete.ts`, `daily.ts` (date locale et tirage déterministe du défi du jour).
+- Moteur de « Jusqu'à la mer » dans `src/games/jusqua-la-mer/engine/` : `game.ts` (état et actions, des fonctions pures qui renvoient un nouvel état), `challenges.ts` (défi du jour, partie libre).
+- Composants d'interface partagés dans `src/platform/ui/` : `Screen`, `AppText` (variantes typographiques du thème), `Button`, `IconButton`, `Icon` (icônes SVG au trait des maquettes), `Logo`.
+
 ## Conventions
 
 - Identifiants et noms de fichiers en anglais ; textes de l'interface, docs et messages de commit en français.
@@ -26,6 +39,12 @@ Les règles Expo du template s'appliquent, en particulier « ne te fie pas à ta
 - Les couleurs, polices et espacements viennent de `src/platform/theme.ts`, pas de valeurs en dur dans les écrans.
 - Avant de dire qu'une tâche est finie : `npx expo lint`, `npx tsc --noEmit` et les tests passent.
 - Ne push pas et ne merge pas sur `main` sans qu'on te le demande.
+
+## Données
+
+- `assets/data/*.json` sont générés par `uv run scripts/data/build_rivers.py` : ne jamais les modifier à la main. Une chaîne fausse se corrige par une règle dans `scripts/data/rules.yaml`, puis on relance le pipeline et les tests.
+- Les rivières et les étapes sont identifiées par leur QID Wikidata. La vérification d'une réponse, elle, compare des noms normalisés.
+- Les règles de jeu sur les données (Gironde facultative, lacs transparents, Corse incluse) sont dans `docs/donnees.md`.
 
 ## Pièges du domaine
 

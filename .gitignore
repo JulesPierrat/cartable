@@ -41,3 +41,6 @@ example
 # generated native folders
 /ios
 /android
+
+# Données : cache des téléchargements du pipeline
+scripts/data/cache/

@@ -1,0 +1,56 @@
+# Règles appliquées par build_rivers.py par-dessus Wikidata.
+# Chaque entrée est identifiée par son QID Wikidata ; le libellé en commentaire sert à la relecture.
+# Les règles du jeu qui les justifient sont décrites dans docs/donnees.md.
+
+# Points d'arrivée Wikidata (mers, golfes, baies, estuaires…) ramenés aux quatre mers du jeu.
+seas:
+  atlantic:
+    - Q97        # océan Atlantique
+    - Q41573     # golfe de Gascogne
+    - Q3059070   # estuaire de la Loire
+    - Q2433610   # pertuis d'Antioche
+    - Q810532    # bassin d'Arcachon
+    - Q1144680   # golfe du Morbihan
+    - Q208960    # rade de Brest
+  channel:
+    - Q34640     # Manche
+    - Q1741383   # baie de Somme
+    - Q2879561   # baie d'Authie
+    - Q2879705   # baie de Saint-Brieuc
+  north-sea:
+    - Q1693      # mer du Nord
+    - Q923381    # delta de la Meuse et du Rhin
+  mediterranean:
+    - Q4918      # mer Méditerranée
+    - Q38882     # mer Tyrrhénienne (Corse)
+    - Q42820     # mer Ligure (Corse)
+    - Q16508119  # golfe de Saint-Tropez
+
+# Étapes facultatives : les citer ou non est juste (règle du 28/10/2026).
+optional_steps:
+  Q213517: { name: Gironde, article: la }   # estuaire de la Gironde
+  Q369237: { name: Gaves réunis, article: les }   # tronçon formé par le gave de Pau et le gave d'Oloron, avant l'Adour
+
+# Lacs et étangs traversés : ils ne comptent pas comme une étape, mais les citer n'est pas une erreur.
+# `then` est le cours d'eau qui en sort, ou directement une mer du jeu.
+transparent:
+  Q6403: { then: Q602 }              # Léman → Rhône
+  Q288912: { then: mediterranean }   # étang de Berre
+
+# Embouchures fausses ou ambiguës dans Wikidata.
+mouth_fixes:
+  Q974519: { mouth: Q207366, reason: "Wikidata donne aussi « Bayonne », une ville" }   # Nive → Adour
+
+# Cours d'eau jouables qui n'ont pas de code Sandre dans Wikidata.
+additions:
+  - Q584   # Rhin : son code Sandre est porté par l'élément « Rhin supérieur »
+
+# Cours d'eau écartés des rivières jouables (ils restent utilisables comme étape).
+exclusions:
+  Q663546: "Rhin supérieur : tronçon du Rhin, remplacé par le Rhin (Q584)"
+  Q670414: "Doire ripaire : finit dans l'Adriatique, hors des quatre mers du jeu"
+
+# Nom ou article imposés quand Wikipédia ne permet pas de les déduire.
+names:
+  Q729593: { article: le }   # Dropt
+  Q705057: { article: la }   # Sauer

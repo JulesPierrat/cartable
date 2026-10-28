@@ -49,13 +49,13 @@ Pour ajouter un mini-jeu plus tard, il suffira de créer un dossier dans `src/ga
 Objectif : un projet propre qui démarre sur le téléphone avec l'identité visuelle des maquettes.
 
 - [ ] Installer Node 24 sur la machine (voir README) et vérifier `npx expo start` + Expo Go sur un téléphone.
-- [ ] Retirer le contenu d'exemple du template (écrans, composants et images d'exemple).
-- [ ] Mettre en place l'arborescence ci-dessus avec des écrans vides.
-- [ ] `theme.ts` : couleurs (fond `#F3F6F8`, encre `#0F2537`, eau `#1665C1`, bleu nuit `#0B3A66`, erreur `#B13A0B`…), rayons, espacements.
-- [ ] Polices Bricolage Grotesque (titres) et DM Sans (texte) via `expo-font`.
-- [ ] Nom, icône provisoire et écran de démarrage dans `app.json`.
-- [ ] Lint + `tsc --noEmit` + tests unitaires (jest-expo) branchés dans `package.json`.
-- [ ] GitHub Actions : lint, typecheck et tests à chaque push.
+- [x] Retirer le contenu d'exemple du template (écrans, composants et images d'exemple).
+- [x] Mettre en place l'arborescence ci-dessus avec des écrans vides.
+- [x] `theme.ts` : couleurs (fond `#F3F6F8`, encre `#0F2537`, eau `#1665C1`, bleu nuit `#0B3A66`, erreur `#B13A0B`…), rayons, espacements.
+- [x] Polices Bricolage Grotesque (titres) et DM Sans (texte) via `expo-font`.
+- [x] Nom, icône provisoire et écran de démarrage dans `app.json`.
+- [x] Lint + `tsc --noEmit` + tests unitaires (jest-expo) branchés dans `package.json`.
+- [x] GitHub Actions : lint, typecheck et tests à chaque push.
 
 **Démontrable** : l'app s'ouvre sur un accueil vide aux couleurs de Cartable.
 
@@ -63,20 +63,22 @@ Objectif : un projet propre qui démarre sur le téléphone avec l'identité vis
 
 Objectif : un fichier qui donne, pour chaque rivière, la chaîne exacte jusqu'à la mer.
 
-- [ ] **Exploration d'abord** : vérifier si la BD TOPAGE (IGN/OFB) ou le référentiel SANDRE donnent directement le cours d'eau dans lequel chaque rivière se jette. Sinon, le déduire en suivant les tronçons vers l'aval. C'est le principal risque du projet : à trancher avant tout le reste.
-- [ ] Vérifier la licence des données et la mention à afficher dans l'app.
-- [ ] Pipeline `scripts/data/` (Python + uv) : téléchargement → graphe « rivière → cours d'eau receveur » → chaîne jusqu'à l'exutoire → mer d'arrivée (Manche, mer du Nord, Atlantique, Méditerranée).
-- [ ] Noms : article (`le`, `la`, `l'`), forme d'affichage, variantes acceptées (`Gironde` pour la Garonne, etc.).
-- [ ] Fichier de corrections manuelles (`corrections.yaml`) pour les cas particuliers :
+- [x] **Exploration d'abord** : d'où tirer, pour chaque rivière, le cours d'eau dans lequel elle se jette ? Résultat dans [`docs/donnees.md`](donnees.md) : Wikidata (P403) pour les chaînes, BD TOPO de l'IGN pour le contrôle et les géométries.
+- [x] Vérifier la licence des données et la mention à afficher dans l'app (voir `docs/donnees.md`).
+- [x] Trancher les trois décisions de `docs/donnees.md` : Gironde étape facultative, lac traversé transparent, Corse incluse.
+- [x] Pipeline `scripts/data/build_rivers.py` (Python + uv) : extraction Wikidata (rivières ayant un code Sandre) → remontée des embouchures → table des points d'arrivée vers les 4 mers → `assets/data/rivers.json` et rapport de relecture `scripts/data/report.md`.
+- [ ] Contrôle croisé des chaînes avec les confluences BD TOPO, et liste des écarts à revoir.
+- [x] Noms : article (`le`, `la`, `l'`, `les`, tiré de Wikipédia) et forme d'affichage ; étapes facultatives (Gironde, Gaves réunis, lacs traversés).
+- [x] Fichier de règles manuelles (`scripts/data/rules.yaml`) pour les cas particuliers :
   - estuaires partagés (Dordogne → Garonne ou Gironde) ;
   - rivières qui traversent un lac (Rhône et Léman) ;
   - fleuves qui finissent à l'étranger (Moselle → Rhin → mer du Nord, Meuse, Escaut) ;
-  - rivières qui finissent dans un étang (Arc → étang de Berre) : à exclure ou à traiter à part.
-- [ ] Niveau de difficulté calculé : longueur de la chaîne, longueur et notoriété du cours d'eau.
-- [ ] Sélection de 200 à 300 rivières jouables, avec leur niveau.
-- [ ] Géométries simplifiées (contour de la France et tracés des cours d'eau sélectionnés) pour la carte, en coordonnées déjà projetées.
-- [ ] Tests de non-régression sur des chaînes connues : Loir → Sarthe → Maine → Loire → Atlantique ; Aisne → Oise → Seine → Manche ; Gartempe → Creuse → Vienne → Loire → Atlantique ; Vologne → Moselle → Rhin → mer du Nord ; Ognon → Saône → Rhône → Méditerranée.
-- [ ] Revue manuelle de 50 chaînes tirées au hasard.
+  - rivières qui finissent dans un étang (Arc → étang de Berre → Méditerranée).
+- [x] Niveau de difficulté calculé : nombre d'étapes, notoriété (sitelinks Wikidata) et passage par l'étranger. À affiner avec les pages vues de Wikipédia en français.
+- [x] Sélection de 200 à 300 rivières jouables, avec leur niveau : 257 rivières (55 faciles, 121 moyennes, 81 difficiles), identifiées par leur QID Wikidata.
+- [ ] Géométries simplifiées (contour de la France et tracés des cours d'eau sélectionnés, tronçons BD TOPO du réseau principal) pour la carte, en coordonnées déjà projetées.
+- [x] Tests de non-régression sur des chaînes connues (`src/games/jusqua-la-mer/data/__tests__/rivers-test.ts`) : Loir → Sarthe → Maine → Loire → Atlantique ; Aisne → Oise → Seine → Manche ; Gartempe → Creuse → Vienne → Loire → Atlantique ; Vologne → Moselle → Rhin → mer du Nord ; Ognon → Saône → Rhône → Méditerranée.
+- [ ] Revue manuelle de 50 chaînes tirées au hasard : la liste à cocher est dans `scripts/data/review.md`.
 
 **Démontrable** : `assets/data/rivers.json` et `assets/data/geo.json`, plus un rapport des cas douteux.
 
@@ -84,15 +86,16 @@ Objectif : un fichier qui donne, pour chaque rivière, la chaîne exacte jusqu'�
 
 Objectif : toute la logique du jeu, sans interface.
 
-- [ ] État d'une partie : rivière de départ, chaîne attendue, réponses données, vies (3), indices utilisés, fin (gagnée ou perdue).
-- [ ] Vérification d'une réponse : majuscules, accents, tirets et articles ignorés ; variantes acceptées ; plusieurs chemins valides possibles.
-- [ ] Fin de chaîne : c'est le joueur qui choisit la mer. Donner une mer trop tôt compte comme une erreur.
-- [ ] Indice : révèle le département de la prochaine confluence (et coûte des points).
-- [ ] Autocomplétion sur **tous** les cours d'eau connus, pour ne jamais trahir la réponse.
-- [ ] Score et grille de partage (une case par tentative).
-- [ ] Défi du jour : rivière tirée de façon déterministe à partir de la date, la même pour tout le monde, sans répétition sur une longue période.
-- [ ] Partie libre : tirage au hasard selon le niveau.
-- [ ] Tests unitaires sur tout ce qui précède.
+- [x] État d'une partie : rivière de départ, chaîne attendue, réponses données, vies (3), indices utilisés, fin (gagnée ou perdue). Code dans `src/games/jusqua-la-mer/engine/game.ts`.
+- [x] Vérification d'une réponse : majuscules, accents, tirets et articles ignorés ; étapes facultatives (plusieurs chemins valides). Une faute de frappe ou un cours d'eau déjà cité ne coûte pas de vie ; un cours d'eau plus loin sur le chemin est signalé « pas directement ».
+- [x] Fin de chaîne : c'est le joueur qui choisit la mer. Donner une mer trop tôt compte comme une erreur.
+- [x] Indice : révèle l'initiale de la prochaine étape obligatoire (ou de la mer), un par étape, 10 points.
+- [ ] Indice plus riche : le département de la prochaine confluence. Il faut d'abord ajouter la position des confluences aux données (phase 1).
+- [x] Autocomplétion sur **tous** les cours d'eau connus (4 648 noms, du plus au moins connu), pour ne jamais trahir la réponse.
+- [x] Score sur 100 (−25 par erreur, −10 par indice) et grille de la partie (une case par bonne réponse, erreur ou indice).
+- [x] Défi du jour : rivière tirée de façon déterministe à partir de la date locale, la même pour tout le monde. Il puise dans 125 rivières faciles et moyennes, sans répétition avant de les avoir toutes vues. Le n°1 est le 28/10/2026.
+- [x] Partie libre : tirage au hasard selon le niveau, en évitant les rivières jouées récemment.
+- [x] Tests unitaires sur tout ce qui précède, dont une partie complète avec les vraies données.
 
 **Démontrable** : une partie complète jouée dans les tests.
 
@@ -149,7 +152,7 @@ La phase 2 peut commencer avec un petit jeu de données écrit à la main (une v
 
 | Risque | Parade |
 |---|---|
-| Les données ne donnent pas directement le cours d'eau receveur | Phase 1 commence par une exploration ; plan B : topologie des tronçons + corrections manuelles |
+| Erreurs ou modifications malveillantes dans Wikidata | Instantané figé dans le repo, contrôle croisé avec les confluences BD TOPO, revue manuelle des écarts |
 | Chaînes ambiguës ou contestables | Variantes acceptées, plusieurs chemins valides, cas tordus exclus du défi du jour |
 | Noms mal saisis sur mobile | Autocomplétion obligatoire et normalisation des réponses |
 | Expo change d'API à chaque SDK | Suivre `AGENTS.md` : lire la doc de la version installée avant de coder |
