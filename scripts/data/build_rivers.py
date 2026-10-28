@@ -11,7 +11,7 @@ Les réponses de Wikidata et de Wikipédia sont gardées dans scripts/data/cache
 
 Sorties :
 - assets/data/rivers.json : rivières jouables et leur chaîne jusqu'à la mer ;
-- assets/data/watercourse-names.json : tous les noms de cours d'eau connus, pour l'autocomplétion ;
+- assets/data/watercourse-names.json : tous les noms de cours d'eau connus, du plus au moins connu, pour l'autocomplétion ;
 - scripts/data/report.md : ce qui demande une relecture.
 """
 
@@ -370,9 +370,16 @@ def main() -> None:
             {"id": q, "steps": steps, "sea": sea, "difficulty": difficulty(steps, nodes[q].sitelinks, abroad)}
         )
 
-    # Noms pour l'autocomplétion : tous les cours d'eau de métropole connus, et toutes les étapes.
-    names = {clean_label(n.label) for n in nodes.values() if n.label and n.is_metro_watercourse}
-    names |= {w["name"] for w in watercourses.values()}
+    # Noms pour l'autocomplétion : tous les cours d'eau de métropole connus et toutes les étapes,
+    # du plus connu au moins connu (un nom porté par plusieurs cours d'eau prend la meilleure notoriété).
+    notoriety: dict[str, int] = defaultdict(int)
+    for n in nodes.values():
+        if n.label and n.is_metro_watercourse:
+            name = clean_label(n.label)
+            notoriety[name] = max(notoriety[name], n.sitelinks)
+    for w in watercourses.values():
+        notoriety[w["name"]] = max(notoriety[w["name"]], w["sitelinks"])
+    names = sorted(notoriety, key=lambda name: (-notoriety[name], normalize(name)))
 
     OUTPUT.mkdir(parents=True, exist_ok=True)
     # Date de l'instantané : celle du téléchargement de Wikidata, pas celle du passage du script.
@@ -388,7 +395,7 @@ def main() -> None:
             "rivers": rivers,
         },
     )
-    write_json(OUTPUT / "watercourse-names.json", sorted(names, key=normalize))
+    write_json(OUTPUT / "watercourse-names.json", names)
 
     report.write(HERE / "report.md", snapshot, rivers, watercourses, nodes, resolver)
     print(f"{len(rivers)} rivières jouables, {len(watercourses)} cours d'eau décrits, {len(names)} noms.")

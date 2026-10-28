@@ -1,6 +1,10 @@
 import { router } from 'expo-router';
 import { StyleSheet, View } from 'react-native';
 
+import { dataset, withArticle } from '@/games/jusqua-la-mer/data/rivers';
+import { dailyChallenge } from '@/games/jusqua-la-mer/engine/challenges';
+import { localDateKey } from '@/platform/daily';
+import { capitalize } from '@/platform/text';
 import { colors, spacing } from '@/platform/theme';
 import { AppText } from '@/platform/ui/AppText';
 import { Button } from '@/platform/ui/Button';
@@ -9,6 +13,9 @@ import { IconButton } from '@/platform/ui/IconButton';
 import { Screen } from '@/platform/ui/Screen';
 
 export default function GameScreen() {
+  const daily = dailyChallenge(dataset, localDateKey(new Date()));
+  const riverName = capitalize(withArticle(dataset.watercourses[daily.river.id]));
+
   return (
     <Screen>
       <View style={styles.header}>
@@ -16,7 +23,7 @@ export default function GameScreen() {
         <View style={styles.headerTitle}>
           <AppText variant="bodyStrong">Défi du jour</AppText>
           <AppText variant="caption" color={colors.inkMuted}>
-            Jusqu&apos;à la mer
+            n°{daily.number} · Jusqu&apos;à la mer
           </AppText>
         </View>
         <IconButton icon="hint" accessibilityLabel="Demander un indice" color={colors.water} onPress={() => {}} />
@@ -26,12 +33,12 @@ export default function GameScreen() {
           Rivière du jour
         </AppText>
         <AppText variant="display" accessibilityRole="header">
-          Le Loir
+          {riverName}
         </AppText>
       </View>
       <ComingSoon
-        phase="Phases 2 et 3"
-        description="La chaîne des cours d'eau trouvés, les vies, la saisie avec suggestions et le choix de la mer."
+        phase="Phase 3"
+        description="La chaîne des cours d'eau trouvés, les vies, la saisie avec suggestions et le choix de la mer. Le moteur de jeu (phase 2) est prêt."
       />
       <View style={styles.footer}>
         <Button

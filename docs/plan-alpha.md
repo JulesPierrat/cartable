@@ -86,15 +86,16 @@ Objectif : un fichier qui donne, pour chaque rivière, la chaîne exacte jusqu'�
 
 Objectif : toute la logique du jeu, sans interface.
 
-- [ ] État d'une partie : rivière de départ, chaîne attendue, réponses données, vies (3), indices utilisés, fin (gagnée ou perdue).
-- [ ] Vérification d'une réponse : majuscules, accents, tirets et articles ignorés ; variantes acceptées ; plusieurs chemins valides possibles.
-- [ ] Fin de chaîne : c'est le joueur qui choisit la mer. Donner une mer trop tôt compte comme une erreur.
-- [ ] Indice : révèle le département de la prochaine confluence (et coûte des points).
-- [ ] Autocomplétion sur **tous** les cours d'eau connus, pour ne jamais trahir la réponse.
-- [ ] Score et grille de partage (une case par tentative).
-- [ ] Défi du jour : rivière tirée de façon déterministe à partir de la date, la même pour tout le monde, sans répétition sur une longue période.
-- [ ] Partie libre : tirage au hasard selon le niveau.
-- [ ] Tests unitaires sur tout ce qui précède.
+- [x] État d'une partie : rivière de départ, chaîne attendue, réponses données, vies (3), indices utilisés, fin (gagnée ou perdue). Code dans `src/games/jusqua-la-mer/engine/game.ts`.
+- [x] Vérification d'une réponse : majuscules, accents, tirets et articles ignorés ; étapes facultatives (plusieurs chemins valides). Une faute de frappe ou un cours d'eau déjà cité ne coûte pas de vie ; un cours d'eau plus loin sur le chemin est signalé « pas directement ».
+- [x] Fin de chaîne : c'est le joueur qui choisit la mer. Donner une mer trop tôt compte comme une erreur.
+- [x] Indice : révèle l'initiale de la prochaine étape obligatoire (ou de la mer), un par étape, 10 points.
+- [ ] Indice plus riche : le département de la prochaine confluence. Il faut d'abord ajouter la position des confluences aux données (phase 1).
+- [x] Autocomplétion sur **tous** les cours d'eau connus (4 648 noms, du plus au moins connu), pour ne jamais trahir la réponse.
+- [x] Score sur 100 (−25 par erreur, −10 par indice) et grille de la partie (une case par bonne réponse, erreur ou indice).
+- [x] Défi du jour : rivière tirée de façon déterministe à partir de la date locale, la même pour tout le monde. Il puise dans 125 rivières faciles et moyennes, sans répétition avant de les avoir toutes vues. Le n°1 est le 28/10/2026.
+- [x] Partie libre : tirage au hasard selon le niveau, en évitant les rivières jouées récemment.
+- [x] Tests unitaires sur tout ce qui précède, dont une partie complète avec les vraies données.
 
 **Démontrable** : une partie complète jouée dans les tests.
 
