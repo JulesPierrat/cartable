@@ -1,4 +1,4 @@
-import { StyleSheet, View } from 'react-native';
+import { Pressable, StyleSheet, View } from 'react-native';
 import Animated, { FadeInDown } from 'react-native-reanimated';
 
 import { dataset } from '@/games/jusqua-la-mer/data/rivers';
@@ -10,7 +10,7 @@ import {
   type GameState,
   type HistoryEntry,
 } from '@/games/jusqua-la-mer/engine/game';
-import { hintText, lastFoundId, missLabel, watercourseName } from '@/games/jusqua-la-mer/presentation';
+import { lastFoundId, missLabel, watercourseName } from '@/games/jusqua-la-mer/presentation';
 import { capitalize } from '@/platform/text';
 import { colors, radius, spacing } from '@/platform/theme';
 import { AppText } from '@/platform/ui/AppText';
@@ -22,7 +22,7 @@ type Row = { key: string; id: string; misses: HistoryEntry[] };
  * Le chemin parcouru : la rivière de départ, les étapes trouvées (avec les erreurs commises
  * en les cherchant), la case à trouver, puis la mer. Les étapes à venir restent cachées.
  */
-export function ChainProgress({ state }: { state: GameState }) {
+export function ChainProgress({ state, onShowHint }: { state: GameState; onShowHint: () => void }) {
   const steps = state.river.steps;
   const current = currentStepIndex(state);
   const mistakes = state.history.filter(
@@ -85,9 +85,12 @@ export function ChainProgress({ state }: { state: GameState }) {
             {capitalize(watercourseName(lastFoundId(state)))} se jette dans…
           </AppText>
           {hint ? (
-            <AppText variant="caption" color={colors.night}>
-              Indice : {hintText(hint, state.river)}
-            </AppText>
+            <Pressable accessibilityRole="button" onPress={onShowHint} style={styles.hintLink}>
+              <Icon name="hint" size={14} color={colors.water} />
+              <AppText variant="caption" color={colors.water}>
+                Revoir l&apos;indice sur la carte
+              </AppText>
+            </Pressable>
           ) : null}
           <Misses entries={pendingMisses} state={state} />
         </View>
@@ -236,5 +239,11 @@ const styles = StyleSheet.create({
   },
   struck: {
     textDecorationLine: 'line-through',
+  },
+  hintLink: {
+    flexDirection: 'row',
+    alignItems: 'center',
+    gap: spacing.xs,
+    minHeight: 32,
   },
 });

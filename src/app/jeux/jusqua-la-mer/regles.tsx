@@ -72,7 +72,7 @@ export default function RulesScreen() {
             <AppText variant="small" color={colors.ink} style={styles.bold}>
               Indice
             </AppText>{' '}
-            — révèle l&apos;initiale de la prochaine étape.
+            — montre sur une carte vierge le cours d&apos;eau à trouver, contre une vie.
           </Rule>
           <Rule icon="calendar" last>
             <AppText variant="small" color={colors.ink} style={styles.bold}>

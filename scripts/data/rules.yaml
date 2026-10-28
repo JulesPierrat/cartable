@@ -50,6 +50,10 @@ exclusions:
   Q663546: "Rhin supérieur : tronçon du Rhin, remplacé par le Rhin (Q584)"
   Q670414: "Doire ripaire : finit dans l'Adriatique, hors des quatre mers du jeu"
 
+# Code Sandre à utiliser pour le tracé (build_geometries.py) quand il manque dans Wikidata.
+geometry_codes:
+  Q584: A---0000   # Rhin (code porté par l'élément « Rhin supérieur »)
+
 # Nom ou article imposés quand Wikipédia ne permet pas de les déduire.
 names:
   Q729593: { article: le }   # Dropt

@@ -1,8 +1,9 @@
 import { Redirect, router } from 'expo-router';
-import { ScrollView, Share, StyleSheet, View } from 'react-native';
+import { ScrollView, Share, StyleSheet, useWindowDimensions, View } from 'react-native';
 import { SafeAreaView } from 'react-native-safe-area-context';
 
 import { ResultChain } from '@/games/jusqua-la-mer/components/ResultChain';
+import { RiverMap } from '@/games/jusqua-la-mer/components/RiverMap';
 import { ResultGrid } from '@/games/jusqua-la-mer/components/ResultGrid';
 import { gameGrid, mistakeCount, score } from '@/games/jusqua-la-mer/engine/game';
 import {
@@ -17,12 +18,12 @@ import { formatDuration, shareGrid, timeUntilMidnight } from '@/platform/share';
 import { colors, radius, spacing } from '@/platform/theme';
 import { AppText } from '@/platform/ui/AppText';
 import { Button } from '@/platform/ui/Button';
-import { ComingSoon } from '@/platform/ui/ComingSoon';
 import { Icon } from '@/platform/ui/Icon';
 import { IconButton } from '@/platform/ui/IconButton';
 
 export default function ResultScreen() {
   const { lastGame } = useGameSession();
+  const { width } = useWindowDimensions();
   if (!lastGame) {
     return <Redirect href="/" />;
   }
@@ -62,7 +63,14 @@ export default function ResultScreen() {
         )}
         <ResultChain river={setup.river} state={state} />
 
-        <ComingSoon phase="Phase 4" description="Ici, la carte du trajet de la source jusqu'à la mer." />
+        <RiverMap
+          width={Math.min(width, 480) - 2 * spacing.xxl}
+          height={(Math.min(width, 480) - 2 * spacing.xxl) / 1.6}
+          framing="path"
+          known={[setup.river.id]}
+          highlight={setup.river.steps.map((step) => step.id)}
+          accessibilityLabel="Carte du trajet jusqu'à la mer"
+        />
 
         <View style={styles.scoreCard}>
           <View style={styles.scoreGrid}>
