@@ -1,6 +1,6 @@
 import { Pressable, StyleSheet } from 'react-native';
 
-import { colors, touchTarget } from '@/platform/theme';
+import { touchTarget, useThemedStyles, type Palette } from '@/platform/theme';
 import { Icon, type IconName } from '@/platform/ui/Icon';
 
 type IconButtonProps = {
@@ -12,7 +12,8 @@ type IconButtonProps = {
 };
 
 /** Bouton rond blanc avec une icône seule (fermer, indice…). */
-export function IconButton({ icon, accessibilityLabel, onPress, color = colors.ink }: IconButtonProps) {
+export function IconButton({ icon, accessibilityLabel, onPress, color }: IconButtonProps) {
+  const styles = useThemedStyles(makeStyles);
   return (
     <Pressable
       accessibilityRole="button"
@@ -24,7 +25,8 @@ export function IconButton({ icon, accessibilityLabel, onPress, color = colors.i
   );
 }
 
-const styles = StyleSheet.create({
+const makeStyles = (colors: Palette) =>
+  StyleSheet.create({
   button: {
     width: touchTarget,
     height: touchTarget,

@@ -135,6 +135,7 @@ Objectif : reproduire les maquettes avec le moteur branché.
 - [ ] Icône et écran de démarrage définitifs.
 - [x] Accessibilité : libellés des boutons-icônes, contrastes vérifiés par un test, taille de texte système suivie jusqu'à 1,5 fois.
 - [ ] Vérifier VoiceOver / TalkBack sur un vrai téléphone.
+- [x] Thème clair ou sombre selon le réglage du téléphone, contrastes vérifiés dans les deux thèmes ; barre d'onglets native (Liquid Glass sur iOS 26) qui flotte sur le contenu.
 - [x] Mention des sources de données (Wikidata, IGN, avec leurs dates) dans Profil.
 - [x] EAS : profils `preview` (testeurs) et `production` (stores) dans `eas.json`, identifiant `com.julespierrat.cartable`. Marche à suivre dans [`docs/alpha.md`](alpha.md).
 - [ ] Android : APK de test via EAS (lien d'installation direct).

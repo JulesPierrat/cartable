@@ -1,6 +1,6 @@
 import { Pressable, StyleSheet, View } from 'react-native';
 
-import { colors, radius, spacing } from '@/platform/theme';
+import { radius, spacing, useColors, type Palette } from '@/platform/theme';
 import { AppText } from '@/platform/ui/AppText';
 import { Icon, type IconName } from '@/platform/ui/Icon';
 
@@ -16,14 +16,17 @@ type ButtonProps = {
   trailingIcon?: IconName;
 };
 
-const palette: Record<ButtonVariant, { background: string; text: string; border: string }> = {
-  primary: { background: colors.water, text: colors.white, border: colors.water },
-  secondary: { background: colors.surface, text: colors.water, border: colors.water },
-  light: { background: colors.white, text: colors.night, border: colors.white },
-};
+function palette(colors: Palette): Record<ButtonVariant, { background: string; text: string; border: string }> {
+  return {
+    primary: { background: colors.water, text: colors.onWater, border: colors.water },
+    secondary: { background: colors.surface, text: colors.water, border: colors.water },
+    // Sur un bloc mis en avant (carte du défi du jour).
+    light: { background: colors.white, text: colors.hero, border: colors.white },
+  };
+}
 
 export function Button({ label, onPress, variant = 'primary', icon, trailingIcon }: ButtonProps) {
-  const { background, text, border } = palette[variant];
+  const { background, text, border } = palette(useColors())[variant];
   return (
     <Pressable
       accessibilityRole="button"

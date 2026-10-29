@@ -1,40 +1,27 @@
-import { Tabs } from 'expo-router/js-tabs';
+import { NativeTabs } from 'expo-router/native-tabs';
 
-import { colors, fonts } from '@/platform/theme';
-import { Icon } from '@/platform/ui/Icon';
+import { fonts, useColors } from '@/platform/theme';
 
+/**
+ * Barre d'onglets native : Liquid Glass sur iOS 26 et plus, barre Material sur Android.
+ * Icônes système (SF Symbols sur iOS, Material Symbols sur Android). Sur le web : `_layout.web.tsx`.
+ */
 export default function TabsLayout() {
+  const colors = useColors();
   return (
-    <Tabs
-      screenOptions={{
-        headerShown: false,
-        tabBarActiveTintColor: colors.water,
-        tabBarInactiveTintColor: colors.inkMuted,
-        tabBarStyle: { backgroundColor: colors.surface, borderTopColor: colors.border },
-        tabBarLabelStyle: { fontFamily: fonts.bodyBold, fontSize: 12 },
-        sceneStyle: { backgroundColor: colors.background },
-      }}>
-      <Tabs.Screen
-        name="index"
-        options={{
-          title: 'Jouer',
-          tabBarIcon: ({ color }) => <Icon name="compass" color={color} />,
-        }}
-      />
-      <Tabs.Screen
-        name="stats"
-        options={{
-          title: 'Stats',
-          tabBarIcon: ({ color }) => <Icon name="stats" color={color} />,
-        }}
-      />
-      <Tabs.Screen
-        name="profil"
-        options={{
-          title: 'Profil',
-          tabBarIcon: ({ color }) => <Icon name="profile" color={color} />,
-        }}
-      />
-    </Tabs>
+    <NativeTabs tintColor={colors.water} labelStyle={{ fontFamily: fonts.bodyBold }}>
+      <NativeTabs.Trigger name="index">
+        <NativeTabs.Trigger.Icon sf={{ default: 'safari', selected: 'safari.fill' }} md="explore" />
+        <NativeTabs.Trigger.Label>Jouer</NativeTabs.Trigger.Label>
+      </NativeTabs.Trigger>
+      <NativeTabs.Trigger name="stats">
+        <NativeTabs.Trigger.Icon sf="chart.bar.fill" md="bar_chart" />
+        <NativeTabs.Trigger.Label>Stats</NativeTabs.Trigger.Label>
+      </NativeTabs.Trigger>
+      <NativeTabs.Trigger name="profil">
+        <NativeTabs.Trigger.Icon sf={{ default: 'person', selected: 'person.fill' }} md="person" />
+        <NativeTabs.Trigger.Label>Profil</NativeTabs.Trigger.Label>
+      </NativeTabs.Trigger>
+    </NativeTabs>
   );
 }

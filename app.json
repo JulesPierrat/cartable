@@ -6,7 +6,7 @@
     "orientation": "portrait",
     "icon": "./assets/images/icon.png",
     "scheme": "cartable",
-    "userInterfaceStyle": "light",
+    "userInterfaceStyle": "automatic",
     "android": {
       "adaptiveIcon": {
         "backgroundColor": "#1665C1",
@@ -28,7 +28,11 @@
         {
           "backgroundColor": "#0B3A66",
           "image": "./assets/images/splash-icon.png",
-          "imageWidth": 96
+          "imageWidth": 96,
+          "dark": {
+            "backgroundColor": "#0B1A28",
+            "image": "./assets/images/splash-icon.png"
+          }
         }
       ]
     ],

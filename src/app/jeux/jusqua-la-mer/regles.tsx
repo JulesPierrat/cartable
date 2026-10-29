@@ -6,13 +6,15 @@ import { SafeAreaView } from 'react-native-safe-area-context';
 import { DEFAULT_LIVES } from '@/games/jusqua-la-mer/engine/game';
 import { parseMode } from '@/games/jusqua-la-mer/presentation';
 import { markRulesSeen } from '@/games/jusqua-la-mer/progress';
-import { colors, fonts, radius, spacing } from '@/platform/theme';
+import { fonts, radius, spacing, useColors, useThemedStyles, type Palette } from '@/platform/theme';
 import { AppText } from '@/platform/ui/AppText';
 import { Button } from '@/platform/ui/Button';
 import { Icon, type IconName } from '@/platform/ui/Icon';
 import { IconButton } from '@/platform/ui/IconButton';
 
 export default function RulesScreen() {
+  const colors = useColors();
+  const styles = useThemedStyles(makeStyles);
   const { mode } = useLocalSearchParams<{ mode?: string }>();
 
   return (
@@ -108,6 +110,8 @@ export default function RulesScreen() {
 }
 
 function RuleStep({ number, title, children }: { number: number; title: string; children: ReactNode }) {
+  const colors = useColors();
+  const styles = useThemedStyles(makeStyles);
   return (
     <View style={styles.step}>
       <View style={styles.number}>
@@ -124,6 +128,8 @@ function RuleStep({ number, title, children }: { number: number; title: string; 
 }
 
 function Pill({ children, found = false }: { children: ReactNode; found?: boolean }) {
+  const colors = useColors();
+  const styles = useThemedStyles(makeStyles);
   return (
     <View style={[styles.pill, found ? styles.pillFound : styles.pillPlain]}>
       <AppText variant="small" color={found ? colors.night : colors.ink} style={styles.bold}>
@@ -144,6 +150,8 @@ function Rule({
   last?: boolean;
   children: ReactNode;
 }) {
+  const colors = useColors();
+  const styles = useThemedStyles(makeStyles);
   return (
     <View style={[styles.rule, !last && styles.ruleBorder]}>
       <Icon name={icon} size={20} color={colors.water} filled={filled} />
@@ -154,7 +162,8 @@ function Rule({
   );
 }
 
-const styles = StyleSheet.create({
+const makeStyles = (colors: Palette) =>
+  StyleSheet.create({
   safeArea: {
     flex: 1,
     backgroundColor: colors.background,
@@ -236,8 +245,8 @@ const styles = StyleSheet.create({
     backgroundColor: colors.surface,
   },
   seaChosen: {
-    backgroundColor: colors.night,
-    borderColor: colors.night,
+    backgroundColor: colors.hero,
+    borderColor: colors.hero,
   },
   seaText: {
     fontFamily: fonts.bodyMedium,

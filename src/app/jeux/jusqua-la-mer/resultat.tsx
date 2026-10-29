@@ -19,13 +19,15 @@ import { useGameSession } from '@/games/jusqua-la-mer/session';
 import { localDateKey } from '@/platform/daily';
 import { dailyStreaks, useRecords } from '@/platform/records';
 import { formatDuration, shareGrid, timeUntilMidnight } from '@/platform/share';
-import { colors, radius, spacing } from '@/platform/theme';
+import { radius, spacing, useColors, useThemedStyles, type Palette } from '@/platform/theme';
 import { AppText } from '@/platform/ui/AppText';
 import { Button } from '@/platform/ui/Button';
 import { Icon } from '@/platform/ui/Icon';
 import { IconButton } from '@/platform/ui/IconButton';
 
 export default function ResultScreen() {
+  const colors = useColors();
+  const styles = useThemedStyles(makeStyles);
   const { lastGame } = useGameSession();
   const { width } = useWindowDimensions();
   const [today] = useState(() => localDateKey(new Date()));
@@ -161,7 +163,8 @@ function label(setup: GameSetup, won: boolean): string {
   return `Partie libre · ${difficultyLabels[setup.mode]}`;
 }
 
-const styles = StyleSheet.create({
+const makeStyles = (colors: Palette) =>
+  StyleSheet.create({
   safeArea: {
     flex: 1,
     backgroundColor: colors.background,

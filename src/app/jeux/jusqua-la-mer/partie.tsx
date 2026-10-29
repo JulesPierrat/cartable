@@ -41,7 +41,7 @@ import {
 import { recordGame, saveDaily, startOrResume } from '@/games/jusqua-la-mer/progress';
 import { useGameSession } from '@/games/jusqua-la-mer/session';
 import { capitalize } from '@/platform/text';
-import { colors, spacing } from '@/platform/theme';
+import { spacing, useColors, useThemedStyles, type Palette } from '@/platform/theme';
 import { AppText } from '@/platform/ui/AppText';
 import { IconButton } from '@/platform/ui/IconButton';
 
@@ -49,6 +49,8 @@ import { IconButton } from '@/platform/ui/IconButton';
 const RESULT_DELAY_MS = 700;
 
 export default function GameScreen() {
+  const colors = useColors();
+  const styles = useThemedStyles(makeStyles);
   const { mode } = useLocalSearchParams<{ mode?: string }>();
   // Nouvelle partie, ou reprise du défi du jour : il reprend où on l'a laissé et ne se rejoue pas.
   const [start] = useState(() => startOrResume(parseMode(mode), new Date()));
@@ -203,7 +205,8 @@ function textFor(feedback: Feedback, input: string, state: GameState) {
   return { text, tone: isMistake(feedback) ? ('error' as const) : ('info' as const) };
 }
 
-const styles = StyleSheet.create({
+const makeStyles = (colors: Palette) =>
+  StyleSheet.create({
   safeArea: {
     flex: 1,
     backgroundColor: colors.background,

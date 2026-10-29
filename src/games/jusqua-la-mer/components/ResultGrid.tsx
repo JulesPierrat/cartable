@@ -1,11 +1,13 @@
 import { StyleSheet, View } from 'react-native';
 
 import type { GridCell } from '@/games/jusqua-la-mer/engine/game';
-import { colors } from '@/platform/theme';
+import { useColors, useThemedStyles, type Palette } from '@/platform/theme';
 import { Icon } from '@/platform/ui/Icon';
 
 /** La grille de la partie : bleu plein pour une bonne réponse, orange clair barré pour une erreur, ampoule pour un indice. */
 export function ResultGrid({ cells }: { cells: GridCell[] }) {
+  const colors = useColors();
+  const styles = useThemedStyles(makeStyles);
   const hits = cells.filter((cell) => cell === 'hit').length;
   const misses = cells.filter((cell) => cell === 'miss').length;
   const hints = cells.length - hits - misses;
@@ -31,7 +33,8 @@ export function ResultGrid({ cells }: { cells: GridCell[] }) {
   );
 }
 
-const styles = StyleSheet.create({
+const makeStyles = (colors: Palette) =>
+  StyleSheet.create({
   row: {
     flexDirection: 'row',
     flexWrap: 'wrap',

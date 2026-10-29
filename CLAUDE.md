@@ -25,7 +25,7 @@ Les règles Expo du template s'appliquent, en particulier « ne te fie pas à ta
 
 ## Navigation
 
-- `src/app/(tabs)/` : les onglets Jouer, Stats et Profil (`Tabs` vient de `expo-router/js-tabs`, l'import depuis `expo-router` est déprécié en SDK 58).
+- `src/app/(tabs)/` : les onglets Jouer, Stats et Profil. `_layout.tsx` utilise la barre native (`expo-router/native-tabs` : Liquid Glass sur iOS 26+, Material sur Android, icônes SF Symbols et Material Symbols) ; `_layout.web.tsx` garde une barre JavaScript pour le web. La barre native flotte sur le contenu : un écran d'onglet laisse `tabBarInset` en bas de son défilement.
 - `src/app/jeux/<jeu>/` : les écrans d'un jeu, empilés par-dessus les onglets ; chaque écran est déclaré dans `src/app/_layout.tsx`.
 - Outils partagés par tous les jeux dans `src/platform/` : `text.ts` (normalisation des noms pour comparer une réponse), `autocomplete.ts`, `daily.ts` (date locale et tirage déterministe du défi du jour).
 - Moteur de « Jusqu'à la mer » dans `src/games/jusqua-la-mer/engine/` : `game.ts` (état et actions, des fonctions pures qui renvoient un nouvel état), `challenges.ts` (défi du jour, partie libre).
@@ -38,7 +38,7 @@ Les règles Expo du template s'appliquent, en particulier « ne te fie pas à ta
 - Le dossier d'un jeu est en kebab-case français (`src/games/jusqua-la-mer/`).
 - Le moteur d'un jeu (`engine/`) est du TypeScript pur : pas d'import React ni Expo, et des tests unitaires pour chaque règle.
 - Ce qui sert à plusieurs jeux va dans `src/platform/`, jamais dans le dossier d'un jeu.
-- Les couleurs, polices et espacements viennent de `src/platform/theme.ts`, pas de valeurs en dur dans les écrans.
+- Les couleurs, polices et espacements viennent de `src/platform/theme.ts`, pas de valeurs en dur dans les écrans. L'app suit le thème clair ou sombre du téléphone : dans un composant, `const colors = useColors()` ; une feuille de styles qui utilise des couleurs s'écrit `const makeStyles = (colors: Palette) => StyleSheet.create({...})` et se lit avec `useThemedStyles(makeStyles)`. Respecter les rôles : `hero` pour le fond d'un bloc mis en avant (avec `white` dessus), `night` pour un texte ou un tracé d'accent, `onWater` pour ce qui est posé sur `water`. Toute nouvelle paire texte / fond va dans `src/platform/__tests__/theme-test.ts`, vérifiée dans les deux thèmes.
 - Avant de dire qu'une tâche est finie : `npx expo lint`, `npx tsc --noEmit` et les tests passent.
 - Ne push pas et ne merge pas sur `main` sans qu'on te le demande.
 

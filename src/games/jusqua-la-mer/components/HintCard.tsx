@@ -4,7 +4,7 @@ import { StyleSheet, View, type LayoutChangeEvent } from 'react-native';
 import { RiverMap } from '@/games/jusqua-la-mer/components/RiverMap';
 import type { GameState, Hint } from '@/games/jusqua-la-mer/engine/game';
 import { hintCaption, hintMap } from '@/games/jusqua-la-mer/presentation';
-import { colors, fonts, radius, spacing } from '@/platform/theme';
+import { fonts, radius, spacing, useColors, useThemedStyles, type Palette } from '@/platform/theme';
 import { AppText } from '@/platform/ui/AppText';
 import { Button } from '@/platform/ui/Button';
 import { IconButton } from '@/platform/ui/IconButton';
@@ -22,6 +22,8 @@ type HintCardProps = {
  * au-dessus de la zone de saisie) : la carte vierge de la France et sa légende.
  */
 export function HintCard({ hint, state, onHide, onNextHint }: HintCardProps) {
+  const colors = useColors();
+  const styles = useThemedStyles(makeStyles);
   const [width, setWidth] = useState(0);
   const onLayout = (event: LayoutChangeEvent) => setWidth(Math.round(event.nativeEvent.layout.width));
 
@@ -58,7 +60,8 @@ export function HintCard({ hint, state, onHide, onNextHint }: HintCardProps) {
   );
 }
 
-const styles = StyleSheet.create({
+const makeStyles = (colors: Palette) =>
+  StyleSheet.create({
   card: {
     backgroundColor: colors.surface,
     borderRadius: radius.xl,

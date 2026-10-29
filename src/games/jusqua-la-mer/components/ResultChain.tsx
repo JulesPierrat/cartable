@@ -4,7 +4,7 @@ import { dataset, type River } from '@/games/jusqua-la-mer/data/rivers';
 import type { GameState } from '@/games/jusqua-la-mer/engine/game';
 import { watercourseName } from '@/games/jusqua-la-mer/presentation';
 import { capitalize } from '@/platform/text';
-import { colors, fonts, radius, spacing } from '@/platform/theme';
+import { fonts, radius, spacing, useColors, useThemedStyles, type Palette } from '@/platform/theme';
 import { AppText } from '@/platform/ui/AppText';
 import { Icon } from '@/platform/ui/Icon';
 
@@ -13,6 +13,8 @@ import { Icon } from '@/platform/ui/Icon';
  * apparaît en pointillés, pour qu'il la découvre sans qu'elle compte comme un oubli.
  */
 export function ResultChain({ river, state }: { river: River; state: GameState }) {
+  const colors = useColors();
+  const styles = useThemedStyles(makeStyles);
   const items = [
     { key: 'start', label: capitalize(watercourseName(river.id)), dashed: false },
     ...river.steps.map((step, i) => ({
@@ -44,7 +46,8 @@ export function ResultChain({ river, state }: { river: River; state: GameState }
   );
 }
 
-const styles = StyleSheet.create({
+const makeStyles = (colors: Palette) =>
+  StyleSheet.create({
   row: {
     flexDirection: 'row',
     flexWrap: 'wrap',
@@ -72,7 +75,7 @@ const styles = StyleSheet.create({
     borderColor: colors.water,
   },
   sea: {
-    backgroundColor: colors.night,
+    backgroundColor: colors.hero,
   },
   pillText: {
     fontFamily: fonts.bodyBold,
