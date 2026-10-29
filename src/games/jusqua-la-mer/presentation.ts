@@ -96,7 +96,7 @@ export function feedbackMessage(feedback: Feedback, input: string, state: GameSt
     case 'wrong':
       return `${capitalize(name)} ne fait pas partie du chemin.`;
     case 'downstream':
-      return `${capitalize(name)} : pas directement !`;
+      return `${capitalize(name)} : pas directement !`;
     case 'already-found':
       return `${capitalize(name)} est déjà sur ton chemin.`;
     case 'unknown':
@@ -136,15 +136,15 @@ export function hintCaption(hint: Hint, state: GameState): string {
   }
   const target = state.river.steps[hint.target.stepIndex].id;
   return hasGeometry(target)
-    ? `En bleu vif, le cours d'eau dans lequel se jette ${from}. À toi de trouver son nom !`
+    ? `En bleu vif, le cours d'eau dans lequel se jette ${from}. À toi de trouver son nom !`
     : `Ce cours d'eau coule hors de France et n'a pas de tracé : son nom commence par « ${hint.initial} ».`;
 }
 
 export const victoryTitles: Record<SeaId, string> = {
-  atlantic: "Jusqu'à l'océan !",
-  channel: "Jusqu'à la Manche !",
-  'north-sea': "Jusqu'à la mer du Nord !",
-  mediterranean: "Jusqu'à la Méditerranée !",
+  atlantic: "Jusqu'à l'océan !",
+  channel: "Jusqu'à la Manche !",
+  'north-sea': "Jusqu'à la mer du Nord !",
+  mediterranean: "Jusqu'à la Méditerranée !",
 };
 
 /** Une anecdote vraie, tirée des données (longueurs Wikidata). */

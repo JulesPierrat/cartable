@@ -67,15 +67,15 @@ Objectif : un fichier qui donne, pour chaque rivière, la chaîne exacte jusqu'�
 - [x] Vérifier la licence des données et la mention à afficher dans l'app (voir `docs/donnees.md`).
 - [x] Trancher les trois décisions de `docs/donnees.md` : Gironde étape facultative, lac traversé transparent, Corse incluse.
 - [x] Pipeline `scripts/data/build_rivers.py` (Python + uv) : extraction Wikidata (rivières ayant un code Sandre) → remontée des embouchures → table des points d'arrivée vers les 4 mers → `assets/data/rivers.json` et rapport de relecture `scripts/data/report.md`.
-- [ ] Contrôle croisé des chaînes avec les confluences BD TOPO, et liste des écarts à revoir.
+- [x] Contrôle croisé des chaînes avec la BD TOPO (`scripts/data/check_chains.py` → `scripts/data/crosscheck.md`) : 198 maillons sur 213 confirmés, 5 confluences à l'étranger, 7 non comparables, 3 écarts à relire. Tracés trop courts signalés dans `scripts/data/geometry-report.md` (Somme et Sambre complétées par leur partie canalisée).
 - [x] Noms : article (`le`, `la`, `l'`, `les`, tiré de Wikipédia) et forme d'affichage ; étapes facultatives (Gironde, Gaves réunis, lacs traversés).
 - [x] Fichier de règles manuelles (`scripts/data/rules.yaml`) pour les cas particuliers :
   - estuaires partagés (Dordogne → Garonne ou Gironde) ;
   - rivières qui traversent un lac (Rhône et Léman) ;
   - fleuves qui finissent à l'étranger (Moselle → Rhin → mer du Nord, Meuse, Escaut) ;
   - rivières qui finissent dans un étang (Arc → étang de Berre → Méditerranée).
-- [x] Niveau de difficulté calculé : nombre d'étapes, notoriété (sitelinks Wikidata) et passage par l'étranger. À affiner avec les pages vues de Wikipédia en français.
-- [x] Sélection de 200 à 300 rivières jouables, avec leur niveau : 257 rivières (55 faciles, 121 moyennes, 81 difficiles), identifiées par leur QID Wikidata.
+- [x] Niveau de difficulté calculé : nombre d'étapes, notoriété en France (pages vues de Wikipédia en français sur un an) et passage par l'étranger.
+- [x] Sélection de 200 à 300 rivières jouables, avec leur niveau : 257 rivières (56 faciles, 134 moyennes, 67 difficiles), identifiées par leur QID Wikidata.
 - [x] Géométries simplifiées (`scripts/data/build_geometries.py` → `assets/data/geo.json`) : contour de la France (ADMIN EXPRESS petite échelle) et tracés des cours d'eau (tronçons BD TOPO du réseau principal), en Lambert-93.
 - [x] Tests de non-régression sur des chaînes connues (`src/games/jusqua-la-mer/data/__tests__/rivers-test.ts`) : Loir → Sarthe → Maine → Loire → Atlantique ; Aisne → Oise → Seine → Manche ; Gartempe → Creuse → Vienne → Loire → Atlantique ; Vologne → Moselle → Rhin → mer du Nord ; Ognon → Saône → Rhône → Méditerranée.
 - [ ] Revue manuelle de 50 chaînes tirées au hasard : la liste à cocher est dans `scripts/data/review.md`.
@@ -118,8 +118,7 @@ Objectif : reproduire les maquettes avec le moteur branché.
 
 - [x] Rendu SVG (`react-native-svg`) du contour de la France et des cours d'eau, à partir de `geo.json` (`RiverMap`).
 - [x] Cadrage automatique sur le trajet, avec la France entière en médaillon ; carte vierge de toute la France pour les indices.
-- [x] Trajet surligné.
-- [ ] Source, confluences, embouchure et étiquettes sans chevauchement.
+- [x] Trajet surligné, nom des rivières sans chevauchement (écran de résultat seulement).
 - [ ] Performance correcte sur un Android d'entrée de gamme.
 
 ## Phase 5 — Stats, série et partage

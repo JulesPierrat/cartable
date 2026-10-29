@@ -29,6 +29,7 @@ from collections import defaultdict
 from dataclasses import dataclass, field
 from datetime import date
 from pathlib import Path
+from urllib.parse import quote
 
 import requests
 import yaml
@@ -44,6 +45,10 @@ WIKIPEDIA_API = "https://fr.wikipedia.org/w/api.php"
 
 # Rivières assez connues pour être jouables (nombre d'articles Wikipédia, toutes langues).
 MIN_SITELINKS = 12
+# Notoriété en France, en pages vues par an sur Wikipédia en français : seuils de « très connue »
+# et de « connue » pour la difficulté.
+WELL_KNOWN_VIEWS = 25_000
+KNOWN_VIEWS = 5_000
 # Code hydrographique Sandre d'un cours d'eau de métropole : 8 caractères, commence par une
 # lettre ou un tiret (les codes d'outre-mer commencent par un chiffre), le 8e caractère
 # vaut 0 ou un tiret (1 = bras, 2 = canal).
@@ -154,6 +159,30 @@ def wikipedia_intros(http: requests.Session, titles: list[str]) -> dict[str, str
             intros[renamed.get(title, title)] = page.get("extract", "")
         time.sleep(0.5)
     return intros
+
+
+PAGEVIEWS_API = "https://wikimedia.org/api/rest_v1/metrics/pageviews/per-article/fr.wikipedia.org/all-access/user"
+
+
+def yearly_pageviews(http: requests.Session, titles: list[str], end: date) -> dict[str, int]:
+    """Pages vues de chaque article de Wikipédia en français sur les 12 mois complets avant `end`.
+    Un article que l'API refuse encore après plusieurs essais est absent du résultat (pas compté à zéro)."""
+    last = date(end.year, end.month, 1)
+    first = date(last.year - 1, last.month, 1)
+    views: dict[str, int] = {}
+    for title in titles:
+        url = f"{PAGEVIEWS_API}/{quote(title.replace(' ', '_'), safe='')}/monthly/{first:%Y%m%d}/{last:%Y%m%d}"
+        for attempt in range(5):
+            response = http.get(url, timeout=60)
+            if response.ok:
+                views[title] = sum(item["views"] for item in response.json().get("items", []))
+                break
+            if response.status_code == 404:
+                break
+            # Trop de requêtes (429) ou erreur passagère : on attend de plus en plus longtemps.
+            time.sleep(2 * (attempt + 1))
+        time.sleep(0.2)
+    return views
 
 
 def qid(binding: dict, key: str) -> str:
@@ -341,6 +370,14 @@ def main() -> None:
         intros |= wikipedia_intros(http, missing)
         (CACHE / "wikipedia-intros.json").write_text(json.dumps(intros, ensure_ascii=False))
 
+    # Notoriété en France : pages vues de Wikipédia en français sur un an, pour chaque rivière jouable.
+    start_titles = sorted({nodes[q].title for q in playable if nodes[q].title})
+    pageviews = cached("wikipedia-pageviews", args.refresh, lambda: yearly_pageviews(http, start_titles, date.today()))
+    missing_views = [t for t in start_titles if t not in pageviews]
+    if missing_views:
+        pageviews |= yearly_pageviews(http, missing_views, date.today())
+        (CACHE / "wikipedia-pageviews.json").write_text(json.dumps(pageviews, ensure_ascii=False))
+
     watercourses: dict[str, dict] = {}
     for q in sorted(described):
         node = nodes[q]
@@ -366,9 +403,9 @@ def main() -> None:
     rivers = []
     for q, (steps, sea) in sorted(playable.items(), key=lambda item: normalize(watercourses[item[0]]["name"])):
         abroad = any(not step.get("optional") and not nodes[step["id"]].is_metro_watercourse for step in steps)
-        rivers.append(
-            {"id": q, "steps": steps, "sea": sea, "difficulty": difficulty(steps, nodes[q].sitelinks, abroad)}
-        )
+        views = pageviews.get(nodes[q].title or "")
+        level = difficulty(steps, views, nodes[q].sitelinks, abroad)
+        rivers.append({"id": q, "steps": steps, "sea": sea, "difficulty": level})
 
     # Noms pour l'autocomplétion : tous les cours d'eau de métropole connus et toutes les étapes,
     # du plus connu au moins connu (un nom porté par plusieurs cours d'eau prend la meilleure notoriété).
@@ -402,12 +439,15 @@ def main() -> None:
     print(f"À relire : scripts/data/report.md ({len(report.unresolved)} chaînes non résolues).")
 
 
-def difficulty(steps: list[dict], sitelinks: int, abroad: bool) -> str:
-    """Plus la chaîne est longue, la rivière peu connue, ou le chemin passe par l'étranger
-    (l'Èbre pour le Sègre), plus c'est difficile. Les sitelinks mesurent la notoriété
-    internationale, d'où le bonus pour les chaînes qui sortent de France."""
+def difficulty(steps: list[dict], yearly_views: int | None, sitelinks: int, abroad: bool) -> str:
+    """Plus la chaîne est longue, la rivière peu connue en France (pages vues de Wikipédia en
+    français sur un an, à défaut le nombre de langues) ou le chemin passe par l'étranger (l'Èbre
+    pour le Sègre), plus c'est difficile."""
     required = sum(1 for step in steps if not step.get("optional"))
-    obscurity = 0 if sitelinks >= 40 else 1 if sitelinks >= 20 else 2
+    if yearly_views is None:
+        obscurity = 0 if sitelinks >= 40 else 1 if sitelinks >= 20 else 2
+    else:
+        obscurity = 0 if yearly_views >= WELL_KNOWN_VIEWS else 1 if yearly_views >= KNOWN_VIEWS else 2
     score = required + obscurity + (2 if abroad else 0)
     if score <= 1:
         return "easy"

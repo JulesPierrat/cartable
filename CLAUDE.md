@@ -44,7 +44,7 @@ Les règles Expo du template s'appliquent, en particulier « ne te fie pas à ta
 
 ## Données
 
-- `assets/data/*.json` sont générés par `uv run scripts/data/build_rivers.py` puis `uv run scripts/data/build_geometries.py` (tracés IGN dans `geo.json`) : ne jamais les modifier à la main. Une chaîne fausse se corrige par une règle dans `scripts/data/rules.yaml`, puis on relance le pipeline et les tests.
+- `assets/data/*.json` sont générés par `uv run scripts/data/build_rivers.py` puis `uv run scripts/data/build_geometries.py` (tracés IGN dans `geo.json`) : ne jamais les modifier à la main. `uv run scripts/data/check_chains.py` contrôle ensuite les chaînes avec la BD TOPO (`scripts/data/crosscheck.md`). Une chaîne fausse se corrige par une règle dans `scripts/data/rules.yaml`, puis on relance le pipeline et les tests.
 - Les rivières et les étapes sont identifiées par leur QID Wikidata. La vérification d'une réponse, elle, compare des noms normalisés.
 - Les règles de jeu sur les données (Gironde facultative, lacs transparents, Corse incluse) sont dans `docs/donnees.md`.
 

@@ -77,6 +77,7 @@ export default function ResultScreen() {
           width={Math.min(width, 480) - 2 * spacing.xxl}
           height={(Math.min(width, 480) - 2 * spacing.xxl) / 1.6}
           framing="path"
+          labels
           known={[setup.river.id]}
           highlight={setup.river.steps.map((step) => step.id)}
           accessibilityLabel="Carte du trajet jusqu'à la mer"
@@ -118,7 +119,7 @@ export default function ResultScreen() {
             <View style={styles.factTitle}>
               <Icon name="hint" size={18} color={colors.night} />
               <AppText variant="bodyStrong" color={colors.night}>
-                Le saviez-vous ?
+                Le saviez-vous ?
               </AppText>
             </View>
             <AppText variant="small">{fact}</AppText>

@@ -35,6 +35,7 @@ HERE = Path(__file__).resolve().parent
 CACHE = HERE / "cache" / "wfs"
 RIVERS = ROOT / "assets" / "data" / "rivers.json"
 OUTPUT = ROOT / "assets" / "data" / "geo.json"
+REPORT = HERE / "geometry-report.md"
 
 WFS_URL = "https://data.geopf.fr/wfs/ows"
 USER_AGENT = "cartable-data/0.1 (jeu de géographie ; https://github.com/JulesPierrat/cartable)"
@@ -44,6 +45,8 @@ PAGE_SIZE = 5000
 # assez léger pour embarquer tous les tracés dans l'app.
 RIVER_TOLERANCE_M = 250
 FRANCE_TOLERANCE_M = 1000
+# Tracé plus court que cette part de la longueur Wikidata : signalé dans le rapport.
+SHORT_RATIO = 0.6
 # Îles plus petites que ça (km²) : retirées du contour.
 MIN_ISLAND_KM2 = 40
 # Régions d'outre-mer (codes INSEE), exclues du contour.
@@ -105,14 +108,15 @@ def encode_line(coords) -> list[int]:
     return flat
 
 
-def river_lines(features: list[dict]) -> list[list[int]]:
+def river_lines(features: list[dict]) -> tuple[list[list[int]], float]:
+    """Lignes encodées du cours d'eau, et leur longueur totale en kilomètres."""
     lines = [shape(f["geometry"]) for f in features]
     merged = linemerge(MultiLineString([line for line in lines if isinstance(line, LineString)]))
     parts = merged.geoms if isinstance(merged, MultiLineString) else [merged]
     simplified = [part.simplify(RIVER_TOLERANCE_M) for part in parts if part.length > 0]
     # Les petits bouts isolés (moins de 2 km) n'apportent rien à cette échelle.
     kept = [part for part in simplified if part.length >= 2000] or simplified
-    return [encode_line(part.coords) for part in kept]
+    return [encode_line(part.coords) for part in kept], sum(part.length for part in kept) / 1000
 
 
 def france_rings(features: list[dict]) -> list[list[int]]:
@@ -126,13 +130,21 @@ def france_rings(features: list[dict]) -> list[list[int]]:
     return [encode_line(p.exterior.coords) for p in sorted(kept, key=lambda p: -p.area)]
 
 
+def geometry_codes(qid: str, watercourse: dict, overrides: dict[str, str | list[str]]) -> list[str]:
+    """Codes Sandre du tracé : ceux de `geometry_codes` (rules.yaml) s'il y en a, sinon celui de Wikidata."""
+    override = overrides.get(qid)
+    if override:
+        return [override] if isinstance(override, str) else list(override)
+    return [watercourse["sandreCode"]] if watercourse.get("sandreCode") else []
+
+
 def main() -> None:
     parser = argparse.ArgumentParser(description=__doc__.splitlines()[0])
     parser.add_argument("--refresh", action="store_true", help="retélécharger les données de l'IGN")
     args = parser.parse_args()
 
     rules = yaml.safe_load((HERE / "rules.yaml").read_text())
-    code_overrides: dict[str, str] = rules.get("geometry_codes") or {}
+    code_overrides: dict[str, str | list[str]] = rules.get("geometry_codes") or {}
     dataset = json.loads(RIVERS.read_text())
     http = requests.Session()
     http.headers["User-Agent"] = USER_AGENT
@@ -141,18 +153,31 @@ def main() -> None:
 
     lines: dict[str, list[list[int]]] = {}
     missing: list[str] = []
+    short: list[str] = []
     watercourses = dataset["watercourses"]
     for index, (qid, watercourse) in enumerate(sorted(watercourses.items()), start=1):
-        code = code_overrides.get(qid) or watercourse.get("sandreCode")
-        if not code:
+        codes = geometry_codes(qid, watercourse, code_overrides)
+        if not codes:
             missing.append(f"{watercourse['name']} ({qid}) : pas de code Sandre")
             continue
-        cql = f"code_du_cours_d_eau_bdcarthage='{code}' AND reseau_principal_coulant=true"
-        features = wfs(http, "BDTOPO_V3:troncon_hydrographique", cql, args.refresh, f"troncons-{code}")
+        features = [
+            feature
+            for code in codes
+            for feature in wfs(
+                http,
+                "BDTOPO_V3:troncon_hydrographique",
+                f"code_du_cours_d_eau_bdcarthage='{code}' AND reseau_principal_coulant=true",
+                args.refresh,
+                f"troncons-{code}",
+            )
+        ]
         if not features:
-            missing.append(f"{watercourse['name']} ({qid}) : aucun tronçon pour le code {code}")
+            missing.append(f"{watercourse['name']} ({qid}) : aucun tronçon pour {', '.join(codes)}")
             continue
-        lines[qid] = river_lines(features)
+        lines[qid], traced_km = river_lines(features)
+        expected_km = watercourse.get("lengthKm")
+        if expected_km and traced_km < SHORT_RATIO * expected_km:
+            short.append(f"{watercourse['name']} ({qid}, {', '.join(codes)}) : {traced_km:.0f} km tracés sur {expected_km:.0f} km")
         print(f"[{index}/{len(watercourses)}] {watercourse['name']} : {len(features)} tronçons", flush=True)
 
     OUTPUT.write_text(
@@ -171,9 +196,30 @@ def main() -> None:
         + "\n"
     )
     size = OUTPUT.stat().st_size // 1024
-    print(f"{len(lines)} cours d'eau tracés, {len(missing)} sans tracé, {size} Ko.")
-    for line in missing:
-        print(f"  - {line}")
+    print(f"{len(lines)} cours d'eau tracés, {len(missing)} sans tracé, {len(short)} tracés courts, {size} Ko.")
+    REPORT.write_text(
+        "\n".join(
+            [
+                "# Rapport des tracés",
+                "",
+                "Généré par `scripts/data/build_geometries.py`. Ne pas modifier à la main.",
+                "",
+                f"{len(lines)} cours d'eau tracés.",
+                "",
+                "## Sans tracé",
+                "",
+                *([f"- {line}" for line in missing] or ["Aucun."]),
+                "",
+                f"## Tracés courts (moins de {SHORT_RATIO:.0%} de la longueur Wikidata)",
+                "",
+                "Souvent un cours d'eau canalisé sur une partie de son cours, sous un autre code Sandre (à ajouter",
+                "dans `geometry_codes` de `rules.yaml`), ou qui sort de France (normal).",
+                "",
+                *([f"- {line}" for line in short] or ["Aucun."]),
+                "",
+            ]
+        )
+    )
 
 
 if __name__ == "__main__":

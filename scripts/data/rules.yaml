@@ -50,9 +50,12 @@ exclusions:
   Q663546: "Rhin supérieur : tronçon du Rhin, remplacé par le Rhin (Q584)"
   Q670414: "Doire ripaire : finit dans l'Adriatique, hors des quatre mers du jeu"
 
-# Code Sandre à utiliser pour le tracé (build_geometries.py) quand il manque dans Wikidata.
+# Codes Sandre du tracé (build_geometries.py) quand celui de Wikidata manque ou ne couvre qu'une partie
+# du cours d'eau (partie canalisée sous un autre code). Remplacent le code de Wikidata.
 geometry_codes:
-  Q584: A---0000   # Rhin (code porté par l'élément « Rhin supérieur »)
+  Q584: A---0000                 # Rhin (code porté par l'élément « Rhin supérieur »)
+  Q37646: [E6---140, E6--009-]   # Somme : rivière, puis Somme canalisée
+  Q208267: [D0000600, D0--022-]  # Sambre : rivière, puis Sambre canalisée
 
 # Nom ou article imposés quand Wikipédia ne permet pas de les déduire.
 names:
