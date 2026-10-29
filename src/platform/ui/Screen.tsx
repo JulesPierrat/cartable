@@ -1,8 +1,14 @@
 import type { ReactNode } from 'react';
-import { StyleSheet, View } from 'react-native';
+import { Platform, StyleSheet, View } from 'react-native';
 import { SafeAreaView, type Edge } from 'react-native-safe-area-context';
 
 import { colors, spacing } from '@/platform/theme';
+
+/**
+ * Hauteur de la barre d'onglets native, qui flotte par-dessus le contenu (Liquid Glass sur iOS) :
+ * marge à laisser en bas d'un écran d'onglet. Sur le web, la barre ne recouvre rien.
+ */
+export const tabBarInset = Platform.select({ ios: 50, android: 80, default: 0 });
 
 type ScreenProps = {
   children: ReactNode;

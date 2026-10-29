@@ -7,7 +7,7 @@ import { localDateKey } from '@/platform/daily';
 import { dailyStreaks, gameStats, useRecords } from '@/platform/records';
 import { colors, radius, spacing } from '@/platform/theme';
 import { AppText } from '@/platform/ui/AppText';
-import { Screen } from '@/platform/ui/Screen';
+import { Screen, tabBarInset } from '@/platform/ui/Screen';
 
 export default function StatsScreen() {
   const [today] = useState(() => localDateKey(new Date()));
@@ -25,7 +25,7 @@ export default function StatsScreen() {
   const max = Math.max(1, ...rows.map((row) => row.count));
 
   return (
-    <Screen edges={['top']}>
+    <Screen>
       <ScrollView contentContainerStyle={styles.scroll} showsVerticalScrollIndicator={false}>
         <View style={styles.intro}>
           <AppText variant="title" accessibilityRole="header">
@@ -100,7 +100,7 @@ function Tile({ value, label, detail }: { value: string; label: string; detail?:
 const styles = StyleSheet.create({
   scroll: {
     gap: spacing.xl,
-    paddingBottom: spacing.xxl,
+    paddingBottom: tabBarInset + spacing.xxl,
   },
   intro: {
     gap: spacing.xs,

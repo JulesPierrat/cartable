@@ -6,7 +6,7 @@ import { dataset } from '@/games/jusqua-la-mer/data/rivers';
 import { colors, radius, spacing, touchTarget } from '@/platform/theme';
 import { AppText } from '@/platform/ui/AppText';
 import { Icon } from '@/platform/ui/Icon';
-import { Screen } from '@/platform/ui/Screen';
+import { Screen, tabBarInset } from '@/platform/ui/Screen';
 
 function frenchDate(dateKey: string): string {
   return new Date(`${dateKey}T12:00:00`).toLocaleDateString('fr-FR', { day: 'numeric', month: 'long', year: 'numeric' });
@@ -14,7 +14,7 @@ function frenchDate(dateKey: string): string {
 
 export default function ProfileScreen() {
   return (
-    <Screen edges={['top']}>
+    <Screen>
       <ScrollView contentContainerStyle={styles.scroll} showsVerticalScrollIndicator={false}>
         <AppText variant="title" accessibilityRole="header">
           Profil
@@ -51,7 +51,7 @@ export default function ProfileScreen() {
 const styles = StyleSheet.create({
   scroll: {
     gap: spacing.xl,
-    paddingBottom: spacing.xxl,
+    paddingBottom: tabBarInset + spacing.xxl,
   },
   card: {
     padding: spacing.lg,

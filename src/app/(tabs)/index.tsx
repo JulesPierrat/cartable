@@ -14,7 +14,7 @@ import { AppText } from '@/platform/ui/AppText';
 import { Button } from '@/platform/ui/Button';
 import { Icon } from '@/platform/ui/Icon';
 import { Logo } from '@/platform/ui/Logo';
-import { Screen } from '@/platform/ui/Screen';
+import { Screen, tabBarInset } from '@/platform/ui/Screen';
 
 const levels: { difficulty: Difficulty; description: string; drops: number }[] = [
   { difficulty: 'easy', description: 'Grands fleuves', drops: 1 },
@@ -34,7 +34,7 @@ export default function HomeScreen() {
   const rulesSeen = useRulesSeen();
 
   return (
-    <Screen edges={['top']}>
+    <Screen>
       <ScrollView contentContainerStyle={styles.scroll} showsVerticalScrollIndicator={false}>
         <View style={styles.header}>
           <Logo />
@@ -163,7 +163,7 @@ function DailyCard({ game, today, rulesSeen }: { game: AvailableGame; today: str
 const styles = StyleSheet.create({
   scroll: {
     gap: spacing.xxl,
-    paddingBottom: spacing.xxl,
+    paddingBottom: tabBarInset + spacing.xxl,
   },
   header: {
     minHeight: 44,
