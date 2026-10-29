@@ -9,12 +9,12 @@ import { GAME_ID, useDailySave, useRulesSeen } from '@/games/jusqua-la-mer/progr
 import { localDateKey } from '@/platform/daily';
 import { availableGames, upcomingGames, type AvailableGame } from '@/platform/games';
 import { dailyStreaks, useRecords } from '@/platform/records';
-import { colors, radius, spacing } from '@/platform/theme';
+import { radius, spacing, useColors, useThemedStyles, type Palette } from '@/platform/theme';
 import { AppText } from '@/platform/ui/AppText';
 import { Button } from '@/platform/ui/Button';
 import { Icon } from '@/platform/ui/Icon';
 import { Logo } from '@/platform/ui/Logo';
-import { Screen, tabBarInset } from '@/platform/ui/Screen';
+import { Screen, useTabBarSpace } from '@/platform/ui/Screen';
 
 const levels: { difficulty: Difficulty; description: string; drops: number }[] = [
   { difficulty: 'easy', description: 'Grands fleuves', drops: 1 },
@@ -28,14 +28,17 @@ function play(mode: GameMode, rulesSeen: boolean) {
 }
 
 export default function HomeScreen() {
+  const tabBarSpace = useTabBarSpace();
+  const colors = useColors();
+  const styles = useThemedStyles(makeStyles);
   const [dailyGame] = availableGames;
   const [today] = useState(() => localDateKey(new Date()));
   const streak = dailyStreaks(useRecords(GAME_ID), today).current;
   const rulesSeen = useRulesSeen();
 
   return (
-    <Screen>
-      <ScrollView contentContainerStyle={styles.scroll} showsVerticalScrollIndicator={false}>
+    <Screen edges={['top']}>
+      <ScrollView contentContainerStyle={[styles.scroll, { paddingBottom: tabBarSpace }]} showsVerticalScrollIndicator={false}>
         <View style={styles.header}>
           <Logo />
           {streak > 0 ? (
@@ -115,6 +118,8 @@ export default function HomeScreen() {
 }
 
 function DailyCard({ game, today, rulesSeen }: { game: AvailableGame; today: string; rulesSeen: boolean }) {
+  const colors = useColors();
+  const styles = useThemedStyles(makeStyles);
   const { number } = dailyChallenge(dataset, today);
   const date = new Date(`${today}T12:00:00`).toLocaleDateString('fr-FR', { day: 'numeric', month: 'short' });
   const save = useDailySave(today);
@@ -160,10 +165,11 @@ function DailyCard({ game, today, rulesSeen }: { game: AvailableGame; today: str
   );
 }
 
-const styles = StyleSheet.create({
+const makeStyles = (colors: Palette) =>
+  StyleSheet.create({
   scroll: {
     gap: spacing.xxl,
-    paddingBottom: tabBarInset + spacing.xxl,
+
   },
   header: {
     minHeight: 44,
@@ -187,7 +193,7 @@ const styles = StyleSheet.create({
     gap: spacing.sm,
   },
   dailyCard: {
-    backgroundColor: colors.night,
+    backgroundColor: colors.hero,
     borderRadius: radius.xxl,
     padding: spacing.xxl,
     gap: spacing.md,

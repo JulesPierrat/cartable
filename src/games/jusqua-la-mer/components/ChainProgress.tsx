@@ -12,7 +12,7 @@ import {
 } from '@/games/jusqua-la-mer/engine/game';
 import { lastFoundId, missLabel, watercourseName } from '@/games/jusqua-la-mer/presentation';
 import { capitalize } from '@/platform/text';
-import { colors, radius, spacing } from '@/platform/theme';
+import { radius, spacing, useColors, useThemedStyles, type Palette } from '@/platform/theme';
 import { AppText } from '@/platform/ui/AppText';
 import { Icon } from '@/platform/ui/Icon';
 
@@ -23,6 +23,8 @@ type Row = { key: string; id: string; misses: HistoryEntry[] };
  * en les cherchant), la case à trouver, puis la mer. Les étapes à venir restent cachées.
  */
 export function ChainProgress({ state, onShowHint }: { state: GameState; onShowHint: () => void }) {
+  const colors = useColors();
+  const styles = useThemedStyles(makeStyles);
   const steps = state.river.steps;
   const current = currentStepIndex(state);
   const mistakes = state.history.filter(
@@ -51,7 +53,7 @@ export function ChainProgress({ state, onShowHint }: { state: GameState; onShowH
               <View style={styles.startDot} />
             ) : (
               <View style={styles.foundDot}>
-                <Icon name="check" size={16} color={colors.white} strokeWidth={2.6} />
+                <Icon name="check" size={16} color={colors.onWater} strokeWidth={2.6} />
               </View>
             )}
             <View style={styles.solidLine} />
@@ -109,6 +111,8 @@ export function ChainProgress({ state, onShowHint }: { state: GameState; onShowH
 }
 
 function Misses({ entries, state }: { entries: HistoryEntry[]; state: GameState }) {
+  const colors = useColors();
+  const styles = useThemedStyles(makeStyles);
   if (entries.length === 0) {
     return null;
   }
@@ -144,7 +148,8 @@ function Misses({ entries, state }: { entries: HistoryEntry[]; state: GameState 
 
 const DOT = 28;
 
-const styles = StyleSheet.create({
+const makeStyles = (colors: Palette) =>
+  StyleSheet.create({
   card: {
     backgroundColor: colors.surface,
     borderRadius: radius.xl,

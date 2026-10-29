@@ -2,7 +2,7 @@ import { Pressable, StyleSheet, View } from 'react-native';
 
 import { dataset, type SeaId } from '@/games/jusqua-la-mer/data/rivers';
 import { seaName } from '@/games/jusqua-la-mer/presentation';
-import { colors, radius, spacing, touchTarget } from '@/platform/theme';
+import { radius, spacing, touchTarget, useColors, useThemedStyles, type Palette } from '@/platform/theme';
 import { AppText } from '@/platform/ui/AppText';
 import { Icon } from '@/platform/ui/Icon';
 
@@ -10,6 +10,8 @@ const order: SeaId[] = ['channel', 'north-sea', 'atlantic', 'mediterranean'];
 
 /** Les quatre mers du jeu, en grille de 2 × 2. */
 export function SeaGrid({ onPick }: { onPick: (sea: SeaId) => void }) {
+  const colors = useColors();
+  const styles = useThemedStyles(makeStyles);
   return (
     <View style={styles.grid}>
       {order.map((sea) => (
@@ -29,7 +31,8 @@ export function SeaGrid({ onPick }: { onPick: (sea: SeaId) => void }) {
   );
 }
 
-const styles = StyleSheet.create({
+const makeStyles = (colors: Palette) =>
+  StyleSheet.create({
   grid: {
     flexDirection: 'row',
     flexWrap: 'wrap',

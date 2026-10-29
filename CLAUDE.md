@@ -38,7 +38,7 @@ Les règles Expo du template s'appliquent, en particulier « ne te fie pas à ta
 - Le dossier d'un jeu est en kebab-case français (`src/games/jusqua-la-mer/`).
 - Le moteur d'un jeu (`engine/`) est du TypeScript pur : pas d'import React ni Expo, et des tests unitaires pour chaque règle.
 - Ce qui sert à plusieurs jeux va dans `src/platform/`, jamais dans le dossier d'un jeu.
-- Les couleurs, polices et espacements viennent de `src/platform/theme.ts`, pas de valeurs en dur dans les écrans.
+- Les couleurs, polices et espacements viennent de `src/platform/theme.ts`, pas de valeurs en dur dans les écrans. L'app suit le thème clair ou sombre du téléphone : dans un composant, `const colors = useColors()` ; une feuille de styles qui utilise des couleurs s'écrit `const makeStyles = (colors: Palette) => StyleSheet.create({...})` et se lit avec `useThemedStyles(makeStyles)`. Respecter les rôles : `hero` pour le fond d'un bloc mis en avant (avec `white` dessus), `night` pour un texte ou un tracé d'accent, `onWater` pour ce qui est posé sur `water`. Toute nouvelle paire texte / fond va dans `src/platform/__tests__/theme-test.ts`, vérifiée dans les deux thèmes.
 - Avant de dire qu'une tâche est finie : `npx expo lint`, `npx tsc --noEmit` et les tests passent.
 - Ne push pas et ne merge pas sur `main` sans qu'on te le demande.
 

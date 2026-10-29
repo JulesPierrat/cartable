@@ -5,11 +5,14 @@ import { plural } from '@/games/jusqua-la-mer/presentation';
 import { GAME_ID } from '@/games/jusqua-la-mer/progress';
 import { localDateKey } from '@/platform/daily';
 import { dailyStreaks, gameStats, useRecords } from '@/platform/records';
-import { colors, radius, spacing } from '@/platform/theme';
+import { radius, spacing, useColors, useThemedStyles, type Palette } from '@/platform/theme';
 import { AppText } from '@/platform/ui/AppText';
-import { Screen, tabBarInset } from '@/platform/ui/Screen';
+import { Screen, useTabBarSpace } from '@/platform/ui/Screen';
 
 export default function StatsScreen() {
+  const tabBarSpace = useTabBarSpace();
+  const colors = useColors();
+  const styles = useThemedStyles(makeStyles);
   const [today] = useState(() => localDateKey(new Date()));
   const records = useRecords(GAME_ID);
   const stats = gameStats(records);
@@ -25,8 +28,8 @@ export default function StatsScreen() {
   const max = Math.max(1, ...rows.map((row) => row.count));
 
   return (
-    <Screen>
-      <ScrollView contentContainerStyle={styles.scroll} showsVerticalScrollIndicator={false}>
+    <Screen edges={['top']}>
+      <ScrollView contentContainerStyle={[styles.scroll, { paddingBottom: tabBarSpace }]} showsVerticalScrollIndicator={false}>
         <View style={styles.intro}>
           <AppText variant="title" accessibilityRole="header">
             Stats
@@ -80,6 +83,8 @@ export default function StatsScreen() {
 }
 
 function Tile({ value, label, detail }: { value: string; label: string; detail?: string }) {
+  const colors = useColors();
+  const styles = useThemedStyles(makeStyles);
   return (
     <View style={styles.tile} accessible accessibilityLabel={`${value} ${label}${detail ? `, ${detail}` : ''}`}>
       <AppText variant="title" color={colors.night}>
@@ -97,10 +102,11 @@ function Tile({ value, label, detail }: { value: string; label: string; detail?:
   );
 }
 
-const styles = StyleSheet.create({
+const makeStyles = (colors: Palette) =>
+  StyleSheet.create({
   scroll: {
     gap: spacing.xl,
-    paddingBottom: tabBarInset + spacing.xxl,
+
   },
   intro: {
     gap: spacing.xs,

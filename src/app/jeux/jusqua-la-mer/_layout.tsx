@@ -1,9 +1,10 @@
 import { Stack } from 'expo-router';
 
 import { GameSessionProvider } from '@/games/jusqua-la-mer/session';
-import { colors } from '@/platform/theme';
+import { useColors } from '@/platform/theme';
 
 export default function JusquaLaMerLayout() {
+  const colors = useColors();
   return (
     <GameSessionProvider>
       <Stack screenOptions={{ headerShown: false, contentStyle: { backgroundColor: colors.background } }}>

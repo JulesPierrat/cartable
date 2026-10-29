@@ -7,7 +7,7 @@ import { SeaGrid } from '@/games/jusqua-la-mer/components/SeaGrid';
 import type { SeaId } from '@/games/jusqua-la-mer/data/rivers';
 import { nameIndex } from '@/games/jusqua-la-mer/presentation';
 import { suggest } from '@/platform/autocomplete';
-import { colors, fonts, radius, spacing, touchTarget } from '@/platform/theme';
+import { fonts, radius, spacing, touchTarget, useColors, useThemedStyles, type Palette } from '@/platform/theme';
 import { AppText } from '@/platform/ui/AppText';
 
 type AnswerPanelProps = {
@@ -23,6 +23,8 @@ type AnswerPanelProps = {
  * sont remplacées par un lien qui le ferme, pour que la saisie et les suggestions restent visibles.
  */
 export function AnswerPanel({ onAnswer, onSea, message, shakeKey }: AnswerPanelProps) {
+  const colors = useColors();
+  const styles = useThemedStyles(makeStyles);
   const [text, setText] = useState('');
   const keyboardVisible = useKeyboardVisible();
   const insets = useSafeAreaInsets();
@@ -105,7 +107,7 @@ export function AnswerPanel({ onAnswer, onSea, message, shakeKey }: AnswerPanelP
             accessibilityRole="button"
             onPress={() => submit(text)}
             style={({ pressed }) => [styles.validate, pressed && { opacity: 0.85 }]}>
-            <AppText variant="bodyStrong" color={colors.white}>
+            <AppText variant="bodyStrong" color={colors.onWater}>
               Valider
             </AppText>
           </Pressable>
@@ -147,7 +149,8 @@ function useKeyboardVisible(): boolean {
   return visible;
 }
 
-const styles = StyleSheet.create({
+const makeStyles = (colors: Palette) =>
+  StyleSheet.create({
   sheet: {
     backgroundColor: colors.surface,
     borderTopLeftRadius: radius.xxl,
@@ -155,7 +158,7 @@ const styles = StyleSheet.create({
     paddingTop: spacing.lg,
     paddingHorizontal: spacing.xl,
     gap: spacing.md,
-    shadowColor: colors.ink,
+    shadowColor: '#000000',
     shadowOpacity: 0.08,
     shadowRadius: 24,
     shadowOffset: { width: 0, height: -8 },

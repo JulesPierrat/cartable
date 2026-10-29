@@ -14,9 +14,8 @@ import {
   type Line,
 } from '@/games/jusqua-la-mer/data/geo';
 import { placeLabels } from '@/games/jusqua-la-mer/components/map-labels';
-import { colors, fonts, radius } from '@/platform/theme';
+import { fonts, radius, useColors, useThemedStyles, type Palette } from '@/platform/theme';
 
-const SEA = '#CFE3F6';
 /** Place réservée à droite pour le médaillon de la France, en pixels. */
 const INSET_SPACE = 76;
 const LABEL_SIZE = 11;
@@ -45,6 +44,8 @@ export function RiverMap({
   labels = false,
   accessibilityLabel,
 }: RiverMapProps) {
+  const colors = useColors();
+  const styles = useThemedStyles(makeStyles);
   const drawn = boundsOf([...known, ...highlight].flatMap((id) => watercourseLines(id) ?? []));
   const withInset = framing === 'path' && drawn !== null;
   const box = withInset ? fitWithInset(drawn, width, height) : fitBox(unionBox(franceBox, drawn), width / height, 0.04);
@@ -72,7 +73,7 @@ export function RiverMap({
       accessibilityRole="image"
       accessibilityLabel={accessibilityLabel}>
       <Svg width={width} height={height} viewBox={viewBox(box)}>
-        <Rect x={box.minX} y={box.minY} width={box.maxX - box.minX} height={box.maxY - box.minY} fill={SEA} />
+        <Rect x={box.minX} y={box.minY} width={box.maxX - box.minX} height={box.maxY - box.minY} fill={colors.sea} />
         <Outline px={px} />
         {known.map((id) => (
           <River key={id} id={id} color={colors.night} px={px} />
@@ -92,7 +93,7 @@ export function RiverMap({
                 fontFamily={fonts.bodyBold}
                 textAnchor="middle"
                 fill={colors.ink}
-                stroke={halo ? colors.white : 'none'}
+                stroke={halo ? colors.land : 'none'}
                 strokeWidth={halo ? 3 * px : 0}
                 strokeLinejoin="round">
                 {label.text}
@@ -107,13 +108,14 @@ export function RiverMap({
 }
 
 function Outline({ px }: { px: number }) {
+  const colors = useColors();
   return (
     <G>
       {franceOutline.map((ring, i) => (
         <Path
           key={i}
           d={svgPath(ring, true)}
-          fill={colors.white}
+          fill={colors.land}
           stroke={colors.borderStrong}
           strokeWidth={0.75 * px}
           strokeLinejoin="round"
@@ -157,6 +159,8 @@ function River({ id, color, px }: { id: string; color: string; px: number }) {
 
 /** La France en petit, avec le cadre de la vue zoomée. */
 function Inset({ box }: { box: Box }) {
+  const colors = useColors();
+  const styles = useThemedStyles(makeStyles);
   const size = 58;
   const france = fitBox(franceBox, 1, 0.06);
   const px = (france.maxX - france.minX) / size;
@@ -192,11 +196,12 @@ function viewBox(box: Box): string {
   return `${box.minX} ${box.minY} ${box.maxX - box.minX} ${box.maxY - box.minY}`;
 }
 
-const styles = StyleSheet.create({
+const makeStyles = (colors: Palette) =>
+  StyleSheet.create({
   frame: {
     borderRadius: radius.lg,
     overflow: 'hidden',
-    backgroundColor: SEA,
+    backgroundColor: colors.sea,
     borderWidth: 1,
     borderColor: colors.border,
   },

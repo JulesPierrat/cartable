@@ -1,9 +1,10 @@
 import { Tabs } from 'expo-router/js-tabs';
 
-import { colors, fonts } from '@/platform/theme';
+import { fonts, useColors } from '@/platform/theme';
 import { Icon } from '@/platform/ui/Icon';
 
 export default function TabsLayout() {
+  const colors = useColors();
   return (
     <Tabs
       screenOptions={{

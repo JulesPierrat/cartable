@@ -3,19 +3,22 @@ import { Pressable, ScrollView, StyleSheet, View } from 'react-native';
 
 import { geoSnapshot } from '@/games/jusqua-la-mer/data/geo';
 import { dataset } from '@/games/jusqua-la-mer/data/rivers';
-import { colors, radius, spacing, touchTarget } from '@/platform/theme';
+import { radius, spacing, touchTarget, useColors, useThemedStyles, type Palette } from '@/platform/theme';
 import { AppText } from '@/platform/ui/AppText';
 import { Icon } from '@/platform/ui/Icon';
-import { Screen, tabBarInset } from '@/platform/ui/Screen';
+import { Screen, useTabBarSpace } from '@/platform/ui/Screen';
 
 function frenchDate(dateKey: string): string {
   return new Date(`${dateKey}T12:00:00`).toLocaleDateString('fr-FR', { day: 'numeric', month: 'long', year: 'numeric' });
 }
 
 export default function ProfileScreen() {
+  const tabBarSpace = useTabBarSpace();
+  const colors = useColors();
+  const styles = useThemedStyles(makeStyles);
   return (
-    <Screen>
-      <ScrollView contentContainerStyle={styles.scroll} showsVerticalScrollIndicator={false}>
+    <Screen edges={['top']}>
+      <ScrollView contentContainerStyle={[styles.scroll, { paddingBottom: tabBarSpace }]} showsVerticalScrollIndicator={false}>
         <AppText variant="title" accessibilityRole="header">
           Profil
         </AppText>
@@ -48,10 +51,11 @@ export default function ProfileScreen() {
   );
 }
 
-const styles = StyleSheet.create({
+const makeStyles = (colors: Palette) =>
+  StyleSheet.create({
   scroll: {
     gap: spacing.xl,
-    paddingBottom: tabBarInset + spacing.xxl,
+
   },
   card: {
     padding: spacing.lg,

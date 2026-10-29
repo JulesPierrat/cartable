@@ -1,7 +1,7 @@
 import type { ColorValue } from 'react-native';
 import Svg, { Circle, Path, Rect } from 'react-native-svg';
 
-import { colors } from '@/platform/theme';
+import { useColors } from '@/platform/theme';
 
 /** Icônes au trait, reprises des maquettes (grille 24×24). */
 const icons = {
@@ -67,7 +67,9 @@ type IconProps = {
   filled?: boolean;
 };
 
-export function Icon({ name, size = 24, color = colors.ink, strokeWidth = 2, filled = false }: IconProps) {
+export function Icon({ name, size = 24, color: requestedColor, strokeWidth = 2, filled = false }: IconProps) {
+  const colors = useColors();
+  const color = requestedColor ?? colors.ink;
   return (
     <Svg
       width={size}

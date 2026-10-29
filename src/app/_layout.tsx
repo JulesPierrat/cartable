@@ -6,11 +6,12 @@ import { useEffect, useState } from 'react';
 
 import { fontAssets } from '@/platform/fonts';
 import { storage } from '@/platform/storage';
-import { colors } from '@/platform/theme';
+import { useColors } from '@/platform/theme';
 
 SplashScreen.preventAutoHideAsync();
 
 export default function RootLayout() {
+  const colors = useColors();
   const [loaded, error] = useFonts(fontAssets);
   const [storageReady, setStorageReady] = useState(false);
   const ready = (loaded || error !== null) && storageReady;
@@ -32,7 +33,7 @@ export default function RootLayout() {
 
   return (
     <>
-      <StatusBar style="dark" />
+      <StatusBar style="auto" />
       <Stack
         screenOptions={{
           headerShown: false,

@@ -1,12 +1,13 @@
 import { NativeTabs } from 'expo-router/native-tabs';
 
-import { colors, fonts } from '@/platform/theme';
+import { fonts, useColors } from '@/platform/theme';
 
 /**
  * Barre d'onglets native : Liquid Glass sur iOS 26 et plus, barre Material sur Android.
  * Icônes système (SF Symbols sur iOS, Material Symbols sur Android). Sur le web : `_layout.web.tsx`.
  */
 export default function TabsLayout() {
+  const colors = useColors();
   return (
     <NativeTabs tintColor={colors.water} labelStyle={{ fontFamily: fonts.bodyBold }}>
       <NativeTabs.Trigger name="index">
